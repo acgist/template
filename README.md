@@ -1,37 +1,43 @@
 # acgist
 
-#### 介绍
-简单的项目
+## 介绍
 
-#### 软件架构
-软件架构说明
+简单的项目，提供一套完整建站模板。
 
+使用`Dubbo`进行服务调用
 
-#### 安装教程
+后台模块使用`Vue` + `Node.js`实现前后端分离
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+## 软件技术
 
-#### 使用说明
+|技术|版本|功能|主页|
+|:--|:--|:--|:--|
+|Vue||前后端分离||
+|Java|11|开发语言||
+|Redis||缓存||
+|MySQL||数据||
+|Nginx||网关||
+|Dubbo||服务治理|https://github.com/apache/dubbo|
+|Node.js||前后端分离||
+|RabbitMQ||消息||
+|ZooKeeper||注册中心||
+|DubboAdmin||服务管理|https://github.com/apache/dubbo-admin|
+|SprintBoot||框架||
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+## 项目结构
 
-#### 参与贡献
+|目录|描述|
+|:--|:--|
+|acgist-www|网站模块|
+|acgist-common|通用模块|
+|acgist-service|服务模块|
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+## 疑问
 
+#### 为什么不用SpringCloud？
 
-#### 码云特技
+首先承认SpringCloud在微服务方面是非常出色的，但是SpringCloud依赖太多，而且使用没有Dubbo直接。
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5.  码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+#### 为什么前台网站不使用前后端分离？
+
+前端网站主要提供用户访问页面，前后端分离不利于SEO。
