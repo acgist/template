@@ -31,13 +31,12 @@
 		<jackson.version>2.10.1</jackson.version>
 		<activation.version>1.1.1</activation.version>
 		<jaxb-runtime.version>2.3.2</jaxb-runtime.version>
+		<commons-lang3.version>3.9</commons-lang3.version>
+		<commons-codec.version>1.13</commons-codec.version>
 		<bcprov-jdk15on.version>1.64</bcprov-jdk15on.version>
+		<commons-beanutils.version>1.9.4</commons-beanutils.version>
 		<validation-api.version>2.0.1.Final</validation-api.version>
 		<mysql-connector-java.version>5.1.48</mysql-connector-java.version>
-		<!-- 工具 -->
-		<commons-codec.version>1.13</commons-codec.version>
-		<commons-lang3.version>3.9</commons-lang3.version>
-		<commons-beanutils.version>1.9.4</commons-beanutils.version>
 	</properties>
 
 	<modules>
@@ -52,7 +51,6 @@
 			<groupId>javax.activation</groupId>
 			<artifactId>activation</artifactId>
 		</dependency>
-		<!-- Java移除模块 -->
 		<dependency>
 			<groupId>org.glassfish.jaxb</groupId>
 			<artifactId>jaxb-runtime</artifactId>
@@ -81,6 +79,11 @@
 			</dependency>
 			<dependency>
 				<groupId>com.acgist</groupId>
+				<artifactId>acgist-common-www</artifactId>
+				<version>${acgist.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.acgist</groupId>
 				<artifactId>acgist-common-data</artifactId>
 				<version>${acgist.version}</version>
 			</dependency>
@@ -92,6 +95,56 @@
 			<dependency>
 				<groupId>com.acgist</groupId>
 				<artifactId>acgist-common-order</artifactId>
+				<version>${acgist.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.acgist</groupId>
+				<artifactId>acgist-common-service</artifactId>
+				<version>${acgist.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.acgist</groupId>
+				<artifactId>acgist-common-www-gateway</artifactId>
+				<version>${acgist.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.acgist</groupId>
+				<artifactId>acgist-service-pay</artifactId>
+				<version>${acgist.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.acgist</groupId>
+				<artifactId>acgist-service-user</artifactId>
+				<version>${acgist.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.acgist</groupId>
+				<artifactId>acgist-service-order</artifactId>
+				<version>${acgist.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.acgist</groupId>
+				<artifactId>acgist-www</artifactId>
+				<version>${acgist.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.acgist</groupId>
+				<artifactId>acgist-www-admin</artifactId>
+				<version>${acgist.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.acgist</groupId>
+				<artifactId>acgist-www-gateway</artifactId>
+				<version>${acgist.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.acgist</groupId>
+				<artifactId>acgist-www-resources</artifactId>
+				<version>${acgist.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.acgist</groupId>
+				<artifactId>acgist-www-admin-gateway</artifactId>
 				<version>${acgist.version}</version>
 			</dependency>
 			<!-- Java移除模块 -->
@@ -107,9 +160,9 @@
 			</dependency>
 			<!-- 证书 -->
 			<dependency>
-			    <groupId>org.bouncycastle</groupId>
-			    <artifactId>bcprov-jdk15on</artifactId>
-			    <version>${bcprov-jdk15on.version}</version>
+				<groupId>org.bouncycastle</groupId>
+				<artifactId>bcprov-jdk15on</artifactId>
+				<version>${bcprov-jdk15on.version}</version>
 			</dependency>
 			<!-- 连接池 -->
 			<dependency>
@@ -122,6 +175,12 @@
 				<groupId>mysql</groupId>
 				<artifactId>mysql-connector-java</artifactId>
 				<version>${mysql-connector-java.version}</version>
+			</dependency>
+			<!-- 数据校验 -->
+			<dependency>
+				<groupId>javax.validation</groupId>
+				<artifactId>validation-api</artifactId>
+				<version>${validation-api.version}</version>
 			</dependency>
 			<!-- 工具 -->
 			<dependency>
@@ -141,25 +200,19 @@
 			</dependency>
 			<!-- JSON -->
 			<dependency>
-			    <groupId>com.fasterxml.jackson.core</groupId>
-			    <artifactId>jackson-core</artifactId>
-			    <version>${jackson.version}</version>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>${jackson.version}</version>
 			</dependency>
 			<dependency>
-			    <groupId>com.fasterxml.jackson.core</groupId>
-			    <artifactId>jackson-databind</artifactId>
-			    <version>${jackson.version}</version>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${jackson.version}</version>
 			</dependency>
 			<dependency>
-			    <groupId>com.fasterxml.jackson.core</groupId>
-			    <artifactId>jackson-annotations</artifactId>
-			    <version>${jackson.version}</version>
-			</dependency>
-			<!-- 数据校验 -->
-			<dependency>
-			    <groupId>javax.validation</groupId>
-			    <artifactId>validation-api</artifactId>
-			    <version>${validation-api.version}</version>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-annotations</artifactId>
+				<version>${jackson.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

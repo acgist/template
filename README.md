@@ -22,8 +22,8 @@
 |-|-|-|-|
 |Vue||前后端分离||
 |Node.js||前后端分离||
+|Bootstrap||前台网站||
 |iview-admin||后台网站||
-|Bootstrap||前台网站样式||
 |-|-|-|-|
 |Dubbo||服务治理|https://github.com/apache/dubbo|
 |ZooKeeper||注册中心||
@@ -62,7 +62,7 @@
 
 不使用数据库
 
-```
+```java
 @EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class })
 ```
 
