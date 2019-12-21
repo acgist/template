@@ -66,6 +66,11 @@
 @EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class })
 ```
 
+## 表名
+
+* ts_系统表
+* tb_业务表
+
 ## 疑问
 
 #### 为什么不用SpringCloud？
