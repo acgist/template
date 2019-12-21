@@ -34,7 +34,7 @@ public class TimeAspect {
 			final long end = System.currentTimeMillis();
 			final long executeTime = end - begin;
 			if (executeTime > sign.time()) {
-				LOGGER.debug(sign.name() + "执行时间" + executeTime);
+				LOGGER.info("{}执行时间{}", sign.name(), executeTime);
 			}
 		}
 	}
