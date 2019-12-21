@@ -6,8 +6,8 @@
 
 |目录|说明|
 |:--|:--|
-|acgist-www[-*]|网站|
-|acgist-www[-*]-gateway|网关|
+|acgist-www[-*]|网站模块|
+|acgist-www[-*]-gateway|网关模块|
 |acgist-www-resources|静态资源|
 
 ## 目录说明
@@ -26,8 +26,9 @@ Redis实现Session共享
 
 ## 静态资源
 
-* 静态资源禁用Cookie
+1. 浏览器缓存
+2. 静态资源禁用Cookie
 
 ## Tomcat配置
 
-* 修改Session名称
+1. 修改Session名称

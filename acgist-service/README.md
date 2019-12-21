@@ -6,7 +6,7 @@
 
 |目录|描述|
 |:--|:--|
-|acgist-service-服务|服务|
+|acgist-service-服务模块|服务模块|
 
 ## 目录说明
 

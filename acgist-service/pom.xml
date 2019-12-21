@@ -26,7 +26,6 @@
 	<dependencies>
 	</dependencies>
 
-	<!-- 打包依赖 -->
 	<build>
 		<plugins>
 			<plugin>
