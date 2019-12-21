@@ -18,22 +18,6 @@
 	</parent>
 
 	<dependencies>
-		<dependency>
-			<groupId>com.acgist</groupId>
-			<artifactId>acgist-common-pay</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.acgist</groupId>
-			<artifactId>acgist-common-user</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.acgist</groupId>
-			<artifactId>acgist-common-order</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-websocket</artifactId>
-		</dependency>
 	</dependencies>
 
 </project>

@@ -4,7 +4,7 @@ import com.acgist.core.config.AcgistCode;
 import com.acgist.core.pojo.Pojo;
 
 /**
- * <p>message - 服务通信（包含状态）</p>
+ * <p>message - 服务消息（状态）</p>
  */
 public class ResultMessage extends Pojo {
 
