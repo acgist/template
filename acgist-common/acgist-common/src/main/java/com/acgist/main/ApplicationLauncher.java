@@ -1,7 +1,5 @@
 package com.acgist.main;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -14,15 +12,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
  */
 public class ApplicationLauncher {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(ApplicationLauncher.class);
-	
-	/**
-	 * <p>启动锁</p>
-	 */
-	private final Object lock;
-	
 	private ApplicationLauncher() {
-		this.lock = new Object();
 	}
 
 	public static final ApplicationLauncher newInstance() {
@@ -58,29 +48,6 @@ public class ApplicationLauncher {
 	    return this;
 	}
 
-	/**
-	 * <p>锁定</p>
-	 */
-	public void lock() {
-		try {
-			synchronized (this.lock) {
-				this.lock.wait(Long.MAX_VALUE);
-			}
-		} catch (InterruptedException e) {
-			LOGGER.error("等待异常", e);
-			Thread.currentThread().interrupt();
-		}
-	}
-	
-	/**
-	 * <p>解锁</p>
-	 */
-	public void unlock() {
-		synchronized (this.lock) {
-			this.lock.notify();
-		}
-	}
-	
 	/**
 	 * <p>关闭系统</p>
 	 * 

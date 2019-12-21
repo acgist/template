@@ -5,10 +5,10 @@ import org.springframework.context.annotation.ComponentScan;
 
 @ComponentScan({ "com.acgist.core", "com.acgist.data" })
 @SpringBootApplication
-public class AcgistWwwApplication {
+public class AcgistServiceOrderApplication {
 
 	public static void main(String[] args) {
-		ApplicationLauncher.newInstance().web(args, AcgistWwwApplication.class);
+		ApplicationLauncher.newInstance().run(args, AcgistServiceOrderApplication.class);
 	}
-
+	
 }

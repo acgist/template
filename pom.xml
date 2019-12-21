@@ -28,6 +28,7 @@
 		<project.reporting.outputEncoding>${acgist.encoding}</project.reporting.outputEncoding>
 		<!-- 依赖 -->
 		<c3p0.version>0.9.5.5</c3p0.version>
+		<dubbo.version>2.7.4.1</dubbo.version>
 		<jackson.version>2.10.1</jackson.version>
 		<activation.version>1.1.1</activation.version>
 		<jaxb-runtime.version>2.3.2</jaxb-runtime.version>
@@ -213,6 +214,35 @@
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-annotations</artifactId>
 				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.dubbo</groupId>
+				<artifactId>dubbo-spring-boot-starter</artifactId>
+				<version>${dubbo.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.dubbo</groupId>
+				<artifactId>dubbo-dependencies-zookeeper</artifactId>
+				<version>${dubbo.version}</version>
+				<type>pom</type>
+				<exclusions>
+					<exclusion>
+						<groupId>log4j</groupId>
+						<artifactId>log4j</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.apache.logging.log4j</groupId>
+						<artifactId>log4j-api</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.slf4j</groupId>
+						<artifactId>slf4j-log4j12</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.apache.logging.log4j</groupId>
+						<artifactId>log4j-to-slf4j</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
