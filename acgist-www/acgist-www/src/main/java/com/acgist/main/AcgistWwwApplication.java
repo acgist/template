@@ -1,7 +1,9 @@
 package com.acgist.main;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
+@ComponentScan({"com.acgist.core", "com.acgist.data"})
 @SpringBootApplication
 public class AcgistWwwApplication {
 
