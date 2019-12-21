@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
-import com.api.core.config.FreemarkerConfig;
+import com.acgist.core.config.FreemarkerConfig;
 
 /**
  * config - freemarker<br>

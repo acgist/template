@@ -1,14 +1,17 @@
 package com.api.core.user.pojo.message;
 
-import com.api.core.pojo.message.BaseMessage;
+import com.acgist.core.pojo.message.ResultMessage;
 
 /**
- * 授权信息
+ * <p>message - 授权信息</p>
  */
-public class AuthoMessage extends BaseMessage {
+public class AuthoMessage extends ResultMessage {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * <p>用户名称</p>
+	 */
 	private String name;
 	private String pubilcKey;
 	private String privateKey;

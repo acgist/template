@@ -1,4 +1,4 @@
-package com.api.core.gateway;
+package com.acgist.core.gateway;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,7 +8,6 @@ import org.springframework.web.HttpRequestMethodNotSupportedException;
 
 import com.acgist.core.config.AcgistCode;
 import com.acgist.core.exception.ErrorCodeException;
-import com.acgist.core.gateway.APICode;
 
 /**
  * 错误状态码<br>

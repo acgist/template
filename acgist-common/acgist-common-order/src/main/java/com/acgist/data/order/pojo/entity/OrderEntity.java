@@ -21,9 +21,9 @@ public class OrderEntity extends BaseEntity {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * <p>订单编号</p>
+	 * @see {@link #code}
 	 */
-	public static final String PROPERTY_ORDER_ID = "code";
+	public static final String PROPERTY_ORDER_CODE = "code";
 	
 	/**
 	 * <p>订单编号</p>

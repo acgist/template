@@ -1,15 +1,21 @@
 package com.api.core.user.pojo.message;
 
-import com.api.core.pojo.message.ResultMessage;
+import com.acgist.core.pojo.message.ResultMessage;
 
 /**
- * 登陆信息
+ * <p>message - 登陆信息</p>
  */
 public class LoginMessage extends ResultMessage {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * <p>用户ID</p>
+	 */
 	private String id;
+	/**
+	 * <p>用户名称</p>
+	 */
 	private String name;
 
 	public String getId() {

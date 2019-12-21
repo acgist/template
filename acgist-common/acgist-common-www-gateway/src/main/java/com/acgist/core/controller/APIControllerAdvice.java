@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.acgist.core.config.AcgistCode;
-import com.acgist.core.controller.APIControllerAdvice;
 import com.acgist.core.exception.ErrorCodeException;
 import com.acgist.utils.RedirectUtils;
 

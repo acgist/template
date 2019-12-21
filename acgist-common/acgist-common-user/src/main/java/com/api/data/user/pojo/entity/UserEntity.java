@@ -7,12 +7,11 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import com.api.data.pojo.entity.BaseEntity;
+import com.acgist.data.pojo.entity.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
- * entity - 用户<br>
- * 接口使用证书鉴权、页面使用密码登陆
+ * <p>entity - 用户</p>
  */
 @Entity
 @Table(name = "tb_user", indexes = {
@@ -22,31 +21,47 @@ public class UserEntity extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 
-	public static final String PROPERTY_NAME = "name"; // 用户名
-	public static final String PROPERTY_PASSWORD = "password"; // 密码
-	public static final String PROPERTY_PUBLIC_KEY = "publicKey"; // 公钥
-	public static final String PROPERTY_PRIVATE_KEY = "privateKey"; // 私钥
+	/**
+	 * <p>名称：{@value}</p>
+	 */
+	public static final String PROPERTY_NAME = "name";
+	/**
+	 * <p>密码：{@value}</p>
+	 * <p>前台登陆</p>
+	 */
+	public static final String PROPERTY_PASSWORD = "password";
+	/**
+	 * <p>公钥：{@value}</p>
+	 * <p>前台网关</p>
+	 */
+	public static final String PROPERTY_PUBLIC_KEY = "publicKey";
+	/**
+	 * <p>私钥：{@value}</p>
+	 * <p>前台网关</p>
+	 */
+	public static final String PROPERTY_PRIVATE_KEY = "privateKey";
 	
 	/**
-	 * 名称
+	 * <p>名称</p>
 	 */
 	@Size(max = 20, message = "用户名称长度不能超过20")
 	@NotBlank(message = "用户名称不能为空")
 	private String name;
 	/**
-	 * 密码
+	 * <p>密码</p>
 	 */
-	@Size(max = 50, message = "用户密码长度不能超过50")
+	@Size(max = 40, message = "用户密码长度不能超过40")
 	@NotBlank(message = "用户密码不能为空")
+	@JsonIgnore
 	private String password;
 	/**
-	 * 公钥
+	 * <p>公钥</p>
 	 */
 	@Size(max = 2048, message = "用户公钥长度不能超过2048")
 	@JsonIgnore
 	private String publicKey;
 	/**
-	 * 私钥
+	 * <p>私钥</p>
 	 */
 	@Size(max = 2048, message = "用户私钥长度不能超过2048")
 	@JsonIgnore
@@ -61,7 +76,7 @@ public class UserEntity extends BaseEntity {
 		this.name = name;
 	}
 
-	@Column(length = 50, nullable = false)
+	@Column(length = 40, nullable = false)
 	public String getPassword() {
 		return password;
 	}

@@ -1,35 +1,30 @@
 package com.api.core.user.service;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import com.api.core.config.APIConstURL;
-import com.api.core.user.config.APIConstUserURL;
 import com.api.core.user.pojo.message.AuthoMessage;
 import com.api.core.user.pojo.message.LoginMessage;
 
 /**
- * 服务 - 用户
+ * <p>服务 - 用户</p>
  */
-@RequestMapping(APIConstURL.URL_SERVICE)
 public interface IUserService {
 
 	/**
-	 * 获取用户接口鉴权信息
+	 * <p>获取用户授权信息</p>
+	 * 
 	 * @param name 用户名
-	 * @return 鉴权信息
+	 * 
+	 * @return 授权信息
 	 */
-	@PostMapping(APIConstUserURL.URL_USER_AUTHO)
-	AuthoMessage autho(@RequestParam String name);
+	AuthoMessage autho(String name);
 
 	/**
-	 * 登陆
+	 * <p>登陆</p>
+	 * 
 	 * @param name 用户名称
-	 * @param password 用户密码
+	 * @param password 用户密码（已经加密）
+	 * 
 	 * @return 登陆结果
 	 */
-	@PostMapping(APIConstUserURL.URL_USER_LOGIN)
-	LoginMessage login(@RequestParam String name, @RequestParam String password);
+	LoginMessage login(String name, String password);
 	
 }
