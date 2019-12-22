@@ -3,7 +3,7 @@ package com.acgist.core.gateway.response;
 import java.util.Map;
 
 import com.acgist.core.config.AcgistCode;
-import com.acgist.core.gateway.API;
+import com.acgist.core.gateway.AcgistGateway;
 import com.acgist.core.gateway.request.APIRequest;
 import com.acgist.core.gateway.response.APIResponse;
 import com.acgist.core.pojo.message.ResultMessage;
@@ -15,7 +15,7 @@ import com.acgist.utils.DateUtils;
  * 如果含有请求信息请调用valueOfRequest设置请求内容<br>
  * 必须要设置响应状态码
  */
-public class APIResponse extends API {
+public class APIResponse extends AcgistGateway {
 
 	private static final long serialVersionUID = 1L;
 
@@ -85,7 +85,7 @@ public class APIResponse extends API {
 	 */
 	public APIResponse valueOfMap(final Map<String, String> data) {
 		if(data != null) {
-			data.remove(API.PROPERTY_SIGN); // 移除签名
+			data.remove(AcgistGateway.PROPERTY_SIGN); // 移除签名
 			APIUtils.mapToBean(this, data);
 		}
 		return this;

@@ -12,27 +12,52 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 /**
- * 抽象请求：@JsonIgnoreProperties忽略传入的不需要的信息
+ * <p>抽象网关消息</p>
  */
 @JsonInclude(Include.NON_NULL)
-//@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-//@JsonIgnoreProperties(ignoreUnknown = true, value = {"sign"})
-public abstract class API implements Serializable {
+public abstract class AcgistGateway implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	public static final String DEFAULT_CHARSET = "UTF-8"; // 系统默认编码
-	public static final String PROPERTY_USERNAME = "username"; // 用户账号
-	public static final String PROPERTY_SIGN = "sign"; // 签名
+	/**
+	 * <p>用户名称</p>
+	 */
+	public static final String PROPERTY_USERNAME = "username";
+	/**
+	 * <p>签名</p>
+	 */
+	public static final String PROPERTY_SIGN = "sign";
 
-	@NotBlank(message = "用户帐号不能为空")
-	protected String username; // 用户账号
-	protected String queryId; // 请求ID
-	protected String reserved; // 原样返回数据
+	/**
+	 * <p>请求编号</p>
+	 */
+	protected String queryId;
+	/**
+	 * <p>用户名称</p>
+	 */
+	@NotBlank(message = "用户名称不能为空")
+	protected String username;
+	/**
+	 * <p>请求保留数据</p>
+	 * <p>原样返回</p>
+	 */
+	protected String reserved;
+	/**
+	 * <p>签名</p>
+	 * <p>MD5</p>
+	 */
 	@NotBlank(message = "签名不能为空")
-	protected String sign; // 签名
+	protected String sign;
 	
+	public String getQueryId() {
+		return queryId;
+	}
+
+	public void setQueryId(String queryId) {
+		this.queryId = queryId;
+	}
+
 	public String getUsername() {
 		return username;
 	}
@@ -41,22 +66,14 @@ public abstract class API implements Serializable {
 		this.username = username;
 	}
 
-	public String getQueryId() {
-		return queryId;
-	}
-
-	public void setQueryId(String queryId) {
-		this.queryId = queryId;
-	}
-	
 	public String getReserved() {
 		return reserved;
 	}
-	
+
 	public void setReserved(String reserved) {
 		this.reserved = reserved;
 	}
-	
+
 	public String getSign() {
 		return sign;
 	}
@@ -64,7 +81,7 @@ public abstract class API implements Serializable {
 	public void setSign(String sign) {
 		this.sign = sign;
 	}
-	
+
 	/**
 	 * 获取map数据
 	 */

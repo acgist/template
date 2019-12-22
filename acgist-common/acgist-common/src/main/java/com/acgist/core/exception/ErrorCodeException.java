@@ -22,17 +22,22 @@ public class ErrorCodeException extends RuntimeException {
 	
 	public ErrorCodeException(String code, String message) {
 		super(message);
-		this.errorCode = code;
+		this.code = code;
 	}
 
-	private String errorCode;
+	/**
+	 * <p>错误编码</p>
+	 * 
+	 * @see {@link AcgistCode}
+	 */
+	private String code;
 
-	public String getErrorCode() {
-		return errorCode;
+	public String getCode() {
+		return code;
 	}
 
-	public void setErrorCode(String errorCode) {
-		this.errorCode = errorCode;
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 }

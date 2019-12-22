@@ -2,13 +2,13 @@ package com.acgist.core.gateway.request;
 
 import javax.validation.constraints.NotBlank;
 
-import com.acgist.core.gateway.API;
+import com.acgist.core.gateway.AcgistGateway;
 import com.acgist.utils.ValidatorUtils;
 
 /**
  * 抽象请求<br>
  */
-public class APIRequest extends API {
+public class APIRequest extends AcgistGateway {
 
 	private static final long serialVersionUID = 1L;
 

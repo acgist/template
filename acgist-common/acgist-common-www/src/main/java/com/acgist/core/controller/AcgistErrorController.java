@@ -16,7 +16,7 @@ import com.acgist.core.config.AcgistCode;
 import com.acgist.core.gateway.response.APIResponse;
 
 /**
- * 统一错误页面
+ * <p>统一错误页面</p>
  */
 @Controller
 public class AcgistErrorController implements ErrorController {
@@ -26,49 +26,45 @@ public class AcgistErrorController implements ErrorController {
 	public static final String ERROR_PATH = "/error";
 	
 	/**
-	 * JSON错误处理
+	 * <p>处理JSON错误</p>
+	 * 
+	 * @param code 错误编码
+	 * @param message 错误信息
+	 * @param response 响应
 	 */
 	@Primary
 	@ResponseBody
 	@RequestMapping(value = ERROR_PATH, produces = MediaType.APPLICATION_JSON_VALUE)
 	public String index(String code, String message, HttpServletResponse response) {
 //		request.getAttribute("javax.servlet.error.message"); // 错误信息
-		final AcgistCode apiCode = code(code, response);
-		message = AcgistCode.message(apiCode, message);
-		LOGGER.warn("系统错误（接口），错误代码：{}，错误描述：{}", apiCode.getCode(), message);
-		return APIResponse.builder().buildMessage(apiCode, message).response();
+		final AcgistCode acgistCode = AcgistCode.valueOfCode(code);
+		message = AcgistCode.message(acgistCode, message);
+		LOGGER.warn("系统错误（接口），错误编码：{}，错误描述：{}", acgistCode.getCode(), message);
+		return APIResponse.builder().buildMessage(acgistCode, message).response();
 	}
 
 	/**
-	 * 非JSON错误处理
+	 * <p>处理非JSON错误</p>
+	 * 
+	 * @param code 错误编码
+	 * @param message 错误信息
+	 * @param model Model
+	 * @param response 响应
 	 */
 	@Primary
 	@RequestMapping(value = ERROR_PATH, produces = MediaType.TEXT_HTML_VALUE)
 	public String index(String code, String message, ModelMap model, HttpServletResponse response) {
-		final AcgistCode apiCode = code(code, response);
-		message = AcgistCode.message(apiCode, message);
-		model.put("code", apiCode.getCode());
+		final AcgistCode acgistCode = AcgistCode.valueOfCode(code);
+		message = AcgistCode.message(acgistCode, message);
+		model.put("code", acgistCode.getCode());
 		model.put("message", message);
-		LOGGER.warn("系统错误（页面），错误代码：{}，错误描述：{}", apiCode.getCode(), message);
+		LOGGER.warn("系统错误（页面），错误编码：{}，错误信息：{}", acgistCode.getCode(), message);
 		return getErrorPath();
 	}
 
 	@Override
 	public String getErrorPath() {
 		return ERROR_PATH;
-	}
-	
-	/**
-	 * 错误代码转换，如果错误代码为空，使用相应代码获取错误代码
-	 * @param code 错误代码
-	 * @param response 响应
-	 * @return 错误代码
-	 */
-	private AcgistCode code(String code, HttpServletResponse response) {
-		if(code == null) {
-			return AcgistCode.valueOfStatus(response.getStatus());
-		}
-		return AcgistCode.valueOfCode(code);
 	}
 	
 }
