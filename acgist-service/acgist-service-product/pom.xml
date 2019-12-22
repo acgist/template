@@ -5,15 +5,15 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>acgist-common-www</artifactId>
+	<artifactId>acgist-service-product</artifactId>
 	<packaging>jar</packaging>
 
-	<name>acgist-common-www</name>
-	<description>通用模块-网站模块</description>
+	<name>acgist-service-product</name>
+	<description>服务模块-产品服务</description>
 
 	<parent>
 		<groupId>com.acgist</groupId>
-		<artifactId>acgist-common-parent</artifactId>
+		<artifactId>acgist-service-parent</artifactId>
 		<version>${acgist.version}</version>
 		<relativePath>../</relativePath>
 	</parent>
@@ -21,17 +21,11 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.acgist</groupId>
-			<artifactId>acgist-common</artifactId>
+			<artifactId>acgist-common-product</artifactId>
 		</dependency>
-		<!-- web -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<!-- freemarker -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-freemarker</artifactId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 	</dependencies>
 

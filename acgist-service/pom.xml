@@ -21,6 +21,7 @@
 		<module>acgist-service-pay</module>
 		<module>acgist-service-user</module>
 		<module>acgist-service-order</module>
+		<module>acgist-service-product</module>
 	</modules>
 
 	<dependencies>

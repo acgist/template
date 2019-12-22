@@ -105,6 +105,11 @@
 			</dependency>
 			<dependency>
 				<groupId>com.acgist</groupId>
+				<artifactId>acgist-common-product</artifactId>
+				<version>${acgist.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.acgist</groupId>
 				<artifactId>acgist-common-www-gateway</artifactId>
 				<version>${acgist.version}</version>
 			</dependency>
@@ -121,6 +126,11 @@
 			<dependency>
 				<groupId>com.acgist</groupId>
 				<artifactId>acgist-service-order</artifactId>
+				<version>${acgist.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.acgist</groupId>
+				<artifactId>acgist-service-product</artifactId>
 				<version>${acgist.version}</version>
 			</dependency>
 			<dependency>

@@ -15,3 +15,4 @@
 |acgist-service-pay|支付服务|
 |acgist-service-user|用户服务|
 |acgist-service-order|订单服务|
+|acgist-service-product|产品服务|
