@@ -18,6 +18,23 @@
 	</parent>
 
 	<dependencies>
+		<!-- 必要 -->
+		<dependency>
+			<groupId>com.acgist</groupId>
+			<artifactId>acgist-common-www</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.acgist</groupId>
+			<artifactId>acgist-common-data</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.acgist</groupId>
+			<artifactId>acgist-common-service</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
 	</dependencies>
 
 </project>

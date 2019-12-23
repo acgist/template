@@ -1,4 +1,4 @@
-package com.acgsit.core.pay.service.impl;
+package com.acgist.core.pay.service.impl;
 
 import java.util.Date;
 

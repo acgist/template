@@ -15,10 +15,10 @@ import com.acgist.data.repository.BaseExtendRepositoryImpl;
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = "com.acgist.data.**.repository", repositoryBaseClass = BaseExtendRepositoryImpl.class)
 @EnableTransactionManagement
-public class AcgistServiceOrderApplication {
+public class AcgistServicePayApplication {
 
 	public static void main(String[] args) {
-		ApplicationLauncher.newInstance().run(args, AcgistServiceOrderApplication.class);
+		ApplicationLauncher.newInstance().web(args, AcgistServicePayApplication.class);
 	}
-	
+
 }
