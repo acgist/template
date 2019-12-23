@@ -7,6 +7,9 @@ import javax.servlet.http.HttpSession;
 
 /**
  * <p>session - 基类</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public class BaseSession implements Serializable {
 	

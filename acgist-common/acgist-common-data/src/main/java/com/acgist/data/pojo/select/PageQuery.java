@@ -7,6 +7,9 @@ import java.util.List;
 
 /**
  * <p>select - 分页查询</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public class PageQuery implements Serializable {
 

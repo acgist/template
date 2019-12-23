@@ -17,6 +17,9 @@ import com.acgist.data.pojo.select.Order;
  * // 指定实现
  * @EnableJpaRepositories(basePackages = "com.acgist.core.**.repository", repositoryBaseClass = BaseExtendRepositoryImpl.class)
  * </pre>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 @NoRepositoryBean
 @Transactional(readOnly = true)

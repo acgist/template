@@ -5,6 +5,9 @@ import com.acgist.core.user.pojo.message.LoginMessage;
 
 /**
  * <p>服务 - 用户</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public interface IUserService {
 

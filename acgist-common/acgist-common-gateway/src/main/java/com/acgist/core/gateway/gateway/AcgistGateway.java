@@ -13,6 +13,9 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 /**
  * <p>网关消息</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)

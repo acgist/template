@@ -13,6 +13,9 @@ import com.acgist.utils.GatewayUtils;
 
 /**
  * <p>网关响应</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public class GatewayResponse extends AcgistGateway {
 

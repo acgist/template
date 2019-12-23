@@ -1,6 +1,12 @@
 package com.acgist.core.www.config;
 
-public interface AcgistConstSession {
+/**
+ * <p>config - session</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
+ */
+public interface AcgistWwwConstSession {
 	
 	/**
 	 * <p>用户：{@value}</p>

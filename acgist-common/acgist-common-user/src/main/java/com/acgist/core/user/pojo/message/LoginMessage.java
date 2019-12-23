@@ -4,6 +4,9 @@ import com.acgist.core.pojo.message.ResultMessage;
 
 /**
  * <p>message - 登陆信息</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public class LoginMessage extends ResultMessage {
 

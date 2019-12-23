@@ -19,6 +19,9 @@ import com.acgist.data.pojo.select.Order;
 
 /**
  * <p>repository - {@code BaseExtendRepository}实现</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public class BaseExtendRepositoryImpl<T extends BaseEntity> extends SimpleJpaRepository<T, String> implements BaseExtendRepository<T> {
 

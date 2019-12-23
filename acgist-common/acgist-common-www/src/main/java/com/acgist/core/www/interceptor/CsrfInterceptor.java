@@ -19,6 +19,9 @@ import com.acgist.utils.RedirectUtils;
 /**
  * <p>拦截器 - CSRF</p>
  * <p>防止CSRF攻击：POST请求验证是否含有Token</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 @Component
 public class CsrfInterceptor implements HandlerInterceptor {

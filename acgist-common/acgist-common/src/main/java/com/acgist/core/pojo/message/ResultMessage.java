@@ -5,6 +5,9 @@ import com.acgist.core.pojo.Pojo;
 
 /**
  * <p>message - 服务消息（状态）</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public class ResultMessage extends Pojo {
 

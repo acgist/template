@@ -2,6 +2,9 @@ package com.acgist.core.www.config;
 
 /**
  * <p>config - Session</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public interface AcgistConstSession {
 

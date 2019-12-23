@@ -12,6 +12,9 @@ import com.acgist.utils.JSONUtils;
 
 /**
  * <p>utils - request</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public class RequestUtils {
 

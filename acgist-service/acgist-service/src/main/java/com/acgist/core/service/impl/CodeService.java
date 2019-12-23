@@ -8,6 +8,12 @@ import org.springframework.beans.factory.annotation.Value;
 import com.acgist.core.service.ICodeService;
 import com.acgist.utils.DateUtils;
 
+/**
+ * <p>服务  - 订单</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
+ */
 @Service(retries = 0, version = "${acgist.service.version}")
 public class CodeService implements ICodeService {
 

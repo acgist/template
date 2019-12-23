@@ -12,6 +12,9 @@ import com.acgist.data.repository.BaseExtendRepository;
 
 /**
  * <p>service - 实体</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public abstract class EntityService<T extends BaseEntity> {
 

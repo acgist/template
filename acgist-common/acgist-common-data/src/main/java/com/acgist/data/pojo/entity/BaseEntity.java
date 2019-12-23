@@ -23,6 +23,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 /**
  * <p>Entity - 数据库实体基类</p>
  * <p>@Transient：不需要映射数据库字段</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 @EntityListeners(EntityListener.class)
 @MappedSuperclass

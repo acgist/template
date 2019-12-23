@@ -25,6 +25,9 @@ import freemarker.template.TemplateException;
 
 /**
  * <p>service - FreeMarker</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 @Service
 public class FreeMarkerService {

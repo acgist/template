@@ -4,6 +4,9 @@ import com.acgist.core.config.AcgistCode;
 
 /**
  * <p>异常 - 错误代码</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public class ErrorCodeException extends RuntimeException {
 

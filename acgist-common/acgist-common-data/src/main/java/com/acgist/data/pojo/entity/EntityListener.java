@@ -7,6 +7,9 @@ import javax.persistence.PreUpdate;
 
 /**
  * <p>Listener - 数据库预处理</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public class EntityListener {
 

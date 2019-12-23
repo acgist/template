@@ -15,6 +15,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * <p>utils - JSON</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public class JSONUtils {
 

@@ -5,6 +5,9 @@ import java.util.List;
 
 /**
  * <p>select - 查询条件</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public class Filter implements Serializable {
 

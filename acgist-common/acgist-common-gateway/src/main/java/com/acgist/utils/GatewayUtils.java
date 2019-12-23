@@ -14,6 +14,9 @@ import com.acgist.core.gateway.gateway.AcgistGateway;
 
 /**
  * <p>utils - 网关信息</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public class GatewayUtils {
 	

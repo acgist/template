@@ -13,6 +13,9 @@ import com.acgist.utils.BeanUtils;
 
 /**
  * <p>请求执行器管理器</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public final class GatewayExecutorManager {
 	

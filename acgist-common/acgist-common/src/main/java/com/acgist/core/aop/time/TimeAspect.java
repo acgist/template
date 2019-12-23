@@ -11,6 +11,9 @@ import org.springframework.stereotype.Component;
 
 /**
  * <p>AOP - 方法时间统计</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 @Aspect
 @Component

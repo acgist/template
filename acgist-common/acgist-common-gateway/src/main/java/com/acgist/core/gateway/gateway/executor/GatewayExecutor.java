@@ -16,6 +16,9 @@ import com.acgist.core.gateway.gateway.response.GatewayResponse;
 /**
  * <p>请求执行器</p>
  * <p>执行一个完整的网关请求</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 @Component
 @Scope("prototype")

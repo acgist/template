@@ -16,6 +16,9 @@ import com.acgist.core.config.AcgistConst;
 
 /**
  * <p>utils - URL</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public class URLUtils {
 	

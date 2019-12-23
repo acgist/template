@@ -5,6 +5,9 @@ import com.acgist.data.pojo.entity.BaseEntity;
 
 /**
  * <p>message - 实体消息</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public class EntityMessage<T extends BaseEntity> extends Pojo {
 

@@ -4,6 +4,9 @@ import org.springframework.context.ApplicationContext;
 
 /**
  * <p>utils - Bean</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public class BeanUtils {
 

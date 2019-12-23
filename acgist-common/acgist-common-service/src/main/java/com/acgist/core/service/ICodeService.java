@@ -2,6 +2,9 @@ package com.acgist.core.service;
 
 /**
  * <p>service - 编号</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public interface ICodeService {
 

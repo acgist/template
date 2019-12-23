@@ -2,6 +2,9 @@ package com.acgist.core.config;
 
 /**
  * <p>config - 全局静态变量</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public interface AcgistConst {
 	

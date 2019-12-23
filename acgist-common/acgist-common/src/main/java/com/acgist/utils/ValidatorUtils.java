@@ -11,6 +11,9 @@ import com.acgist.core.pojo.Pojo;
 
 /**
  * <p>utils - 数据校验</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public class ValidatorUtils {
 

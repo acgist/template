@@ -27,6 +27,9 @@ import com.acgist.core.exception.ErrorCodeException;
  * 		<td>{@code 4xxx}</td><td>系统错误：原始HTTP状态编码</td>
  * 	</tr>
  * </table>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public enum AcgistCode {
 

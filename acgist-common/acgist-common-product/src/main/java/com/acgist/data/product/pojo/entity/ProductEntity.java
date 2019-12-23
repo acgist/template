@@ -13,6 +13,9 @@ import com.acgist.data.pojo.entity.BaseEntity;
 
 /**
  * <p>entity - 产品</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 @Entity
 @Table(name = "tb_product", indexes = {

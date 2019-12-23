@@ -25,6 +25,9 @@ import com.acgist.data.pojo.select.PageResult;
 
 /**
  * <p>repository - 添加方法：{@codefindAll}、{@code findPage}</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 @NoRepositoryBean
 @Transactional(readOnly = true)

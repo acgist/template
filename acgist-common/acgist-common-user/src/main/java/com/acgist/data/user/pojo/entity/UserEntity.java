@@ -12,6 +12,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * <p>entity - 用户</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 @Entity
 @Table(name = "tb_user", indexes = {

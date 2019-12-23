@@ -5,6 +5,9 @@ import org.springframework.context.ApplicationEvent;
 
 /**
  * <p>utils - 事件推送</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public class EventPublisher {
 

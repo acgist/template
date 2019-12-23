@@ -10,6 +10,9 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * <p>config - freemarker</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 @Configuration
 public class FreeMarkerConfig {

@@ -10,7 +10,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.acgist.core.www.interceptor.CsrfInterceptor;
 
 /**
- * config - 拦截器
+ * <p>config - 拦截器</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 @Configuration
 public class InterceptorConfig implements WebMvcConfigurer {

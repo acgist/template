@@ -6,6 +6,9 @@ import com.acgist.core.pojo.Pojo;
 
 /**
  * <p>网关类型</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public final class GatewayType<T extends GatewayRequest, K extends GatewayResponse> extends Pojo {
 

@@ -12,6 +12,9 @@ import com.acgist.data.pojo.entity.BaseEntity;
 
 /**
  * <p>entity - 订单项</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 @Entity
 @Table(name = "tb_order_item", indexes = {

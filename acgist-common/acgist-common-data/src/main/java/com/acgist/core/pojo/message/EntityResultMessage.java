@@ -4,6 +4,9 @@ import com.acgist.data.pojo.entity.BaseEntity;
 
 /**
  * <p>message - 实体消息（状态）</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public class EntityResultMessage<T extends BaseEntity> extends ResultMessage {
 

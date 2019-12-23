@@ -4,6 +4,9 @@ import com.acgist.core.pojo.Pojo;
 
 /**
  * <p>dto - 邮件</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public class MailDto extends Pojo {
 

@@ -7,6 +7,9 @@ import java.lang.annotation.Target;
 
 /**
  * <p>AOP - 方法时间统计</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ java.lang.annotation.ElementType.METHOD, java.lang.annotation.ElementType.TYPE })

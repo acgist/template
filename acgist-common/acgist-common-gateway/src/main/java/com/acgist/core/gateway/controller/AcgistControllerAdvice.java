@@ -23,6 +23,9 @@ import com.acgist.utils.RedirectUtils;
 /**
  * <p>统一异常处理</p>
  * <p>异常和状态编码参考：DefaultHandlerExceptionResolver</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 @ControllerAdvice
 public class AcgistControllerAdvice {

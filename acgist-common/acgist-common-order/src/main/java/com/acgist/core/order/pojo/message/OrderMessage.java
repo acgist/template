@@ -5,6 +5,9 @@ import com.acgist.data.order.pojo.entity.OrderEntity;
 
 /**
  * <p>message - 订单信息</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public class OrderMessage extends EntityResultMessage<OrderEntity> {
 

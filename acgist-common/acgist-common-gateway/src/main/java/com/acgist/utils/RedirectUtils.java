@@ -16,6 +16,9 @@ import com.acgist.utils.URLUtils;
 
 /**
  * <p>utils - 重定向</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public class RedirectUtils {
 

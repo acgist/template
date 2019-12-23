@@ -7,6 +7,12 @@ import com.acgist.core.order.pojo.message.OrderMessage;
 import com.acgist.core.order.service.IOrderService;
 import com.acgist.data.order.pojo.entity.OrderEntity;
 
+/**
+ * <p>服务 - 订单</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
+ */
 @Service(retries = 0, version = "${acgist.service.version}")
 public class OrderService implements IOrderService {
 	

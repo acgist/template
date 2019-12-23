@@ -2,6 +2,9 @@ package com.acgist.core.gateway.interceptor;
 
 /**
  * <p>参数验证</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public class VerifyInteceptor {
 

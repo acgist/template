@@ -3,18 +3,21 @@ package com.acgist.core.www.pojo.session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import com.acgist.core.www.config.AcgistConstSession;
+import com.acgist.core.www.config.AcgistWwwConstSession;
 import com.acgist.core.www.pojo.session.BaseSession;
 
 /**
  * <p>session - 用户</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public class UserSession extends BaseSession {
 
 	private static final long serialVersionUID = 1L;
 
 	public UserSession() {
-		super(AcgistConstSession.SESSION_USER);
+		super(AcgistWwwConstSession.SESSION_USER);
 	}
 
 	/**
@@ -51,7 +54,7 @@ public class UserSession extends BaseSession {
 	 */
 	public static final UserSession get(HttpServletRequest request) {
 		final HttpSession session = request.getSession();
-		return (UserSession) session.getAttribute(AcgistConstSession.SESSION_USER);
+		return (UserSession) session.getAttribute(AcgistWwwConstSession.SESSION_USER);
 	}
 	
 }

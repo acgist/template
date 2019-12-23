@@ -6,6 +6,9 @@ import com.acgist.utils.JSONUtils;
 
 /**
  * <p>message - POJO</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public class Pojo implements Serializable {
 

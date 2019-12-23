@@ -6,6 +6,9 @@ import java.util.List;
 
 /**
  * <p>select - 分页结果</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public class PageResult<T> implements Serializable {
 

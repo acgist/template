@@ -16,6 +16,9 @@ import com.acgist.core.pojo.message.ResultMessage;
 
 /**
  * <p>统一错误页面</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 @Controller
 public class AcgistErrorController implements ErrorController {

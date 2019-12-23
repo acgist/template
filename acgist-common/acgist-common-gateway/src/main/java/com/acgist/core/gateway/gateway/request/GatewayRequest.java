@@ -6,6 +6,9 @@ import com.acgist.core.gateway.gateway.AcgistGateway;
 
 /**
  * <p>网关请求</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 public class GatewayRequest extends AcgistGateway {
 
