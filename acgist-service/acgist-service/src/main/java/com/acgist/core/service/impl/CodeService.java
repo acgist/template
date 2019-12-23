@@ -16,7 +16,7 @@ public class CodeService implements ICodeService {
 	 */
 	private static final int MIN_INDEX = 10000;
 	/**
-	 * <p>编号最小索引</p>
+	 * <p>编号最大索引</p>
 	 */
 	private static final int MAX_INDEX = 99999;
 	
