@@ -8,7 +8,7 @@
 	<packaging>jar</packaging>
 
 	<name>acgist-www-resources</name>
-	<description>网站-前台（前台网站）</description>
+	<description>网站模块-静态资源</description>
 
 	<parent>
 		<groupId>com.acgist</groupId>
@@ -20,19 +20,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.acgist</groupId>
-			<artifactId>acgist-common-pay</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.acgist</groupId>
-			<artifactId>acgist-common-user</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.acgist</groupId>
-			<artifactId>acgist-common-order</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-websocket</artifactId>
+			<artifactId>acgist-common-www</artifactId>
 		</dependency>
 	</dependencies>
 

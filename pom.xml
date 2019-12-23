@@ -171,31 +171,31 @@
 				<artifactId>jaxb-runtime</artifactId>
 				<version>${jaxb-runtime.version}</version>
 			</dependency>
-			<!-- 证书 -->
+			<!-- bcprov -->
 			<dependency>
 				<groupId>org.bouncycastle</groupId>
 				<artifactId>bcprov-jdk15on</artifactId>
 				<version>${bcprov-jdk15on.version}</version>
 			</dependency>
-			<!-- 连接池 -->
+			<!-- c3p0 -->
 			<dependency>
 				<groupId>com.mchange</groupId>
 				<artifactId>c3p0</artifactId>
 				<version>${c3p0.version}</version>
 			</dependency>
-			<!-- 数据库 -->
+			<!-- mysql -->
 			<dependency>
 				<groupId>mysql</groupId>
 				<artifactId>mysql-connector-java</artifactId>
 				<version>${mysql-connector-java.version}</version>
 			</dependency>
-			<!-- 数据校验 -->
+			<!-- validation -->
 			<dependency>
 				<groupId>javax.validation</groupId>
 				<artifactId>validation-api</artifactId>
 				<version>${validation-api.version}</version>
 			</dependency>
-			<!-- 工具 -->
+			<!-- commons -->
 			<dependency>
 				<groupId>commons-codec</groupId>
 				<artifactId>commons-codec</artifactId>
@@ -211,7 +211,7 @@
 				<artifactId>commons-beanutils</artifactId>
 				<version>${commons-beanutils.version}</version>
 			</dependency>
-			<!-- JSON -->
+			<!-- jackson -->
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-core</artifactId>
@@ -244,16 +244,8 @@
 						<artifactId>log4j</artifactId>
 					</exclusion>
 					<exclusion>
-						<groupId>org.apache.logging.log4j</groupId>
-						<artifactId>log4j-api</artifactId>
-					</exclusion>
-					<exclusion>
 						<groupId>org.slf4j</groupId>
 						<artifactId>slf4j-log4j12</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.apache.logging.log4j</groupId>
-						<artifactId>log4j-to-slf4j</artifactId>
 					</exclusion>
 				</exclusions>
 			</dependency>

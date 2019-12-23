@@ -19,6 +19,7 @@
 	</parent>
 
 	<dependencies>
+		<!-- 必要 -->
 		<dependency>
 			<groupId>com.acgist</groupId>
 			<artifactId>acgist-common</artifactId>
@@ -35,6 +36,7 @@
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
 		</dependency>
+		<!-- 可选 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>

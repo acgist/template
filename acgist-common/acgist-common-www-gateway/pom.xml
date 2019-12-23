@@ -19,11 +19,11 @@
 	</parent>
 
 	<dependencies>
+		<!-- 必要 -->
 		<dependency>
 			<groupId>com.acgist</groupId>
 			<artifactId>acgist-common</artifactId>
 		</dependency>
-		<!-- web -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>

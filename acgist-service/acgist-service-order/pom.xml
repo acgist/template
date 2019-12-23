@@ -19,6 +19,7 @@
 	</parent>
 
 	<dependencies>
+		<!-- 必要 -->
 		<dependency>
 			<groupId>com.acgist</groupId>
 			<artifactId>acgist-common-order</artifactId>
