@@ -22,11 +22,7 @@
 		<!-- 必要 -->
 		<dependency>
 			<groupId>com.acgist</groupId>
-			<artifactId>acgist-common</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.mchange</groupId>
-			<artifactId>c3p0</artifactId>
+			<artifactId>acgist-common-user</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
