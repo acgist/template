@@ -10,7 +10,7 @@
 
 ## 软件技术
 
-|名称|版本|功能|
+|名称|版本|
 |:--|:--|
 |[Java](http://openjdk.java.net/)|11|
 |-|-|
@@ -21,9 +21,9 @@
 |[RabbitMQ](https://www.rabbitmq.com/)|
 |[ZooKeeper](https://zookeeper.apache.org/)|3.5.6|
 |-|-|-|
-|[Vue.js](https://cn.vuejs.org/)|2.x.x|
+|[Vue.js](https://cn.vuejs.org/)|2.X|
 |[Node.js](https://nodejs.org/en/)|12.14.0|
-|Bootstrap||
+|Bootstrap|-|
 |[iview-admin](https://github.com/iview/iview-admin)|-|
 |-|-|
 |[Dubbo](https://github.com/apache/dubbo)|2.7.4.1|
