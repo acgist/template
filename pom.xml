@@ -114,6 +114,11 @@
 			<!-- 服务模块 -->
 			<dependency>
 				<groupId>com.acgist</groupId>
+				<artifactId>acgist-service</artifactId>
+				<version>${acgist.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.acgist</groupId>
 				<artifactId>acgist-service-pay</artifactId>
 				<version>${acgist.version}</version>
 			</dependency>

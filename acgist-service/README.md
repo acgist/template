@@ -12,13 +12,8 @@
 
 |目录|说明|
 |:--|:--|
+|acgist-service|基础服务|
 |acgist-service-pay|支付服务|
 |acgist-service-user|用户服务|
 |acgist-service-order|订单服务|
 |acgist-service-product|产品服务|
-
-## 注意事项
-
-#### 多个实例
-
-启动多个实例建议添加启动参数：`-Dacgist.sn=sn`

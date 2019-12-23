@@ -18,6 +18,7 @@
 	</parent>
 
 	<modules>
+		<module>acgist-service</module>
 		<module>acgist-service-pay</module>
 		<module>acgist-service-user</module>
 		<module>acgist-service-order</module>
