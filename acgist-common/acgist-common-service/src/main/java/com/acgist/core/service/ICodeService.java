@@ -1,7 +1,7 @@
 package com.acgist.core.service;
 
 /**
- * <p>service - 编号生成</p>
+ * <p>service - 编号</p>
  */
 public interface ICodeService {
 

@@ -23,7 +23,7 @@ public class CodeService implements ICodeService {
 	/**
 	 * <p>编号索引</p>
 	 */
-	private int index = 10000;
+	private int index = MIN_INDEX;
 	
 	@Value("${acgist.sn:10}")
 	private String sn;
