@@ -63,6 +63,10 @@
 * ts_系统表
 * tb_业务表
 
+## 参考文章
+
+[SpringBoot配置属性之MVC](https://segmentfault.com/a/1190000004315890)
+
 ## 疑问
 
 #### 为什么不用SpringCloud？
