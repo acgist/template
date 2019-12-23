@@ -9,11 +9,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import com.acgist.data.repository.BaseExtendRepositoryImpl;
 
 @EntityScan("com.acgist.data.**.entity")
-//@EnableAsync
 @ComponentScan({ "com.acgist.core", "com.acgist.data" })
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = "com.acgist.data.**.repository", repositoryBaseClass = BaseExtendRepositoryImpl.class)
-//@EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class })
 @EnableTransactionManagement
 public class AcgistWwwApplication {
 
