@@ -10,43 +10,43 @@
 
 ## 软件技术
 
-|技术|版本|功能|主页|
-|:--|:--|:--|:--|
-|Java|11|开发语言||
-|-|-|-|-|
-|Nginx||网关||
-|-|-|-|-|
-|Redis||缓存||
-|MySQL||数据库||
-|RabbitMQ||消息||
-|-|-|-|-|
-|Vue||前后端分离||
-|Node.js||前后端分离||
-|Bootstrap||前台网站||
-|iview-admin||后台网站||
-|-|-|-|-|
-|Dubbo||服务治理|https://github.com/apache/dubbo|
-|ZooKeeper||注册中心||
-|DubboAdmin||服务管理|https://github.com/apache/dubbo-admin|
-|-|-|-|-|
-|SprintBoot||框架||
+|名称|版本|功能|
+|:--|:--|
+|[Java](http://openjdk.java.net/)|11|
+|-|-|
+|[Nginx](http://nginx.org/)|1.17.6|
+|-|-|
+|[Redis](https://redis.io/)|5.0.7|
+|[MySQL](https://dev.mysql.com/downloads/mysql/5.7.html)|5.7.28|
+|[RabbitMQ](https://www.rabbitmq.com/)|
+|[ZooKeeper](https://zookeeper.apache.org/)|3.5.6|
+|-|-|-|
+|[Vue.js](https://cn.vuejs.org/)|2.x.x|
+|[Node.js](https://nodejs.org/en/)|12.14.0|
+|Bootstrap||
+|[iview-admin](https://github.com/iview/iview-admin)|-|
+|-|-|
+|[Dubbo](https://github.com/apache/dubbo)|2.7.4.1|
+|[DubboAdmin](https://github.com/apache/dubbo-admin)|0.1|
+|-|-|
+|[SprintBoot](https://start.spring.io/)|2.2.2.RELEASE|
 
 ## 项目结构
 
 |目录|描述|
 |:--|:--|
+|acgist-www|网站模块|
 |acgist-common|通用模块|
 |acgist-service|服务模块|
-|acgist-www|网站模块|
 
 ## 包名结构
 
 |包名|描述|
 |:--|:--|
 |com.acgist.main|启动方法|
-|com.acgist.utils|工具|
-|com.acgist.core.服务模块.*|核心模块|
-|com.acgist.data.服务模块.*|数据模块|
+|com.acgist.core|核心模块|
+|com.acgist.data|数据模块|
+|com.acgist.utils|工具模块|
 |com.acgist.*.服务模块.aop|AOP|
 |com.acgist.*.服务模块.pojo|POJO|
 |com.acgist.*.服务模块.config|配置|
@@ -57,14 +57,6 @@
 |com.acgist.*.服务模块.service|本地服务或者服务接口|
 |com.acgist.*.服务模块.service.impl|服务接口实现|
 |com.acgist.*.服务模块.repository|DAO|
-
-## 配置
-
-不使用数据库
-
-```java
-@EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class })
-```
 
 ## 表名
 

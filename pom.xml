@@ -113,6 +113,7 @@
 				<artifactId>acgist-common-www-gateway</artifactId>
 				<version>${acgist.version}</version>
 			</dependency>
+			<!-- 服务模块 -->
 			<dependency>
 				<groupId>com.acgist</groupId>
 				<artifactId>acgist-service-pay</artifactId>
@@ -133,6 +134,7 @@
 				<artifactId>acgist-service-product</artifactId>
 				<version>${acgist.version}</version>
 			</dependency>
+			<!-- 网站模块 -->
 			<dependency>
 				<groupId>com.acgist</groupId>
 				<artifactId>acgist-www</artifactId>
@@ -225,6 +227,7 @@
 				<artifactId>jackson-annotations</artifactId>
 				<version>${jackson.version}</version>
 			</dependency>
+			<!-- Dubbo -->
 			<dependency>
 				<groupId>org.apache.dubbo</groupId>
 				<artifactId>dubbo-spring-boot-starter</artifactId>

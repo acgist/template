@@ -23,6 +23,7 @@
 		<module>acgist-common-data</module>
 		<module>acgist-common-user</module>
 		<module>acgist-common-order</module>
+		<module>acgist-common-service</module>
 		<module>acgist-common-product</module>
 		<module>acgist-common-www</module>
 		<module>acgist-common-www-gateway</module>
