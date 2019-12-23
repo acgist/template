@@ -15,7 +15,7 @@ import com.acgist.data.pojo.entity.BaseEntity;
  */
 @Entity
 @Table(name = "tb_order", indexes = {
-	@Index(name = "index_order_user_id", columnList = "user_id"),
+	@Index(name = "index_order_user_id", columnList = "userId"),
 	@Index(name = "index_order_code", columnList = "code", unique = true)
 })
 public class OrderEntity extends BaseEntity {

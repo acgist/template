@@ -15,9 +15,9 @@ import com.acgist.data.pojo.entity.BaseEntity;
  */
 @Entity
 @Table(name = "tb_business", indexes = {
-	@Index(name = "index_business_user_id", columnList = "user_id"),
-	@Index(name = "index_business_order_id", columnList = "order_id"),
-	@Index(name = "index_business_channel_id", columnList = "channel_id"),
+	@Index(name = "index_business_user_id", columnList = "userId"),
+	@Index(name = "index_business_order_id", columnList = "orderId"),
+	@Index(name = "index_business_channel_id", columnList = "channelId"),
 	@Index(name = "index_business_code", columnList = "code", unique = true)
 })
 public class BusinessEntity extends BaseEntity {

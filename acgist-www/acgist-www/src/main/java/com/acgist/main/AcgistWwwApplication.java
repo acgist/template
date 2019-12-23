@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.acgist.data.repository.BaseExtendRepositoryImpl;
 
-@EntityScan("com.api.data.**.entity")
+@EntityScan("com.acgist.data.**.entity")
 //@EnableAsync
 @ComponentScan({ "com.acgist.core", "com.acgist.data" })
 @SpringBootApplication

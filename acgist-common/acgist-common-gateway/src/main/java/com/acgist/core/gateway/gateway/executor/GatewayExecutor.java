@@ -57,7 +57,7 @@ public abstract class GatewayExecutor<T extends GatewayRequest, K extends Gatewa
 	 * @return 响应
 	 */
 	private K buildResponse() {
-		final K response = this.buildAPIResponse();
+		final K response = this.buildAcgistResponse();
 		response.valueOfRequest(this.request); // 设置需要原样返回的参数
 		return response;
 	}
@@ -68,7 +68,7 @@ public abstract class GatewayExecutor<T extends GatewayRequest, K extends Gatewa
 	 * @return 响应
 	 */
 	@SuppressWarnings("unchecked")
-	private K buildAPIResponse() {
+	private K buildAcgistResponse() {
 		final ParameterizedType parameterizedType = (ParameterizedType) this.getClass().getGenericSuperclass();
 		final Type[] types = parameterizedType.getActualTypeArguments();
 		final Class<K> clazz = (Class<K>) types[1]; // 获取响应泛型
