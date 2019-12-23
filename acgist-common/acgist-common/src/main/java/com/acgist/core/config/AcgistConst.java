@@ -1,7 +1,7 @@
 package com.acgist.core.config;
 
 /**
- * <p>config - 变量</p>
+ * <p>config - 全局静态变量</p>
  */
 public interface AcgistConst {
 	

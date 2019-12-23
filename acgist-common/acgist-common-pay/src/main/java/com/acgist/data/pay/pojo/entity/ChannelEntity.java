@@ -20,7 +20,7 @@ public class ChannelEntity extends BaseEntity {
 	/**
 	 * <p>通道编号</p>
 	 */
-	@Size(max = 20, message = "通道编号长度不能超过20")
+	@Size(max = 10, message = "通道编号长度不能超过10")
 	@NotBlank(message = "通道编号不能为空")
 	private String code;
 	/**
@@ -33,15 +33,16 @@ public class ChannelEntity extends BaseEntity {
 	 * <p>通道官网</p>
 	 */
 	@Size(max = 256, message = "通道官网长度不能超过256")
+	@NotBlank(message = "通道官网不能为空")
 	private String home;
 	/**
-	 * <p>支付参数</p>
+	 * <p>支付参数（JSON）</p>
 	 */
 	@Size(max = 1024, message = "支付参数长度不能超过1024")
 	@NotBlank(message = "支付参数不能为空")
 	private String arguments;
 
-	@Column(length = 20, nullable = false)
+	@Column(length = 10, nullable = false)
 	public String getCode() {
 		return code;
 	}
@@ -59,7 +60,7 @@ public class ChannelEntity extends BaseEntity {
 		this.name = name;
 	}
 
-	@Column(length = 256, nullable = true)
+	@Column(length = 256, nullable = false)
 	public String getHome() {
 		return home;
 	}

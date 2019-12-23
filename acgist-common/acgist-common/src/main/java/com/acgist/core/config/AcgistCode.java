@@ -4,10 +4,10 @@ import com.acgist.core.exception.ErrorCodeException;
 
 /**
  * <p>config - 状态编码</p>
- * <table>
- * 	<th>
- * 		<td>状态编码</td><td>描述</td>
- * 	</th>
+ * <table border="1">
+ * 	<tr>
+ * 		<th>状态编码</th><th>描述</th>
+ * 	</tr>
  * 	<tr>
  * 		<td>{@code 0000}</td><td>成功</td>
  * 	</tr>
@@ -67,11 +67,19 @@ public enum AcgistCode {
 	/**
 	 * <p>成功编码</p>
 	 */
-	public static final String SUCCESS_CODE = AcgistCode.CODE_0000.getCode();
+	private static final String SUCCESS_CODE = AcgistCode.CODE_0000.getCode();
 	
 	private AcgistCode(String code, String message) {
 		this.code = code;
 		this.message = message;
+	}
+	
+	public String getCode() {
+		return this.code;
+	}
+	
+	public String getMessage() {
+		return this.message;
 	}
 
 	/**
@@ -99,6 +107,15 @@ public enum AcgistCode {
 	 */
 	public static final AcgistCode valueOfStatus(int statusCode) {
 		return valueOfCode(HTTP_STATUS_CODE_PREFIX + statusCode);
+	}
+	
+	/**
+	 * <p>判断是否成功</p>
+	 * 
+	 * @return 是否成功
+	 */
+	public static final boolean success(String code) {
+		return AcgistCode.SUCCESS_CODE.equals(code);
 	}
 	
 	/**
@@ -133,23 +150,6 @@ public enum AcgistCode {
 			message = code.getMessage();
 		}
 		return message;
-	}
-	
-	public String getCode() {
-		return code;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-	
-	/**
-	 * <p>判断是否成功</p>
-	 * 
-	 * @return 是否成功
-	 */
-	public static final boolean success(String code) {
-		return AcgistCode.SUCCESS_CODE.equals(code);
 	}
 	
 }

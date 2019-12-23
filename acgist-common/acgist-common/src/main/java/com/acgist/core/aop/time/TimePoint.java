@@ -14,12 +14,14 @@ import java.lang.annotation.Target;
 public @interface TimePoint {
 
 	/**
-	 * <p>任务名称：未知任务</p>
+	 * <p>任务名称</p>
+	 * <p>默认：未知任务</p>
 	 */
 	String name() default "未知任务";
 
 	/**
-	 * <p>时间阀值（秒）：默认{@code 4}秒</p>
+	 * <p>时间阀值（秒）</p>
+	 * <p>默认：{@code 4}</p>
 	 */
 	long time() default 4L * 1000;
 

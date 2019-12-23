@@ -1,9 +1,14 @@
 package com.acgist.utils;
 
 import java.io.UnsupportedEncodingException;
+import java.net.InetAddress;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.net.UnknownHostException;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -52,6 +57,32 @@ public class URLUtils {
 			LOGGER.error("URL解码异常：{}", value, e);
 		}
 		return value;
+	}
+	
+	/**
+	 * <p>判断请求地址是否是内网地址</p>
+	 * 
+	 * @param requestUrl 请求地址
+	 * 
+	 * @return 是否是内网地址
+	 */
+	public static final boolean isLocal(String requestUrl) {
+		if(StringUtils.isEmpty(requestUrl)) {
+			return true;
+		}
+		try {
+			final URL url = new URL(requestUrl);
+			final String host = url.getHost();
+			final var address = InetAddress.getByName(host);
+			return
+				address.isAnyLocalAddress() ||
+				address.isLinkLocalAddress() ||
+				address.isLoopbackAddress() ||
+				address.isSiteLocalAddress();
+		} catch (MalformedURLException | UnknownHostException e) {
+			e.printStackTrace();
+			return true;
+		}
 	}
 	
 }

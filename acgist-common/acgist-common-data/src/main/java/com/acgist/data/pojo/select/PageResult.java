@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <p>select - 分页查询结果</p>
+ * <p>select - 分页结果</p>
  */
 public class PageResult<T> implements Serializable {
 

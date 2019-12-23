@@ -34,7 +34,6 @@
 		<jaxb-runtime.version>2.3.2</jaxb-runtime.version>
 		<commons-lang3.version>3.9</commons-lang3.version>
 		<commons-codec.version>1.13</commons-codec.version>
-		<bcprov-jdk15on.version>1.64</bcprov-jdk15on.version>
 		<commons-beanutils.version>1.9.4</commons-beanutils.version>
 		<validation-api.version>2.0.1.Final</validation-api.version>
 		<mysql-connector-java.version>5.1.48</mysql-connector-java.version>
@@ -110,7 +109,7 @@
 			</dependency>
 			<dependency>
 				<groupId>com.acgist</groupId>
-				<artifactId>acgist-common-www-gateway</artifactId>
+				<artifactId>acgist-common-gateway</artifactId>
 				<version>${acgist.version}</version>
 			</dependency>
 			<!-- 服务模块 -->
@@ -147,17 +146,17 @@
 			</dependency>
 			<dependency>
 				<groupId>com.acgist</groupId>
-				<artifactId>acgist-www-gateway</artifactId>
-				<version>${acgist.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.acgist</groupId>
 				<artifactId>acgist-www-resources</artifactId>
 				<version>${acgist.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.acgist</groupId>
-				<artifactId>acgist-www-admin-gateway</artifactId>
+				<artifactId>acgist-gateway</artifactId>
+				<version>${acgist.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.acgist</groupId>
+				<artifactId>acgist-gateway-admin</artifactId>
 				<version>${acgist.version}</version>
 			</dependency>
 			<!-- Java移除模块 -->
@@ -170,12 +169,6 @@
 				<groupId>org.glassfish.jaxb</groupId>
 				<artifactId>jaxb-runtime</artifactId>
 				<version>${jaxb-runtime.version}</version>
-			</dependency>
-			<!-- bcprov -->
-			<dependency>
-				<groupId>org.bouncycastle</groupId>
-				<artifactId>bcprov-jdk15on</artifactId>
-				<version>${bcprov-jdk15on.version}</version>
 			</dependency>
 			<!-- c3p0 -->
 			<dependency>

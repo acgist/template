@@ -9,6 +9,14 @@ import com.acgist.data.order.pojo.entity.OrderEntity;
 public interface IOrderService {
 
 	/**
+	 * <p>生成订单编号</p>
+	 * <p>格式："O" + SN + yyyyMMddHHmmss + INDEX</p>
+	 * 
+	 * @return 订单编号
+	 */
+	String buildCode();
+	
+	/**
 	 * <p>创建订单</p>
 	 * 
 	 * @param 订单实体

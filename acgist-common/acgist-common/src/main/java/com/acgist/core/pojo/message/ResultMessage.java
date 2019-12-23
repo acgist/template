@@ -10,14 +10,29 @@ public class ResultMessage extends Pojo {
 
 	private static final long serialVersionUID = 1L;
 
-	protected AcgistCode code;
+	/**
+	 * <p>编码</p>
+	 */
+	protected String code;
+	/**
+	 * <p>消息</p>
+	 */
+	protected String message;
 
-	public AcgistCode getCode() {
+	public String getCode() {
 		return code;
 	}
 
-	public void setCode(AcgistCode code) {
+	public void setCode(String code) {
 		this.code = code;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
 	/**
@@ -26,7 +41,7 @@ public class ResultMessage extends Pojo {
 	 * @return 是否成功
 	 */
 	public boolean success() {
-		return this.code != null && AcgistCode.success(this.code.getCode());
+		return this.code != null && AcgistCode.success(this.code);
 	}
 
 	/**
@@ -38,6 +53,10 @@ public class ResultMessage extends Pojo {
 		return !success();
 	}
 
+	public static final ResultMessage newInstance() {
+		return new ResultMessage();
+	}
+	
 	public ResultMessage buildSuccess() {
 		return buildMessage(AcgistCode.CODE_0000);
 	}
@@ -47,7 +66,16 @@ public class ResultMessage extends Pojo {
 	}
 
 	public ResultMessage buildMessage(AcgistCode code) {
-		this.code = code;
+		return buildMessage(code, code.getMessage());
+	}
+	
+	public ResultMessage buildMessage(AcgistCode code, String message) {
+		this.code = code.getCode();
+		if(message == null) {
+			this.message = code.getMessage();
+		} else {
+			this.message = message;
+		}
 		return this;
 	}
 

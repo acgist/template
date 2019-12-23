@@ -15,17 +15,15 @@ import com.acgist.data.pojo.entity.BaseEntity;
  */
 @Entity
 @Table(name = "tb_business", indexes = {
+	@Index(name = "index_business_user_id", columnList = "user_id"),
+	@Index(name = "index_business_order_id", columnList = "order_id"),
+	@Index(name = "index_business_channel_id", columnList = "channel_id"),
 	@Index(name = "index_business_code", columnList = "code", unique = true)
 })
 public class BusinessEntity extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * <p>支付金额（分）</p>
-	 */
-	@NotNull(message = "通道编号不能为空")
-	private Integer amount;
 	/**
 	 * <p>用户ID</p>
 	 */
@@ -41,13 +39,13 @@ public class BusinessEntity extends BaseEntity {
 	/**
 	 * <p>订单ID</p>
 	 */
-	@Size(max = 32, message = "通道ID长度不能超过32")
-	@NotBlank(message = "通道ID不能为空")
+	@Size(max = 32, message = "订单ID长度不能超过32")
+	@NotBlank(message = "订单ID不能为空")
 	private String orderId;
 	/**
 	 * <p>订单编号</p>
 	 */
-	@Size(max = 20, message = "订单编号长度不能超过20")
+	@Size(max = 22, message = "订单编号长度不能超过22")
 	@NotBlank(message = "订单编号不能为空")
 	private String orderCode;
 	/**
@@ -62,15 +60,17 @@ public class BusinessEntity extends BaseEntity {
 	@Size(max = 20, message = "通道名称长度不能超过20")
 	@NotBlank(message = "通道名称不能为空")
 	private String channelName;
-
-	@Column(nullable = false)
-	public Integer getAmount() {
-		return amount;
-	}
-
-	public void setAmount(Integer amount) {
-		this.amount = amount;
-	}
+	/**
+	 * <p>支付编号</p>
+	 */
+	@Size(max = 22, message = "支付编号长度不能超过22")
+	@NotBlank(message = "支付编号不能为空")
+	private String code;
+	/**
+	 * <p>支付金额（分）</p>
+	 */
+	@NotNull(message = "支付金额不能为空")
+	private Integer amount;
 
 	@Column(length = 32, nullable = false)
 	public String getUserId() {
@@ -99,7 +99,7 @@ public class BusinessEntity extends BaseEntity {
 		this.orderId = orderId;
 	}
 
-	@Column(length = 20, nullable = false)
+	@Column(length = 22, nullable = false)
 	public String getOrderCode() {
 		return orderCode;
 	}
@@ -125,5 +125,23 @@ public class BusinessEntity extends BaseEntity {
 	public void setChannelName(String channelName) {
 		this.channelName = channelName;
 	}
-	
+
+	@Column(length = 22, nullable = false)
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	@Column(nullable = false)
+	public Integer getAmount() {
+		return amount;
+	}
+
+	public void setAmount(Integer amount) {
+		this.amount = amount;
+	}
+
 }

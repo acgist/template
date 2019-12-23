@@ -7,18 +7,17 @@
 |目录|说明|
 |:--|:--|
 |acgist-www[-*]|网站模块|
-|acgist-www[-*]-gateway|网关模块|
-|acgist-www-resources|静态资源|
+|acgist-gateway[-*]|网关模块|
 
 ## 目录说明
 
 |目录|说明|
 |:--|:--|
 |acgist-www|前台网站|
-|acgist-www-gateway|前台网关|
 |acgist-www-admin|后台网站|
-|acgist-www-admin-gateway|后台网关|
 |acgist-www-resources|静态资源|
+|acgist-gateway|前台网关|
+|acgist-gateway-admin|后台网关|
 
 ## Session共享
 

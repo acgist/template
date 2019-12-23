@@ -20,4 +20,4 @@
 |api-common-order|订单模块|
 |api-common-service|服务模块|
 |api-common-product|产品模块|
-|api-common-www-gateway|网关模块|
+|api-common-gateway|网关模块|

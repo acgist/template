@@ -30,9 +30,22 @@ public class BaseEntity extends Pojo {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * <p>class</p>
+	 */
+	public static final String PROPERTY_CLASS = AcgistConst.PROPERTY_CLASS;
+	
+	/**
+	 * @see {@link #id}
+	 */
 	public static final String PROPERTY_ID = "id";
-	public static final String PROPERTY_CLASS = "class";
+	/**
+	 * @see {@link #createDate}
+	 */
 	public static final String PROPERTY_CREATE_DATE = "createDate";
+	/**
+	 * @see {@link #modifyDate}
+	 */
 	public static final String PROPERTY_MODIFY_DATE = "modifyDate";
 
 	/**

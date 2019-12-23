@@ -12,36 +12,51 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.acgist.core.config.AcgistCode;
-import com.acgist.utils.RedirectUtils;
 import com.acgist.utils.URLUtils;
 
 /**
- * utils - 重定向
+ * <p>utils - 重定向</p>
  */
 public class RedirectUtils {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(RedirectUtils.class);
 
-	private static final String ERROR_LOCATION = "/error?code=%s&message=%s"; // 错误页面链接
+	/**
+	 * <p>错误页面链接</p>
+	 */
+	private static final String ERROR_LOCATION = "/error?code=%s&message=%s";
 
 	/**
-	 * 跳转错误提示页面
+	 * <p>跳转错误提示页面</p>
+	 * 
+	 * @param code 错误编码
+	 * @param request 请求
+	 * @param response 响应
 	 */
 	public static final void error(AcgistCode code, HttpServletRequest request, HttpServletResponse response) {
 		error(code, code.getMessage(), request, response);
 	}
 
 	/**
-	 * 跳转错误提示页面
+	 * <p>跳转错误提示页面</p>
+	 * 
+	 * @param code 错误编码
+	 * @param message 错误信息
+	 * @param request 请求
+	 * @param response 响应
 	 */
 	public static final void error(AcgistCode code, String message, HttpServletRequest request, HttpServletResponse response) {
 		message = AcgistCode.message(code, message);
 		final String location = String.format(ERROR_LOCATION, code.getCode(), URLUtils.encoding(message));
 		requestDispatcher(request, response, location);
 	}
-	
+
 	/**
-	 * 请求转发
+	 * <p>请求转发</p>
+	 * 
+	 * @param request 请求
+	 * @param response 响应
+	 * @param location 转发地址
 	 */
 	public static final void requestDispatcher(HttpServletRequest request, HttpServletResponse response, String location) {
 		try {
@@ -54,7 +69,10 @@ public class RedirectUtils {
 	}
 
 	/**
-	 * 303重定向
+	 * <p>303重定向</p>
+	 * 
+	 * @param response 响应
+	 * @param location 转发地址
 	 */
 	public static final ModelAndView redirectToGet(HttpServletResponse response, String location) {
 		if (response != null) {
@@ -66,7 +84,10 @@ public class RedirectUtils {
 	}
 
 	/**
-	 * 307重定向
+	 * <p>307重定向</p>
+	 * 
+	 * @param response 响应
+	 * @param location 转发地址
 	 */
 	public static final void redirectToPost(HttpServletResponse response, String location) {
 		if (response != null) {

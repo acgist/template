@@ -22,7 +22,7 @@
 		<!-- 必要 -->
 		<dependency>
 			<groupId>com.acgist</groupId>
-			<artifactId>acgist-common</artifactId>
+			<artifactId>acgist-common-data</artifactId>
 		</dependency>
 		<!-- 可选 -->
 		<dependency>

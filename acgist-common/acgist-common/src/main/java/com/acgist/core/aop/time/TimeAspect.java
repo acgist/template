@@ -24,28 +24,28 @@ public class TimeAspect {
 
 	@Around("point()")
 	public Object arround(ProceedingJoinPoint pjp) throws Throwable {
-		final TimePoint sign = getAnnotation(pjp); // 注解
-		final long begin = System.currentTimeMillis();
+		final TimePoint point = getAnnotation(pjp); // 注解
+		final long beginTime = System.currentTimeMillis();
 		try {
 			return pjp.proceed();
 		} catch (Exception e) {
 			throw e;
 		} finally {
-			final long end = System.currentTimeMillis();
-			final long executeTime = end - begin;
-			if (executeTime > sign.time()) {
-				LOGGER.info("{}执行时间{}", sign.name(), executeTime);
+			final long endTime = System.currentTimeMillis();
+			final long executeTime = endTime - beginTime;
+			if (executeTime > point.time()) {
+				LOGGER.info("{}执行时间{}", point.name(), executeTime);
 			}
 		}
 	}
 
 	private TimePoint getAnnotation(ProceedingJoinPoint pjp) throws Exception, SecurityException {
-		TimePoint sign = null;
+		TimePoint point = null;
 		if (pjp.getSignature() instanceof MethodSignature) {
-			MethodSignature methodSignature = (MethodSignature) pjp.getSignature();
-			sign = methodSignature.getMethod().getAnnotation(TimePoint.class);
+			final MethodSignature methodSignature = (MethodSignature) pjp.getSignature();
+			point = methodSignature.getMethod().getAnnotation(TimePoint.class);
 		}
-		return sign;
+		return point;
 	}
 
 }

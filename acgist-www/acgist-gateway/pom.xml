@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>acgist-gateway</artifactId>
+	<packaging>jar</packaging>
+
+	<name>acgist-gateway</name>
+	<description>网站模块-前台网关</description>
+
+	<parent>
+		<groupId>com.acgist</groupId>
+		<artifactId>acgist-www-parent</artifactId>
+		<version>${acgist.version}</version>
+		<relativePath>../</relativePath>
+	</parent>
+
+	<dependencies>
+		<!-- 必要 -->
+		<dependency>
+			<groupId>com.acgist</groupId>
+			<artifactId>acgist-common-gateway</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.acgist</groupId>
+			<artifactId>acgist-common-service</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+	</dependencies>
+
+</project>
