@@ -125,17 +125,17 @@
 			</dependency>
 			<dependency>
 				<groupId>com.acgist</groupId>
-				<artifactId>acgist-www-resources</artifactId>
-				<version>${acgist.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.acgist</groupId>
 				<artifactId>acgist-gateway</artifactId>
 				<version>${acgist.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.acgist</groupId>
 				<artifactId>acgist-gateway-admin</artifactId>
+				<version>${acgist.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.acgist</groupId>
+				<artifactId>acgist-www-resources</artifactId>
 				<version>${acgist.version}</version>
 			</dependency>
 			<!-- Java移除模块 -->
@@ -149,7 +149,7 @@
 				<artifactId>jaxb-runtime</artifactId>
 				<version>${jaxb-runtime.version}</version>
 			</dependency>
-			<!-- mysql -->
+			<!-- MySQL -->
 			<dependency>
 				<groupId>mysql</groupId>
 				<artifactId>mysql-connector-java</artifactId>

@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>acgist-common-data</name>
-	<description>通用模块-数据库模块</description>
+	<description>通用模块-数据模块</description>
 
 	<parent>
 		<groupId>com.acgist</groupId>

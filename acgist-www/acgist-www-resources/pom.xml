@@ -18,10 +18,6 @@
 	</parent>
 
 	<dependencies>
-		<dependency>
-			<groupId>com.acgist</groupId>
-			<artifactId>acgist-common-www</artifactId>
-		</dependency>
 	</dependencies>
 
 </project>

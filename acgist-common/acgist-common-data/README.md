@@ -1,4 +1,29 @@
-# 数据库模块
+# 数据模块
+
+配置环境：`data-[dev|test|prod]`
+
+## 缓存
+
+添加依赖：
+
+```xml
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-cache</artifactId>
+</dependency>
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-data-redis</artifactId>
+</dependency>
+```
+
+添加注解：
+
+```java
+@ComponentScan({"com.acgist.data"})
+```
+
+## 数据库
 
 添加依赖：
 
@@ -16,4 +41,21 @@
 @ComponentScan({"com.acgist.data"})
 @EnableJpaRepositories(basePackages = "com.acgist.data.**.repository", repositoryBaseClass = BaseExtendRepositoryImpl.class)
 @EnableTransactionManagement
+```
+
+## Redis
+
+添加依赖：
+
+```xml
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-data-redis</artifactId>
+</dependency>
+```
+
+添加注解：
+
+```java
+@ComponentScan({"com.acgist.data"})
 ```
