@@ -15,7 +15,7 @@ import com.acgist.core.config.AcgistConst;
  * @author acgist
  * @since 1.0.0
  */
-public class DateUtils {
+public final class DateUtils {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(DateUtils.class);
 	

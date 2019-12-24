@@ -20,7 +20,7 @@ import com.acgist.core.config.AcgistConst;
  * @author acgist
  * @since 1.0.0
  */
-public class URLUtils {
+public final class URLUtils {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(URLUtils.class);
 

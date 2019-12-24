@@ -2,6 +2,7 @@ package com.acgist.core.www.controller;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.servlet.error.ErrorController;
@@ -42,7 +43,12 @@ public class AcgistErrorController implements ErrorController {
 	@ResponseBody
 	@RequestMapping(value = ERROR_PATH, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResultMessage index(String code, String message, HttpServletResponse response) {
-		final AcgistCode acgistCode = AcgistCode.valueOfCode(code);
+		AcgistCode acgistCode;
+		if(StringUtils.isEmpty(code)) {
+			acgistCode = AcgistCode.valueOfStatus(response.getStatus());
+		} else {
+			acgistCode = AcgistCode.valueOfCode(code);
+		}
 		message = AcgistCode.message(acgistCode, message);
 		LOGGER.warn("系统错误（接口），错误编码：{}，错误描述：{}", acgistCode.getCode(), message);
 		return ResultMessage.newInstance().buildMessage(acgistCode, message);
@@ -59,7 +65,12 @@ public class AcgistErrorController implements ErrorController {
 	@Primary
 	@RequestMapping(value = ERROR_PATH, produces = MediaType.TEXT_HTML_VALUE)
 	public String index(String code, String message, ModelMap model, HttpServletResponse response) {
-		final AcgistCode acgistCode = AcgistCode.valueOfCode(code);
+		AcgistCode acgistCode;
+		if(StringUtils.isEmpty(code)) {
+			acgistCode = AcgistCode.valueOfStatus(response.getStatus());
+		} else {
+			acgistCode = AcgistCode.valueOfCode(code);
+		}
 		message = AcgistCode.message(acgistCode, message);
 		model.put("code", acgistCode.getCode());
 		model.put("message", message);

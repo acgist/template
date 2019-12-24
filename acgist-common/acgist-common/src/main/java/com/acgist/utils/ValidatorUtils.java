@@ -15,7 +15,7 @@ import com.acgist.core.pojo.Pojo;
  * @author acgist
  * @since 1.0.0
  */
-public class ValidatorUtils {
+public final class ValidatorUtils {
 
 	private static final Validator VALIDATOR = Validation.buildDefaultValidatorFactory().getValidator();
 	

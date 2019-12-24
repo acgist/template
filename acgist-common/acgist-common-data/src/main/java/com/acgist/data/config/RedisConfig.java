@@ -12,7 +12,6 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
-import com.acgist.core.pojo.Pojo;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
@@ -58,7 +57,7 @@ public class RedisConfig {
 	public static final RedisSerializer<?> buildValueSerializer() {
 		final ObjectMapper mapper = new ObjectMapper();
 		final PolymorphicTypeValidator validator = BasicPolymorphicTypeValidator.builder()
-			.allowIfBaseType(Pojo.class)
+			.allowIfBaseType(Object.class)
 			.build();
 		final Jackson2JsonRedisSerializer<?> serializer = new Jackson2JsonRedisSerializer<>(Object.class);
 		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);

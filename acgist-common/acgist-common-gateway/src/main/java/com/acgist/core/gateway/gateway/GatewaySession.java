@@ -10,6 +10,7 @@ import com.acgist.core.config.AcgistCode;
 import com.acgist.core.exception.ErrorCodeException;
 import com.acgist.core.gateway.gateway.request.GatewayRequest;
 import com.acgist.core.gateway.gateway.response.GatewayResponse;
+import com.acgist.core.user.pojo.message.AuthoMessage;
 
 /**
  * <p>网关 - 请求</p>
@@ -28,6 +29,10 @@ public final class GatewaySession {
 	}
 	
 	/**
+	 * <p>请求编号</p>
+	 */
+	private String queryId;
+	/**
 	 * <p>网关类型</p>
 	 */
 	private GatewayType gatewayType;
@@ -39,6 +44,10 @@ public final class GatewaySession {
 	 * <p>响应</p>
 	 */
 	private GatewayResponse response;
+	/**
+	 * <p>授权</p>
+	 */
+	private AuthoMessage authoMessage;
 	
 	/**
 	 * <p>生成响应</p>
@@ -48,6 +57,7 @@ public final class GatewaySession {
 	public void buildResponse(GatewayRequest request) {
 		this.request = request;
 		this.response = this.buildResponse();
+		this.response.setQueryId(this.queryId);
 		this.response.valueOfRequest(this.request); // 设置需要原样返回的参数
 	}
 	
@@ -63,6 +73,14 @@ public final class GatewaySession {
 			LOGGER.error("生成响应异常", e);
 		}
 		throw new ErrorCodeException(AcgistCode.CODE_9999);
+	}
+
+	public String getQueryId() {
+		return queryId;
+	}
+
+	public void setQueryId(String queryId) {
+		this.queryId = queryId;
 	}
 
 	public GatewayType getGatewayType() {
@@ -87,6 +105,14 @@ public final class GatewaySession {
 
 	public void setResponse(GatewayResponse response) {
 		this.response = response;
+	}
+
+	public AuthoMessage getAuthoMessage() {
+		return authoMessage;
+	}
+
+	public void setAuthoMessage(AuthoMessage authoMessage) {
+		this.authoMessage = authoMessage;
 	}
 	
 }

@@ -28,7 +28,19 @@ public class RedirectUtils {
 	 * <p>错误页面链接</p>
 	 */
 	private static final String ERROR_LOCATION = "/error?code=%s&message=%s";
-
+	
+	/**
+	 * <p>跳转错误提示页面</p>
+	 * 
+	 * @param code 错误编码
+	 * @param request 请求
+	 * @param response 响应
+	 */
+	public static final void error(String code, HttpServletRequest request, HttpServletResponse response) {
+		final AcgistCode acgistCode = AcgistCode.valueOfCode(code);
+		error(acgistCode, acgistCode.getMessage(), request, response);
+	}
+	
 	/**
 	 * <p>跳转错误提示页面</p>
 	 * 

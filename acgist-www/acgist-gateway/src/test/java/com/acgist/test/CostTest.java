@@ -1,34 +1,32 @@
 package com.acgist.test;
 
-import java.net.http.HttpResponse.BodyHandlers;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.Executors;
-
+import org.apache.dubbo.config.annotation.Reference;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
-import com.acgist.core.HTTPClient;
+import com.acgist.core.user.pojo.message.AuthoMessage;
+import com.acgist.core.user.service.IUserService;
+import com.acgist.main.AcgistGatewayApplication;
 
+
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = AcgistGatewayApplication.class)
 public class CostTest {
 
+	@Reference(version = "${acgist.service.version}")
+	private IUserService userService;
+	
 	@Test
-	public void cost() throws InterruptedException {
-		final var size = 10000;
-		final var begin = System.currentTimeMillis();
-		final var pool = Executors.newFixedThreadPool(50);
-		final var count = new CountDownLatch(size);
-		for (int i = 0; i < size; i++) {
-			pool.submit(() -> {
-				try {
-					HTTPClient.get("http://localhost:28800/gateway/user", BodyHandlers.ofString());
-				} catch (Exception e) {
-				} finally {
-					count.countDown();
-				}
-			});
+	public void testCost() {
+		AuthoMessage message = null;
+		long begin = System.currentTimeMillis();
+		for (int i = 0; i < 100000; i++) {
+			message = userService.autho("test");
 		}
-		count.await();
-		final var end = System.currentTimeMillis();
-		System.out.println(end - begin);
+		System.out.println(System.currentTimeMillis() - begin);
+		System.out.println(message);
 	}
 	
 }

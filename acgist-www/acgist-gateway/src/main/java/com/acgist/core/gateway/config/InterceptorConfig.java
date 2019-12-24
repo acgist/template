@@ -8,6 +8,8 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.acgist.core.gateway.interceptor.GatewayInteceptor;
+import com.acgist.core.gateway.interceptor.SaveInteceptor;
+import com.acgist.core.gateway.interceptor.SignInteceptor;
 import com.acgist.core.gateway.interceptor.VerifyInteceptor;
 
 /**
@@ -25,6 +27,10 @@ public class InterceptorConfig implements WebMvcConfigurer {
 	private GatewayInteceptor gatewayInteceptor;
 	@Autowired
 	private VerifyInteceptor verifyInteceptor;
+	@Autowired
+	private SignInteceptor signInteceptor;
+	@Autowired
+	private SaveInteceptor saveInteceptor;
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
@@ -32,6 +38,10 @@ public class InterceptorConfig implements WebMvcConfigurer {
 		registry.addInterceptor(this.gatewayInteceptor).addPathPatterns("/gateway/**");
 		LOGGER.info("配置拦截器：verifyInteceptor");
 		registry.addInterceptor(this.verifyInteceptor).addPathPatterns("/gateway/**");
+		LOGGER.info("配置拦截器：signInteceptor");
+		registry.addInterceptor(this.signInteceptor).addPathPatterns("/gateway/**");
+		LOGGER.info("配置拦截器：saveInteceptor");
+		registry.addInterceptor(this.saveInteceptor).addPathPatterns("/gateway/**");
 		WebMvcConfigurer.super.addInterceptors(registry);
 	}
 

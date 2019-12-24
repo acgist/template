@@ -20,10 +20,10 @@ import com.acgist.core.gateway.gateway.GatewayMapping;
 import com.acgist.core.gateway.gateway.GatewaySession;
 import com.acgist.core.gateway.gateway.GatewayType;
 import com.acgist.core.gateway.gateway.request.GatewayRequest;
-import com.acgist.utils.DigestUtils;
 import com.acgist.utils.GatewayUtils;
 import com.acgist.utils.JSONUtils;
 import com.acgist.utils.RedirectUtils;
+import com.acgist.utils.UuidUtils;
 
 /**
  * <p>拦截器 - 获取请求信息</p>
@@ -41,9 +41,9 @@ public class GatewayInteceptor implements HandlerInterceptor {
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-		final String queryId = DigestUtils.uuid();
 		final GatewaySession gatewaySession = GatewaySession.getInstance(this.context);
-		final GatewayType gatewayType = GatewayMapping.getInstance().getGatewayType(request.getRequestURI(), request.getMethod());
+		gatewaySession.setQueryId(UuidUtils.uuid());
+		final GatewayType gatewayType = GatewayMapping.getInstance().getGatewayType(request.getRequestURI());
 		if(gatewayType == null) {
 			RedirectUtils.error(AcgistCode.CODE_1000, request, response);
 			return false;
@@ -54,8 +54,7 @@ public class GatewayInteceptor implements HandlerInterceptor {
 			RedirectUtils.error(AcgistCode.CODE_4400, "请求数据不能为空", request, response);
 			return false;
 		}
-		gatewayRequest.setQueryId(queryId);
-		gatewaySession.setRequest(gatewayRequest);
+		gatewaySession.buildResponse(gatewayRequest);
 		return true;
 	}
 	

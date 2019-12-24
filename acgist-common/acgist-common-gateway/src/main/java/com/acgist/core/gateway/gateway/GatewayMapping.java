@@ -1,7 +1,7 @@
 package com.acgist.core.gateway.gateway;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +18,7 @@ public final class GatewayMapping {
 	
 	private static final GatewayMapping INSTANCE = new GatewayMapping();
 	
-	private List<GatewayType> MAPPING = new ArrayList<GatewayType>();
+	private Map<String, GatewayType> MAPPING = new HashMap<>();
 	
 	private GatewayMapping() {
 	}
@@ -33,26 +33,19 @@ public final class GatewayMapping {
 	 * @param gatewayType 映射信息
 	 */
 	public void register(GatewayType gatewayType) {
-		LOGGER.info("注册网关映射：{}-{}-{}", gatewayType.getName(), gatewayType.getPath(), gatewayType.getMethod());
-		this.MAPPING.add(gatewayType);
+		LOGGER.info("注册网关映射：{}-{}", gatewayType.getName(), gatewayType.getPath());
+		this.MAPPING.put(gatewayType.getPath(), gatewayType);
 	}
 	
 	/**
 	 * <p>获取映射</p>
 	 * 
 	 * @param path 请求地址
-	 * @param path 请求方法
 	 * 
 	 * @return 映射
 	 */
-	public GatewayType getGatewayType(String path, String method) {
-		final var optional = this.MAPPING.stream().filter(mapping -> {
-			return mapping.getPath().equals(path) && mapping.getMethod().equals(method);
-		}).findAny();
-		if(optional.isEmpty()) {
-			return null;
-		}
-		return optional.get();
+	public GatewayType getGatewayType(String path) {
+		return this.MAPPING.get(path);
 	}
 	
 }

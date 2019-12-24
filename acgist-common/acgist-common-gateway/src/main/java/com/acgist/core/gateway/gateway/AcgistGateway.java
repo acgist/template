@@ -29,11 +29,6 @@ public abstract class AcgistGateway extends Pojo implements Serializable {
 	public static final String PROPERTY_SIGN = "sign";
 
 	/**
-	 * <p>请求编号</p>
-	 */
-	@NotBlank(message = "请求编号不能为空")
-	protected String queryId;
-	/**
 	 * <p>用户名称</p>
 	 */
 	@NotBlank(message = "用户名称不能为空")
@@ -50,14 +45,6 @@ public abstract class AcgistGateway extends Pojo implements Serializable {
 	@NotBlank(message = "签名不能为空")
 	protected String sign;
 	
-	public String getQueryId() {
-		return queryId;
-	}
-
-	public void setQueryId(String queryId) {
-		this.queryId = queryId;
-	}
-
 	public String getUsername() {
 		return username;
 	}

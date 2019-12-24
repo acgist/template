@@ -1,7 +1,5 @@
 package com.acgist.core.gateway.gateway;
 
-import org.springframework.http.HttpMethod;
-
 import com.acgist.core.gateway.gateway.request.GatewayRequest;
 import com.acgist.core.gateway.gateway.response.GatewayResponse;
 import com.acgist.core.pojo.Pojo;
@@ -32,14 +30,10 @@ public final class GatewayType extends Pojo {
 	protected final String name;
 	/**
 	 * <p>请求地址</p>
-	 * <p>命名规范：模块 + 内容 + 操作（省略）</p>
-	 * <p>请求方法操作对应：POST-insert/DELETE-delete/PUT-update/GET-select</p>
+	 * <p>命名规范：模块 + 内容 + 操作</p>
+	 * <p>操作（可以省略）：insert/delete/update/select</p>
 	 */
 	protected final String path;
-	/**
-	 * <p>请求方法</p>
-	 */
-	protected final String method;
 	/**
 	 * <p>请求类型</p>
 	 */
@@ -49,12 +43,11 @@ public final class GatewayType extends Pojo {
 	 */
 	protected final Class<?> responseClazz;
 
-	public GatewayType(boolean save, boolean notify, String name, String path, HttpMethod method, Class<?> requestClazz, Class<?> responseClazz) {
+	public GatewayType(boolean save, boolean notify, String name, String path, Class<?> requestClazz, Class<?> responseClazz) {
 		this.save = save;
 		this.notify = notify;
 		this.name = name;
 		this.path = path;
-		this.method = method.name();
 		this.requestClazz = requestClazz;
 		this.responseClazz = responseClazz;
 	}
@@ -73,10 +66,6 @@ public final class GatewayType extends Pojo {
 
 	public String getPath() {
 		return path;
-	}
-
-	public String getMethod() {
-		return method;
 	}
 
 	public Class<?> getRequestClazz() {

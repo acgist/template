@@ -19,7 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @author acgist
  * @since 1.0.0
  */
-public class JSONUtils {
+public final class JSONUtils {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(JSONUtils.class);
 

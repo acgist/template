@@ -8,7 +8,7 @@ import java.io.File;
  * @author acgist
  * @since 1.0.0
  */
-public class FileUtils {
+public final class FileUtils {
 
 	/**
 	 * <p>生成目录</p>

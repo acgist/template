@@ -1,4 +1,4 @@
-package com.acgist.core.data.pojo.entity;
+package com.acgist.data.pojo.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

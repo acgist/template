@@ -22,6 +22,11 @@ public class GatewayResponse extends AcgistGateway {
 	private static final long serialVersionUID = 1L;
 
 	/**
+	 * <p>请求编号</p>
+	 */
+	@NotBlank(message = "请求编号不能为空")
+	protected String queryId;
+	/**
 	 * <p>请求时间</p>
 	 */
 	@NotBlank(message = "请求时间不能为空")
@@ -44,6 +49,14 @@ public class GatewayResponse extends AcgistGateway {
 
 	public static final GatewayResponse newInstance() {
 		return new GatewayResponse();
+	}
+	
+	public String getQueryId() {
+		return queryId;
+	}
+
+	public void setQueryId(String queryId) {
+		this.queryId = queryId;
 	}
 	
 	public String getRequestTime() {

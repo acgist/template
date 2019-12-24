@@ -6,11 +6,16 @@ import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.acgist.core.config.AcgistCode;
 import com.acgist.core.config.AcgistConst;
+import com.acgist.core.exception.ErrorCodeException;
 import com.acgist.core.gateway.gateway.AcgistGateway;
+import com.acgist.core.gateway.gateway.response.GatewayResponse;
 
 /**
  * <p>utils - 网关信息</p>
@@ -69,6 +74,68 @@ public class GatewayUtils {
 			BeanUtils.populate(gateway, data);
 		} catch (IllegalAccessException | InvocationTargetException e) {
 			LOGGER.error("网关属性填充异常：{}", data, e);
+		}
+	}
+	
+	/**
+	 * <p>签名</p>
+	 * 
+	 * @param password 密码
+	 * @param gateway 网关信息
+	 * 
+	 * @return 签名
+	 */
+	public static final String sign(String password, AcgistGateway gateway) {
+		if(StringUtils.isEmpty(password) || gateway == null) {
+			throw new ErrorCodeException(AcgistCode.CODE_3000);
+		}
+		final Map<String, String> data = gateway.data();
+		final StringBuffer buffer = new StringBuffer(password);
+		data.entrySet().stream()
+			.filter(entry -> !AcgistGateway.PROPERTY_SIGN.equals(entry.getKey()))
+			.sorted((a, b) -> StringUtils.compare(a.getKey(), b.getKey()))
+			.forEach(entry -> {
+				buffer.append(entry.getKey()).append(entry.getValue());
+			});
+		buffer.append(password);
+		gateway.setSign(DigestUtils.md5Hex(buffer.toString()));
+		return gateway.getSign();
+	}
+	
+	/**
+	 * <p>验签</p>
+	 * 
+	 * @param password 密码
+	 * @param gateway 网关信息
+	 * 
+	 * @return 验证结果
+	 */
+	public static final boolean verify(String password, AcgistGateway gateway) {
+		if(StringUtils.isEmpty(password) || gateway == null) {
+			throw new ErrorCodeException(AcgistCode.CODE_3000);
+		}
+		final Map<String, String> data = gateway.data();
+		final String sign = data.get(AcgistGateway.PROPERTY_SIGN);
+		final String trueSign = sign(password, gateway);
+		return StringUtils.equals(sign, trueSign);
+	}
+
+	/**
+	 * <p>设置响应</p>
+	 * 
+	 * @param password 密码
+	 * @param code 响应编码
+	 * @param message 响应信息
+	 * @param response 响应
+	 */
+	public static final void response(String password, String code, String message, GatewayResponse response) {
+		response.setCode(code);
+		response.setMessage(message);
+		response.setResponseTime(DateUtils.nowTimestamp());
+		sign(password, response);
+		final String errorMessage = ValidatorUtils.verify(response);
+		if(StringUtils.isNotEmpty(errorMessage)) {
+			LOGGER.warn("响应参数错误：{}", errorMessage);
 		}
 	}
 	
