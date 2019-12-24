@@ -45,7 +45,8 @@ public final class ValidatorUtils {
 		if(messageBuilder.length() == 0) {
 			return null;
 		}
-		return messageBuilder.substring(0, messageBuilder.length() - 1);
+		messageBuilder.setLength(messageBuilder.length() - 1);
+		return messageBuilder.toString();
 	}
 	
 }

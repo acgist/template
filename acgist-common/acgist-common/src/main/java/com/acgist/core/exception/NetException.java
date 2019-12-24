@@ -1,7 +1,7 @@
 package com.acgist.core.exception;
 
 /**
- * <p>网络异常</p>
+ * <p>异常 - 网络异常</p>
  * 
  * @author acgist
  * @since 1.0.0

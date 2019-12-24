@@ -22,10 +22,6 @@
 		<!-- 必要 -->
 		<dependency>
 			<groupId>com.acgist</groupId>
-			<artifactId>acgist-common-pay</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.acgist</groupId>
 			<artifactId>acgist-common-service</artifactId>
 		</dependency>
 		<dependency>
