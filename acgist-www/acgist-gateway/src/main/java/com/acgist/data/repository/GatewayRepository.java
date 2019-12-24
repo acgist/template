@@ -3,6 +3,7 @@ package com.acgist.data.repository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.acgist.data.pojo.entity.GatewayEntity;
 
@@ -18,7 +19,8 @@ public interface GatewayRepository extends BaseExtendRepository<GatewayEntity> {
 	 * @param gateway 网关记录
 	 */
 	@Modifying
-	@Query(value = "UPDATE tb_gateway model SET model.status = :gateway.status, model.`code` = :gateway.code, model.message = :gateway.message, model.response = :gateway.response WHERE model.query_id = :gateway.queryId", nativeQuery = true)
+	@Transactional(readOnly = false)
+	@Query(value = "UPDATE tb_gateway model SET model.status = #{#entity.status}, model.`code` = #{#entity.code}, model.message = #{#entity.message}, model.response = #{#entity.response} WHERE model.query_id = #{#entity.queryId}", nativeQuery = true)
 	void updateResponse(GatewayEntity gateway);
 	
 }
