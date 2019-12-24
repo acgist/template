@@ -1,5 +1,9 @@
 package com.acgist.utils;
 
+import java.lang.reflect.InvocationTargetException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 
 /**
@@ -8,7 +12,9 @@ import org.springframework.context.ApplicationContext;
  * @author acgist
  * @since 1.0.0
  */
-public class BeanUtils {
+public final class BeanUtils {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(BeanUtils.class);
 
 	/**
 	 * <p>获取对象实例</p>
@@ -21,6 +27,22 @@ public class BeanUtils {
 	 */
 	public static final <T> T newInstance(ApplicationContext context, Class<T> clazz) {
 		return context.getBean(clazz);
+	}
+	
+	/**
+	 * <p>获取对象实例</p>
+	 * 
+	 * @param clazz 类型
+	 * 
+	 * @return 实例
+	 */
+	public static final Object newInstance(Class<?> clazz) {
+		try {
+			return clazz.getDeclaredConstructor().newInstance();
+		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
+			LOGGER.error("获取实例异常：{}", clazz, e);
+		}
+		return null;
 	}
 	
 }

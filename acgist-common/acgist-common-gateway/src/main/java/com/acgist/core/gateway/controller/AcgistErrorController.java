@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.acgist.core.config.AcgistCode;
-import com.acgist.core.gateway.config.AcgistConstGateway;
 import com.acgist.core.pojo.message.ResultMessage;
 
 /**
@@ -28,10 +27,10 @@ public class AcgistErrorController implements ErrorController {
 	/**
 	 * <p>错误请求地址</p>
 	 */
-	public static final String ERROR_PATH = AcgistConstGateway.GATEWAY_URL_PREFIX + "/error";
+	public static final String ERROR_PATH = "/error";
 	
 	/**
-	 * <p>返回错误信息</p>
+	 * <p>处理JSON错误</p>
 	 * 
 	 * @param code 错误编码
 	 * @param message 错误信息
@@ -41,7 +40,6 @@ public class AcgistErrorController implements ErrorController {
 	@ResponseBody
 	@RequestMapping(value = ERROR_PATH)
 	public ResultMessage index(String code, String message, HttpServletResponse response) {
-//		request.getAttribute("javax.servlet.error.message"); // 错误信息
 		final AcgistCode acgistCode = AcgistCode.valueOfCode(code);
 		message = AcgistCode.message(acgistCode, message);
 		LOGGER.warn("系统错误（接口），错误编码：{}，错误描述：{}", acgistCode.getCode(), message);

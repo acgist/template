@@ -31,6 +31,7 @@ public abstract class AcgistGateway extends Pojo implements Serializable {
 	/**
 	 * <p>请求编号</p>
 	 */
+	@NotBlank(message = "请求编号不能为空")
 	protected String queryId;
 	/**
 	 * <p>用户名称</p>

@@ -2,6 +2,7 @@ package com.acgist.utils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -62,6 +63,15 @@ public final class DigestUtils {
 			LOGGER.error("不支持的散列算法：{}", algo, e);
 		}
 		return null;
+	}
+	
+	/**
+	 * <p>生成UUID</p>
+	 * 
+	 * @return UUID
+	 */
+	public static final String uuid() {
+		return UUID.randomUUID().toString();
 	}
 	
 }

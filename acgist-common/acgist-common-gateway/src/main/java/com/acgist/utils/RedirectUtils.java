@@ -27,7 +27,7 @@ public class RedirectUtils {
 	/**
 	 * <p>错误页面链接</p>
 	 */
-	private static final String ERROR_LOCATION = "/gateway/error?code=%s&message=%s";
+	private static final String ERROR_LOCATION = "/error?code=%s&message=%s";
 
 	/**
 	 * <p>跳转错误提示页面</p>

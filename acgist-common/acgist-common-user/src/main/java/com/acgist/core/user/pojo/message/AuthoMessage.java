@@ -37,4 +37,15 @@ public class AuthoMessage extends ResultMessage {
 		this.password = password;
 	}
 
+	/**
+	 * <p>生成缓存Key</p>
+	 * 
+	 * @param name 用户名称
+	 * 
+	 * @return key
+	 */
+	public static final String buildCacheKey(String name) {
+		return "AuthoMessage:" + name;
+	}
+	
 }

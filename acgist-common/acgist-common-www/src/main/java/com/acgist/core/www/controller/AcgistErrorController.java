@@ -42,7 +42,6 @@ public class AcgistErrorController implements ErrorController {
 	@ResponseBody
 	@RequestMapping(value = ERROR_PATH, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResultMessage index(String code, String message, HttpServletResponse response) {
-//		request.getAttribute("javax.servlet.error.message"); // 错误信息
 		final AcgistCode acgistCode = AcgistCode.valueOfCode(code);
 		message = AcgistCode.message(acgistCode, message);
 		LOGGER.warn("系统错误（接口），错误编码：{}，错误描述：{}", acgistCode.getCode(), message);
