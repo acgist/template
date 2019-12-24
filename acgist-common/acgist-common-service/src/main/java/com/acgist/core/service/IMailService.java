@@ -1,6 +1,6 @@
 package com.acgist.core.service;
 
-import com.acgist.core.pojo.dto.MailDto;
+import com.acgist.data.service.pojo.dto.MailDto;
 
 /**
  * <p>service - 邮件</p>

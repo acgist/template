@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.acgist.data.repository.BaseExtendRepository;
-import com.acgist.data.user.pojo.entity.UserEntity;
+import com.acgist.data.service.pojo.entity.UserEntity;
 
 /**
  * <p>repository - 订单</p>

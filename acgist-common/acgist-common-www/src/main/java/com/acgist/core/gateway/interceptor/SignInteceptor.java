@@ -12,8 +12,8 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import com.acgist.core.config.AcgistCode;
 import com.acgist.core.gateway.gateway.GatewaySession;
 import com.acgist.core.gateway.gateway.request.GatewayRequest;
-import com.acgist.core.user.pojo.message.AuthoMessage;
-import com.acgist.core.user.service.IUserService;
+import com.acgist.core.service.IUserService;
+import com.acgist.data.service.pojo.message.AuthoMessage;
 import com.acgist.utils.GatewayUtils;
 import com.acgist.utils.RedirectUtils;
 

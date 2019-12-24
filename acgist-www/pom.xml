@@ -23,11 +23,15 @@
 		<module>acgist-www-admin</module>
 		<module>acgist-www-resources</module>
 		<!-- 网关 -->
-		<module>acgist-gateway</module>
-		<module>acgist-gateway-admin</module>
+		<module>acgist-www-gateway</module>
+		<module>acgist-www-admin-gateway</module>
 	</modules>
 
 	<dependencies>
+		<dependency>
+			<groupId>com.acgist</groupId>
+			<artifactId>acgist-common-www</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

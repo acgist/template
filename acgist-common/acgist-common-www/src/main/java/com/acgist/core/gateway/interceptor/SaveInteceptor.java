@@ -13,8 +13,7 @@ import com.acgist.core.gateway.gateway.GatewaySession;
 import com.acgist.core.gateway.gateway.GatewayType;
 import com.acgist.core.gateway.gateway.request.GatewayRequest;
 import com.acgist.core.gateway.gateway.response.GatewayResponse;
-import com.acgist.core.service.IGatewayService;
-import com.acgist.data.pojo.entity.GatewayEntity.Status;
+import com.acgist.core.gateway.service.IGatewayService;
 
 /**
  * <p>拦截器 - 保存</p>

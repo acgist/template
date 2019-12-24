@@ -10,7 +10,7 @@ import com.acgist.core.config.AcgistCode;
 import com.acgist.core.exception.ErrorCodeException;
 import com.acgist.core.gateway.gateway.request.GatewayRequest;
 import com.acgist.core.gateway.gateway.response.GatewayResponse;
-import com.acgist.core.user.pojo.message.AuthoMessage;
+import com.acgist.data.service.pojo.message.AuthoMessage;
 
 /**
  * <p>网关 - 请求</p>

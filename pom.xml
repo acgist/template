@@ -86,11 +86,6 @@
 				<artifactId>acgist-common-service</artifactId>
 				<version>${acgist.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>com.acgist</groupId>
-				<artifactId>acgist-common-gateway</artifactId>
-				<version>${acgist.version}</version>
-			</dependency>
 			<!-- 服务模块 -->
 			<dependency>
 				<groupId>com.acgist</groupId>

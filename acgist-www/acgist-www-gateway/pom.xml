@@ -2,18 +2,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>acgist-common-service</artifactId>
+	<artifactId>acgist-www-gateway</artifactId>
 	<packaging>jar</packaging>
 
-	<name>acgist-common-service</name>
-	<description>通用模块-服务模块</description>
+	<name>acgist-www-gateway</name>
+	<description>网站模块-前台网关</description>
 
 	<parent>
 		<groupId>com.acgist</groupId>
-		<artifactId>acgist-common-parent</artifactId>
+		<artifactId>acgist-www-parent</artifactId>
 		<version>${acgist.version}</version>
 		<relativePath>../</relativePath>
 	</parent>
@@ -22,22 +21,15 @@
 		<!-- 必要 -->
 		<dependency>
 			<groupId>com.acgist</groupId>
-			<artifactId>acgist-common-data</artifactId>
+			<artifactId>acgist-common-www</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.dubbo</groupId>
-			<artifactId>dubbo-spring-boot-starter</artifactId>
+			<groupId>com.acgist</groupId>
+			<artifactId>acgist-common-service</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.dubbo</groupId>
-			<artifactId>dubbo-dependencies-zookeeper</artifactId>
-			<type>pom</type>
-		</dependency>
-		<!-- 可选 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
-			<optional>true</optional>
 		</dependency>
 	</dependencies>
 

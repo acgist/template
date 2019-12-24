@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.acgist.core.config.AcgistCode;
 import com.acgist.core.gateway.gateway.GatewaySession;
 import com.acgist.core.gateway.gateway.response.GatewayResponse;
-import com.acgist.core.user.pojo.message.AuthoMessage;
+import com.acgist.data.service.pojo.message.AuthoMessage;
 import com.acgist.utils.GatewayUtils;
 
 /**

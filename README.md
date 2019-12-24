@@ -50,12 +50,12 @@
 |com.acgist.*.服务模块.aop|AOP|
 |com.acgist.*.服务模块.pojo|POJO|
 |com.acgist.*.服务模块.config|配置|
-|com.acgist.*.服务模块.exception|异常|
 |com.acgist.*.服务模块.gateway|网关|
-|com.acgist.*.服务模块.controller|控制器|
-|com.acgist.*.服务模块.interceptor|拦截器|
 |com.acgist.*.服务模块.service|本地服务或者服务接口|
 |com.acgist.*.服务模块.service.impl|服务接口实现|
+|com.acgist.*.服务模块.exception|异常|
+|com.acgist.*.服务模块.controller|控制器|
+|com.acgist.*.服务模块.interceptor|拦截器|
 |com.acgist.*.服务模块.repository|DAO|
 
 ## 表名

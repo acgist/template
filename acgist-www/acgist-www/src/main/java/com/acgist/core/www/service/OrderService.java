@@ -5,7 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.acgist.core.order.service.IOrderService;
+import com.acgist.core.service.IOrderService;
 
 /**
  * <p>service - 订单</p>

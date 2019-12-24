@@ -12,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.acgist.core.config.AcgistCode;
-import com.acgist.utils.URLUtils;
 
 /**
  * <p>utils - 重定向</p>

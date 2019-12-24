@@ -2,7 +2,7 @@ package com.acgist.core.pay.service.impl;
 
 import org.apache.dubbo.config.annotation.Service;
 
-import com.acgist.core.pay.service.IPayService;
+import com.acgist.core.service.IPayService;
 
 /**
  * <p>服务 - 支付</p>

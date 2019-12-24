@@ -5,11 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 
 import com.acgist.core.config.AcgistCode;
+import com.acgist.core.service.IUserService;
 import com.acgist.core.user.config.AcgistServiceUserCache;
-import com.acgist.core.user.pojo.message.AuthoMessage;
-import com.acgist.core.user.pojo.message.LoginMessage;
-import com.acgist.core.user.service.IUserService;
-import com.acgist.data.user.pojo.entity.UserEntity;
+import com.acgist.data.service.pojo.entity.UserEntity;
+import com.acgist.data.service.pojo.message.AuthoMessage;
+import com.acgist.data.service.pojo.message.LoginMessage;
 import com.acgist.data.user.repository.UserRepository;
 
 /**
