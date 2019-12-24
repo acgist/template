@@ -10,7 +10,7 @@
 
 ## 目录结构
 
-|目录|说明|
+|目录|结构|
 |:--|:--|
 |acgist-www[-*]|网站模块|
 |acgist-www-gateway[-*]|网关模块|
@@ -31,9 +31,10 @@ Redis实现Session共享
 
 ## 静态资源
 
-* 浏览器缓存
-* 静态资源禁用Cookie
+* 配置缓存：浏览器
+* 静态资源：`cookie-free`
 
 ## Tomcat配置
 
 * 修改Session名称
+* 调整线程

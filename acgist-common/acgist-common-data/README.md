@@ -59,3 +59,9 @@
 ```java
 @ComponentScan({"com.acgist.data"})
 ```
+
+## 注意事项
+
+#### Redis
+
+缓存需要安装`Redis`
