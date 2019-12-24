@@ -14,6 +14,7 @@ import com.acgist.core.gateway.gateway.GatewayType;
 import com.acgist.core.gateway.gateway.request.GatewayRequest;
 import com.acgist.core.gateway.gateway.response.GatewayResponse;
 import com.acgist.core.gateway.service.IGatewayService;
+import com.acgist.data.service.pojo.entity.GatewayEntity.Status;
 
 /**
  * <p>拦截器 - 保存</p>
