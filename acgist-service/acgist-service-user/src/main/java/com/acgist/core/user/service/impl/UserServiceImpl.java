@@ -5,11 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 
 import com.acgist.core.config.AcgistCode;
+import com.acgist.core.pojo.message.ResultMessage;
 import com.acgist.core.service.IUserService;
 import com.acgist.core.user.config.AcgistServiceUserCache;
 import com.acgist.data.service.pojo.entity.UserEntity;
 import com.acgist.data.service.pojo.message.AuthoMessage;
 import com.acgist.data.service.pojo.message.LoginMessage;
+import com.acgist.data.service.pojo.message.UserMessage;
 import com.acgist.data.user.repository.UserRepository;
 
 /**
@@ -40,10 +42,16 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public UserEntity findByName(String name) {
-		return this.userRepository.findByName(name);
+	public UserMessage findByName(String name) {
+		return new UserMessage(this.userRepository.findByName(name));
 	}
 	
+	@Override
+	public ResultMessage update(UserEntity userEntity) {
+		this.userRepository.update(userEntity.getNick(), userEntity.getName());
+		return ResultMessage.newInstance().buildSuccess();
+	}
+
 	@Override
 	public LoginMessage login(String name, String password) {
 		return null;

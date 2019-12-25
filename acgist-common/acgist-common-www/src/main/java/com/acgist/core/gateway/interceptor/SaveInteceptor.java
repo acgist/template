@@ -13,6 +13,8 @@ import com.acgist.core.gateway.GatewayType;
 import com.acgist.core.gateway.gateway.GatewaySession;
 import com.acgist.core.gateway.request.GatewayRequest;
 import com.acgist.core.service.IGatewayService;
+import com.acgist.data.service.pojo.entity.GatewayEntity;
+import com.acgist.data.service.pojo.entity.GatewayEntity.Status;
 
 /**
  * <p>拦截器 - 保存网关信息</p>
@@ -34,7 +36,12 @@ public class SaveInteceptor implements HandlerInterceptor {
 		final GatewayType gatewayType = gatewaySession.getGatewayType();
 		if(gatewayType.isSave()) {
 			final GatewayRequest gatewayRequest = gatewaySession.getRequest();
-			this.gatewayService.save(gatewaySession.getQueryId(), gatewayRequest);
+			final GatewayEntity entity = new GatewayEntity();
+			entity.setStatus(Status.RECEIVE);
+			entity.setQueryId(gatewaySession.getQueryId());
+			entity.setRequest(gatewayRequest.toString());
+			entity.setUsername(gatewayRequest.getUsername());
+			this.gatewayService.save(entity);
 		}
 		return true;
 	}

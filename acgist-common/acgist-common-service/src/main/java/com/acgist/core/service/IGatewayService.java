@@ -1,8 +1,6 @@
 package com.acgist.core.service;
 
-import com.acgist.core.gateway.request.GatewayRequest;
-import com.acgist.core.gateway.response.GatewayResponse;
-import com.acgist.data.service.pojo.entity.GatewayEntity.Status;
+import com.acgist.data.service.pojo.entity.GatewayEntity;
 
 /**
  * <p>服务 - 网关</p>
@@ -15,18 +13,15 @@ public interface IGatewayService {
 	/**
 	 * <p>保存网关信息</p>
 	 * 
-	 * @param queryId 请求编号
-	 * @param gateway 请求
+	 * @param entity 网关信息
 	 */
-	void save(String queryId, GatewayRequest request);
+	void save(GatewayEntity entity);
 	
 	/**
 	 * <p>更新网关信息</p>
 	 * 
-	 * @param queryId 请求编号
-	 * @param status 状态
-	 * @param response 响应
+	 * @param entity 网关信息
 	 */
-	void update(String queryId, Status status, GatewayResponse response);
+	void update(GatewayEntity entity);
 	
 }

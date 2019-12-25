@@ -25,5 +25,10 @@ public final class UserController {
 	public GatewayResponse select() {
 		return this.userService.select();
 	}
+
+	@PostMapping("/update")
+	public GatewayResponse update() {
+		return this.userService.update();
+	}
 	
 }

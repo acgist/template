@@ -14,6 +14,7 @@ import com.acgist.core.gateway.GatewayType;
 import com.acgist.core.gateway.gateway.GatewaySession;
 import com.acgist.core.gateway.response.GatewayResponse;
 import com.acgist.core.service.IGatewayService;
+import com.acgist.data.service.pojo.entity.GatewayEntity;
 import com.acgist.data.service.pojo.entity.GatewayEntity.Status;
 
 /**
@@ -37,7 +38,13 @@ public class UpdateInteceptor implements HandlerInterceptor {
 		if(gatewaySession.done() && gatewayType.isSave()) {
 			final GatewayResponse gatewayResponse = gatewaySession.getResponse();
 			final Status status = gatewayType.isNotify() ? Status.ANSWER : Status.ANSWER;
-			this.gatewayService.update(gatewaySession.getQueryId(), status, gatewayResponse);
+			final GatewayEntity entity = new GatewayEntity();
+			entity.setCode(gatewayResponse.getCode());
+			entity.setStatus(status);
+			entity.setQueryId(gatewaySession.getQueryId());
+			entity.setMessage(gatewayResponse.getMessage());
+			entity.setResponse(gatewayResponse.toString());
+			this.gatewayService.update(entity);
 		}
 	}
 	

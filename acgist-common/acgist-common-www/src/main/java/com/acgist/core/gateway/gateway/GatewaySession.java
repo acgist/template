@@ -13,6 +13,7 @@ import com.acgist.core.exception.ErrorCodeException;
 import com.acgist.core.gateway.GatewayType;
 import com.acgist.core.gateway.request.GatewayRequest;
 import com.acgist.core.gateway.response.GatewayResponse;
+import com.acgist.core.pojo.message.ResultMessage;
 import com.acgist.data.service.pojo.message.AuthoMessage;
 import com.acgist.utils.DateUtils;
 import com.acgist.utils.GatewayUtils;
@@ -128,6 +129,17 @@ public final class GatewaySession implements Serializable {
 	 */
 	public GatewayResponse buildResponse(AcgistCode code) {
 		return this.buildResponse(code.getCode(), code.getMessage());
+	}
+	
+	/**
+	 * <p>设置响应</p>
+	 * 
+	 * @param message 服务消息
+	 * 
+	 * @return 响应
+	 */
+	public GatewayResponse buildResponse(ResultMessage message) {
+		return this.buildResponse(message.getCode(), message.getMessage());
 	}
 	
 	/**

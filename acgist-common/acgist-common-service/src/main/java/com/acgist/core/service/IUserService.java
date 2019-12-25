@@ -1,8 +1,10 @@
 package com.acgist.core.service;
 
+import com.acgist.core.pojo.message.ResultMessage;
 import com.acgist.data.service.pojo.entity.UserEntity;
 import com.acgist.data.service.pojo.message.AuthoMessage;
 import com.acgist.data.service.pojo.message.LoginMessage;
+import com.acgist.data.service.pojo.message.UserMessage;
 
 /**
  * <p>服务 - 用户</p>
@@ -28,8 +30,17 @@ public interface IUserService {
 	 * 
 	 * @return 用户信息
 	 */
-	UserEntity findByName(String name);
+	UserMessage findByName(String name);
 
+	/**
+	 * <p>修改用户信息</p>
+	 * 
+	 * @param userEntity 用户
+	 * 
+	 * @return 修改结果
+	 */
+	ResultMessage update(UserEntity userEntity);
+	
 	/**
 	 * <p>登陆</p>
 	 * 
