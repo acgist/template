@@ -3,8 +3,8 @@ package com.acgist.core.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.acgist.core.gateway.gateway.request.GatewayRequest;
-import com.acgist.core.gateway.gateway.response.GatewayResponse;
+import com.acgist.core.gateway.request.GatewayRequest;
+import com.acgist.core.gateway.response.GatewayResponse;
 import com.acgist.core.gateway.service.IGatewayService;
 import com.acgist.data.repository.GatewayRepository;
 import com.acgist.data.service.pojo.entity.GatewayEntity;

@@ -1,4 +1,4 @@
-package com.acgist.core.gateway.gateway;
+package com.acgist.core.gateway;
 
 import java.util.HashMap;
 import java.util.Map;

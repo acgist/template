@@ -9,7 +9,7 @@ import java.util.List;
  * @author acgist
  * @since 1.0.0
  */
-public class Filter implements Serializable {
+public final class Filter implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

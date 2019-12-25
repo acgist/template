@@ -9,7 +9,7 @@ import java.util.List;
  * @author acgist
  * @since 1.0.0
  */
-public class Order implements Serializable {
+public final class Order implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	

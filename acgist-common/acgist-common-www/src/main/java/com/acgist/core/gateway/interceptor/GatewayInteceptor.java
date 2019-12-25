@@ -16,10 +16,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import com.acgist.core.config.AcgistCode;
-import com.acgist.core.gateway.gateway.GatewayMapping;
+import com.acgist.core.gateway.GatewayMapping;
+import com.acgist.core.gateway.GatewayType;
 import com.acgist.core.gateway.gateway.GatewaySession;
-import com.acgist.core.gateway.gateway.GatewayType;
-import com.acgist.core.gateway.gateway.request.GatewayRequest;
+import com.acgist.core.gateway.request.GatewayRequest;
 import com.acgist.utils.GatewayUtils;
 import com.acgist.utils.JSONUtils;
 import com.acgist.utils.RedirectUtils;

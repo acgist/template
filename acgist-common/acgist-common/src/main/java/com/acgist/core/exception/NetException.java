@@ -6,7 +6,7 @@ package com.acgist.core.exception;
  * @author acgist
  * @since 1.0.0
  */
-public class NetException extends Exception {
+public final class NetException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 

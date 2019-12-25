@@ -1,7 +1,7 @@
 package com.acgist.core.gateway.service;
 
-import com.acgist.core.gateway.gateway.request.GatewayRequest;
-import com.acgist.core.gateway.gateway.response.GatewayResponse;
+import com.acgist.core.gateway.request.GatewayRequest;
+import com.acgist.core.gateway.response.GatewayResponse;
 import com.acgist.data.service.pojo.entity.GatewayEntity.Status;
 
 /**

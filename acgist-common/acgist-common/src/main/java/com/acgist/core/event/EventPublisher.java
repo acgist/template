@@ -4,12 +4,12 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationEvent;
 
 /**
- * <p>utils - 事件推送</p>
+ * <p>event - 事件推送</p>
  * 
  * @author acgist
  * @since 1.0.0
  */
-public class EventPublisher {
+public final class EventPublisher {
 
 	/**
 	 * <p>推送事件</p>

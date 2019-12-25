@@ -1,16 +1,16 @@
-package com.acgist.core.gateway.gateway.request;
+package com.acgist.core.gateway.request;
 
 import javax.validation.constraints.NotBlank;
 
-import com.acgist.core.gateway.gateway.AcgistGateway;
+import com.acgist.core.gateway.Gateway;
 
 /**
- * <p>网关请求</p>
+ * <p>网关 - 请求</p>
  * 
  * @author acgist
  * @since 1.0.0
  */
-public class GatewayRequest extends AcgistGateway {
+public class GatewayRequest extends Gateway {
 
 	private static final long serialVersionUID = 1L;
 

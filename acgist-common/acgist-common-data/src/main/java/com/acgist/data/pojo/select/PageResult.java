@@ -10,7 +10,7 @@ import java.util.List;
  * @author acgist
  * @since 1.0.0
  */
-public class PageResult<T> implements Serializable {
+public final class PageResult<T> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

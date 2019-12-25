@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.acgist.core.config.AcgistCode;
 import com.acgist.core.gateway.gateway.GatewaySession;
-import com.acgist.core.gateway.gateway.response.GatewayResponse;
+import com.acgist.core.gateway.response.GatewayResponse;
 import com.acgist.data.service.pojo.message.AuthoMessage;
 import com.acgist.utils.GatewayUtils;
 
@@ -66,7 +66,7 @@ public class AcgistErrorController implements ErrorController {
 			GatewayUtils.response(authoMessage.getPassword(), code, message, gatewayResponse);
 			return gatewayResponse;
 		} else {
-			return GatewayResponse.newInstance().buildMessage(acgistCode, message);
+			return GatewayResponse.newInstance().buildResponse(acgistCode, message);
 		}
 	}
 

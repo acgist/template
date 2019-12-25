@@ -11,7 +11,7 @@ import java.util.List;
  * @author acgist
  * @since 1.0.0
  */
-public class PageQuery implements Serializable {
+public final class PageQuery implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	

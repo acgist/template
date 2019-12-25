@@ -4,8 +4,8 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.context.annotation.Configuration;
 
-import com.acgist.core.gateway.gateway.GatewayMapping;
-import com.acgist.core.gateway.gateway.GatewayType;
+import com.acgist.core.gateway.GatewayMapping;
+import com.acgist.core.gateway.GatewayType;
 import com.acgist.core.gateway.request.UserNickRequest;
 import com.acgist.core.gateway.request.UserRequest;
 import com.acgist.core.gateway.response.UserNickResponse;

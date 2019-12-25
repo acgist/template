@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.acgist.core.gateway.GatewayType;
 import com.acgist.core.gateway.gateway.GatewaySession;
-import com.acgist.core.gateway.gateway.GatewayType;
-import com.acgist.core.gateway.gateway.request.GatewayRequest;
-import com.acgist.core.gateway.gateway.response.GatewayResponse;
+import com.acgist.core.gateway.request.GatewayRequest;
+import com.acgist.core.gateway.response.GatewayResponse;
 import com.acgist.core.gateway.service.IGatewayService;
 import com.acgist.data.service.pojo.entity.GatewayEntity.Status;
 

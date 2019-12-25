@@ -3,8 +3,6 @@ package com.acgist.core.gateway.request;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import com.acgist.core.gateway.gateway.request.GatewayRequest;
-
 /**
  * <p>请求 - 用户昵称修改</p>
  * 

@@ -3,12 +3,12 @@ package com.acgist.core.exception;
 import com.acgist.core.config.AcgistCode;
 
 /**
- * <p>异常 - 错误代码</p>
+ * <p>异常 - 错误代码异常</p>
  * 
  * @author acgist
  * @since 1.0.0
  */
-public class ErrorCodeException extends RuntimeException {
+public final class ErrorCodeException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 

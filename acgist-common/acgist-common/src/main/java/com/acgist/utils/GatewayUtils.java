@@ -14,8 +14,8 @@ import org.slf4j.LoggerFactory;
 import com.acgist.core.config.AcgistCode;
 import com.acgist.core.config.AcgistConst;
 import com.acgist.core.exception.ErrorCodeException;
-import com.acgist.core.gateway.gateway.AcgistGateway;
-import com.acgist.core.gateway.gateway.response.GatewayResponse;
+import com.acgist.core.gateway.Gateway;
+import com.acgist.core.gateway.response.GatewayResponse;
 
 /**
  * <p>utils - 网关信息</p>
@@ -40,7 +40,7 @@ public class GatewayUtils {
 	 * 
 	 * @return 网关信息Map
 	 */
-	public static final <T extends AcgistGateway> Map<String, String> unpack(T t) {
+	public static final <T extends Gateway> Map<String, String> unpack(T t) {
 		if(t == null) {
 			return null;
 		}
@@ -66,7 +66,7 @@ public class GatewayUtils {
 	 * @param gateway 网关实例
 	 * @param data 网关信息
 	 */
-	public static final void pack(AcgistGateway gateway, Map<String, String> data) {
+	public static final void pack(Gateway gateway, Map<String, String> data) {
 		if(gateway == null || data == null) {
 			return;
 		}
@@ -85,14 +85,14 @@ public class GatewayUtils {
 	 * 
 	 * @return 签名
 	 */
-	public static final String sign(String password, AcgistGateway gateway) {
+	public static final String sign(String password, Gateway gateway) {
 		if(StringUtils.isEmpty(password) || gateway == null) {
 			throw new ErrorCodeException(AcgistCode.CODE_3000);
 		}
 		final Map<String, String> data = gateway.data();
 		final StringBuffer buffer = new StringBuffer(password);
 		data.entrySet().stream()
-			.filter(entry -> !AcgistGateway.PROPERTY_SIGN.equals(entry.getKey()))
+			.filter(entry -> !Gateway.PROPERTY_SIGN.equals(entry.getKey()))
 			.sorted((a, b) -> StringUtils.compare(a.getKey(), b.getKey()))
 			.forEach(entry -> {
 				buffer.append(entry.getKey()).append(entry.getValue());
@@ -110,12 +110,12 @@ public class GatewayUtils {
 	 * 
 	 * @return 验证结果
 	 */
-	public static final boolean verify(String password, AcgistGateway gateway) {
+	public static final boolean verify(String password, Gateway gateway) {
 		if(StringUtils.isEmpty(password) || gateway == null) {
 			throw new ErrorCodeException(AcgistCode.CODE_3000);
 		}
 		final Map<String, String> data = gateway.data();
-		final String sign = data.get(AcgistGateway.PROPERTY_SIGN);
+		final String sign = data.get(Gateway.PROPERTY_SIGN);
 		final String trueSign = sign(password, gateway);
 		return StringUtils.equals(sign, trueSign);
 	}

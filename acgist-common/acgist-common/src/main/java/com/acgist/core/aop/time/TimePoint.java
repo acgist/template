@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * <p>AOP - 方法时间统计</p>
+ * <p>AOP - 方法时间统计切点注解</p>
  * 
  * @author acgist
  * @since 1.0.0

@@ -1,7 +1,5 @@
 package com.acgist.utils;
 
-import java.lang.reflect.InvocationTargetException;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
@@ -39,7 +37,7 @@ public final class BeanUtils {
 	public static final Object newInstance(Class<?> clazz) {
 		try {
 			return clazz.getDeclaredConstructor().newInstance();
-		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
+		} catch (Exception e) {
 			LOGGER.error("获取实例异常：{}", clazz, e);
 		}
 		return null;

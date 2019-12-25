@@ -1,23 +1,23 @@
-package com.acgist.core.gateway.gateway.response;
+package com.acgist.core.gateway.response;
 
 import java.util.Map;
 
 import javax.validation.constraints.NotBlank;
 
 import com.acgist.core.config.AcgistCode;
-import com.acgist.core.gateway.gateway.AcgistGateway;
-import com.acgist.core.gateway.gateway.request.GatewayRequest;
+import com.acgist.core.gateway.Gateway;
+import com.acgist.core.gateway.request.GatewayRequest;
 import com.acgist.core.pojo.message.ResultMessage;
 import com.acgist.utils.DateUtils;
 import com.acgist.utils.GatewayUtils;
 
 /**
- * <p>网关响应</p>
+ * <p>网关 - 响应</p>
  * 
  * @author acgist
  * @since 1.0.0
  */
-public class GatewayResponse extends AcgistGateway {
+public class GatewayResponse extends Gateway {
 
 	private static final long serialVersionUID = 1L;
 
@@ -92,24 +92,6 @@ public class GatewayResponse extends AcgistGateway {
 	}
 	
 	/**
-	 * <p>判断是否成功</p>
-	 * 
-	 * @return 是否成功
-	 */
-	public boolean success() {
-		return AcgistCode.success(this.code);
-	}
-	
-	/**
-	 * <p>判断是否失败</p>
-	 * 
-	 * @return 是否失败
-	 */
-	public boolean fail() {
-		return !success();
-	}
-	
-	/**
 	 * <p>将请求数据设置到响应中</p>
 	 * 
 	 * @param request 请求
@@ -132,10 +114,28 @@ public class GatewayResponse extends AcgistGateway {
 	 */
 	public GatewayResponse valueOfMap(final Map<String, String> data) {
 		if(data != null) {
-			data.remove(AcgistGateway.PROPERTY_SIGN); // 移除签名
+			data.remove(Gateway.PROPERTY_SIGN); // 移除签名
 			GatewayUtils.pack(this, data);
 		}
 		return this;
+	}
+	
+	/**
+	 * <p>判断是否成功</p>
+	 * 
+	 * @return 是否成功
+	 */
+	public boolean success() {
+		return AcgistCode.success(this.code);
+	}
+	
+	/**
+	 * <p>判断是否失败</p>
+	 * 
+	 * @return 是否失败
+	 */
+	public boolean fail() {
+		return !success();
 	}
 	
 	/**
@@ -144,7 +144,7 @@ public class GatewayResponse extends AcgistGateway {
 	 * @return 响应
 	 */
 	public GatewayResponse buildSuccess() {
-		return buildMessage(AcgistCode.CODE_0000);
+		return buildResponse(AcgistCode.CODE_0000);
 	}
 	
 	/**
@@ -153,7 +153,7 @@ public class GatewayResponse extends AcgistGateway {
 	 * @return 响应
 	 */
 	public GatewayResponse buildFail() {
-		return buildMessage(AcgistCode.CODE_9999);
+		return buildResponse(AcgistCode.CODE_9999);
 	}
 	
 	/**
@@ -163,8 +163,8 @@ public class GatewayResponse extends AcgistGateway {
 	 * 
 	 * @return 响应
 	 */
-	public GatewayResponse buildMessage(AcgistCode code) {
-		return buildMessage(code.getCode(), code.getMessage());
+	public GatewayResponse buildResponse(AcgistCode code) {
+		return buildResponse(code.getCode(), code.getMessage());
 	}
 	
 	/**
@@ -174,8 +174,8 @@ public class GatewayResponse extends AcgistGateway {
 	 * 
 	 * @return 响应
 	 */
-	public GatewayResponse buildMessage(ResultMessage message) {
-		return buildMessage(message.getCode(), message.getMessage());
+	public GatewayResponse buildResponse(ResultMessage message) {
+		return buildResponse(message.getCode(), message.getMessage());
 	}
 	
 	/**
@@ -186,9 +186,9 @@ public class GatewayResponse extends AcgistGateway {
 	 * 
 	 * @return 响应
 	 */
-	public GatewayResponse buildMessage(AcgistCode code, String message) {
+	public GatewayResponse buildResponse(AcgistCode code, String message) {
 		message = AcgistCode.message(code, message);
-		return buildMessage(code.getCode(), message);
+		return buildResponse(code.getCode(), message);
 	}
 	
 	/**
@@ -199,7 +199,7 @@ public class GatewayResponse extends AcgistGateway {
 	 * 
 	 * @return 响应
 	 */
-	public GatewayResponse buildMessage(String code, String message) {
+	public GatewayResponse buildResponse(String code, String message) {
 		this.code = code;
 		this.message = message;
 		this.responseTime = DateUtils.nowTimestamp();

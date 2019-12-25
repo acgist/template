@@ -4,7 +4,7 @@ import com.acgist.core.config.AcgistCode;
 import com.acgist.core.pojo.Pojo;
 
 /**
- * <p>message - 服务消息（状态）</p>
+ * <p>message - 结果消息</p>
  * 
  * @author acgist
  * @since 1.0.0
@@ -22,6 +22,10 @@ public class ResultMessage extends Pojo {
 	 */
 	protected String message;
 
+	public static final ResultMessage newInstance() {
+		return new ResultMessage();
+	}
+	
 	public String getCode() {
 		return code;
 	}
@@ -44,7 +48,7 @@ public class ResultMessage extends Pojo {
 	 * @return 是否成功
 	 */
 	public boolean success() {
-		return this.code != null && AcgistCode.success(this.code);
+		return AcgistCode.success(this.code);
 	}
 
 	/**
@@ -54,10 +58,6 @@ public class ResultMessage extends Pojo {
 	 */
 	public boolean fail() {
 		return !success();
-	}
-
-	public static final ResultMessage newInstance() {
-		return new ResultMessage();
 	}
 	
 	public ResultMessage buildSuccess() {
@@ -74,11 +74,7 @@ public class ResultMessage extends Pojo {
 	
 	public ResultMessage buildMessage(AcgistCode code, String message) {
 		this.code = code.getCode();
-		if(message == null) {
-			this.message = code.getMessage();
-		} else {
-			this.message = message;
-		}
+		this.message = AcgistCode.message(code, message);
 		return this;
 	}
 

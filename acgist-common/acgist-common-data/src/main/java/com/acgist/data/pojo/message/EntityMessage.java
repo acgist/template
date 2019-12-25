@@ -13,6 +13,9 @@ public class EntityMessage<T extends BaseEntity> extends Pojo {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * <p>实体</p>
+	 */
 	protected T entity;
 
 	public T getEntity() {
