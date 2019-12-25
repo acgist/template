@@ -8,11 +8,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.acgist.core.service.IUserService;
 import com.acgist.data.service.pojo.message.AuthoMessage;
-import com.acgist.main.AcgistGatewayApplication;
+import com.acgist.main.AcgistWwwGatewayApplication;
 
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = AcgistGatewayApplication.class)
+@SpringBootTest(classes = AcgistWwwGatewayApplication.class)
 public class CostTest {
 
 	@Reference(version = "${acgist.service.version}")

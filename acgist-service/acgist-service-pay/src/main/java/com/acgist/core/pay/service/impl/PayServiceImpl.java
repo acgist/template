@@ -11,6 +11,6 @@ import com.acgist.core.service.IPayService;
  * @since 1.0.0
  */
 @Service(retries = 0, version = "${acgist.service.version}")
-public class PayService implements IPayService {
+public class PayServiceImpl implements IPayService {
 
 }

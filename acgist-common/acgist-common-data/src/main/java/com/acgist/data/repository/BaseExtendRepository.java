@@ -16,6 +16,9 @@ import com.acgist.data.pojo.select.Order;
  * <pre>
  * // 指定实现
  * @EnableJpaRepositories(basePackages = "com.acgist.core.**.repository", repositoryBaseClass = BaseExtendRepositoryImpl.class)
+ * // 指定排序
+ * @Query(value = "SELECT entity FROM UserEntity entity")
+ * List<UserEntity> findAllUsers(Sort sort);
  * </pre>
  * 
  * @author acgist

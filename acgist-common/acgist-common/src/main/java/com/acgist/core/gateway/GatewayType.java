@@ -31,7 +31,7 @@ public final class GatewayType extends Pojo {
 	/**
 	 * <p>请求地址</p>
 	 * <p>命名规范：模块 + 内容 + 操作</p>
-	 * <p>操作（可以省略）：insert/delete/update/select</p>
+	 * <p>操作：insert/delete/update/select（可以省略）</p>
 	 */
 	protected final String path;
 	/**

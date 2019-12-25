@@ -1,5 +1,6 @@
 package com.acgist.core.service;
 
+import com.acgist.data.service.pojo.entity.UserEntity;
 import com.acgist.data.service.pojo.message.AuthoMessage;
 import com.acgist.data.service.pojo.message.LoginMessage;
 
@@ -19,6 +20,15 @@ public interface IUserService {
 	 * @return 授权信息
 	 */
 	AuthoMessage autho(String name);
+	
+	/**
+	 * <p>根据用户名称查询用户信息</p>
+	 * 
+	 * @param name 用户名称
+	 * 
+	 * @return 用户信息
+	 */
+	UserEntity findByName(String name);
 
 	/**
 	 * <p>登陆</p>

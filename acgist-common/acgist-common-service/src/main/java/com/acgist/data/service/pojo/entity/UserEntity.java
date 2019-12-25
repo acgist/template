@@ -22,23 +22,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 	@Index(name = "index_user_mail", columnList = "mail", unique = true),
 	@Index(name = "index_user_mobile", columnList = "mobile", unique = true)
 })
-public class UserEntity extends BaseEntity {
+public final class UserEntity extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * <p>用户名称：{@value}</p>
-	 * 
-	 * @see {@link #name}
-	 */
-	public static final String PROPERTY_NAME = "name";
-	/**
-	 * <p>用户密码：{@value}</p>
-	 * 
-	 * @see {@link #password}
-	 */
-	public static final String PROPERTY_PASSWORD = "password";
-	
 	/**
 	 * <p>用户名称</p>
 	 */

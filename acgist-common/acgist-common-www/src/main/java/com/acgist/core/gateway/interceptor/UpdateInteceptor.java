@@ -8,20 +8,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.acgist.core.gateway.GatewayType;
 import com.acgist.core.gateway.gateway.GatewaySession;
-import com.acgist.core.gateway.request.GatewayRequest;
+import com.acgist.core.gateway.response.GatewayResponse;
 import com.acgist.core.service.IGatewayService;
+import com.acgist.data.service.pojo.entity.GatewayEntity.Status;
 
 /**
- * <p>拦截器 - 保存网关信息</p>
+ * <p>拦截器 - 更新网关信息</p>
  * 
  * @author acgist
  * @since 1.0.0
  */
 @Component
-public class SaveInteceptor implements HandlerInterceptor {
+public class UpdateInteceptor implements HandlerInterceptor {
 
 	@Autowired
 	private ApplicationContext context;
@@ -29,14 +31,14 @@ public class SaveInteceptor implements HandlerInterceptor {
 	private IGatewayService gatewayService;
 	
 	@Override
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
 		final GatewaySession gatewaySession = GatewaySession.getInstance(this.context);
 		final GatewayType gatewayType = gatewaySession.getGatewayType();
-		if(gatewayType.isSave()) {
-			final GatewayRequest gatewayRequest = gatewaySession.getRequest();
-			this.gatewayService.save(gatewaySession.getQueryId(), gatewayRequest);
+		if(gatewaySession.done() && gatewayType.isSave()) {
+			final GatewayResponse gatewayResponse = gatewaySession.getResponse();
+			final Status status = gatewayType.isNotify() ? Status.ANSWER : Status.ANSWER;
+			this.gatewayService.update(gatewaySession.getQueryId(), status, gatewayResponse);
 		}
-		return true;
 	}
 	
 }

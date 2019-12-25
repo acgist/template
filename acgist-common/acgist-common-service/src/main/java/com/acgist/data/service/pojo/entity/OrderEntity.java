@@ -24,11 +24,6 @@ import com.acgist.data.pojo.entity.BaseEntity;
 public class OrderEntity extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * @see {@link #code}
-	 */
-	public static final String PROPERTY_ORDER_CODE = "code";
 	
 	/**
 	 * <p>用户ID</p>

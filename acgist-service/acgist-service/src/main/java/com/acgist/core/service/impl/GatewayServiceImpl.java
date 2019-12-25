@@ -1,11 +1,11 @@
 package com.acgist.core.service.impl;
 
+import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import com.acgist.core.gateway.request.GatewayRequest;
 import com.acgist.core.gateway.response.GatewayResponse;
-import com.acgist.core.gateway.service.IGatewayService;
+import com.acgist.core.service.IGatewayService;
 import com.acgist.data.repository.GatewayRepository;
 import com.acgist.data.service.pojo.entity.GatewayEntity;
 import com.acgist.data.service.pojo.entity.GatewayEntity.Status;
@@ -16,8 +16,8 @@ import com.acgist.data.service.pojo.entity.GatewayEntity.Status;
  * @author acgist
  * @since 1.0.0
  */
-@Service
-public class GatewayService implements IGatewayService {
+@Service(version = "${acgist.service.version}")
+public class GatewayServiceImpl implements IGatewayService {
 
 	@Autowired
 	private GatewayRepository gatewayRepository;
@@ -35,9 +35,9 @@ public class GatewayService implements IGatewayService {
 	@Override
 	public void update(String queryId, Status status, GatewayResponse response) {
 		final GatewayEntity gateway = new GatewayEntity();
-		gateway.setQueryId(queryId);
 		gateway.setCode(response.getCode());
 		gateway.setStatus(status);
+		gateway.setQueryId(queryId);
 		gateway.setMessage(response.getMessage());
 		gateway.setResponse(response.toString());
 		this.gatewayRepository.updateResponse(gateway);

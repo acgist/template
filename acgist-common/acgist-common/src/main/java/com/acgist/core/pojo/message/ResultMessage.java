@@ -99,7 +99,7 @@ public class ResultMessage extends Pojo {
 	 */
 	public ResultMessage buildMessage(AcgistCode code, String message) {
 		message = AcgistCode.message(code, message);
-		return buildMessage(code, message);
+		return buildMessage(code.getCode(), message);
 	}
 	
 	/**

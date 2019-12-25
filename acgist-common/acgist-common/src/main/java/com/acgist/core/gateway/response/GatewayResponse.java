@@ -33,7 +33,7 @@ public class GatewayResponse extends Gateway {
 	/**
 	 * <p>响应时间</p>
 	 */
-	@Pattern(regexp = AcgistConst.TIMESTAMP_FORMAT, message = "响应时间格式错误")
+	@Pattern(regexp = AcgistConst.TIMESTAMP_REGEX, message = "响应时间格式错误")
 	@NotBlank(message = "响应时间不能为空")
 	protected String responseTime;
 	/**
@@ -83,6 +83,10 @@ public class GatewayResponse extends Gateway {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+	
+	public void response() {
+		
 	}
 	
 	/**

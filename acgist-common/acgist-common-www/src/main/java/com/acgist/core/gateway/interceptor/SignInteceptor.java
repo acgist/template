@@ -18,7 +18,7 @@ import com.acgist.utils.GatewayUtils;
 import com.acgist.utils.RedirectUtils;
 
 /**
- * <p>拦截器 - 签名校验</p>
+ * <p>拦截器 - 验证签名</p>
  * 
  * @author acgist
  * @since 1.0.0

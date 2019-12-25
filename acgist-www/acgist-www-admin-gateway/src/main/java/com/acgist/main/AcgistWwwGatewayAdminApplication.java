@@ -13,10 +13,10 @@ import com.acgist.data.repository.BaseExtendRepositoryImpl;
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = "com.acgist.data.**.repository", repositoryBaseClass = BaseExtendRepositoryImpl.class)
 @EnableTransactionManagement
-public class AcgistGatewayAdminApplication {
+public class AcgistWwwGatewayAdminApplication {
 
 	public static void main(String[] args) {
-		ApplicationLauncher.newInstance().web(args, AcgistGatewayAdminApplication.class);
+		ApplicationLauncher.newInstance().web(args, AcgistWwwGatewayAdminApplication.class);
 	}
 
 }

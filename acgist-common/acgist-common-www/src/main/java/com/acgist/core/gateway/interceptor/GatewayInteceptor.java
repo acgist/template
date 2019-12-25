@@ -18,7 +18,7 @@ import com.acgist.utils.RequestUtils;
 import com.acgist.utils.UuidUtils;
 
 /**
- * <p>拦截器 - 获取请求信息</p>
+ * <p>拦截器 - 包装网关信息</p>
  * 
  * @author acgist
  * @since 1.0.0

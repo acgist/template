@@ -32,5 +32,10 @@ public interface AcgistConst {
 	 * <p>默认时间戳格式：{@value}</p>
 	 */
 	String TIMESTAMP_FORMAT = "yyyyMMddHHmmss";
+	
+	/**
+	 * <p>时间戳格式：{@value}</p>
+	 */
+	String TIMESTAMP_REGEX = "\\d{14}";
 
 }

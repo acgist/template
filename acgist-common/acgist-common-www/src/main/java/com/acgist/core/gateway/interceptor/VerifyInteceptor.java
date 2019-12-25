@@ -16,7 +16,7 @@ import com.acgist.utils.RedirectUtils;
 import com.acgist.utils.ValidatorUtils;
 
 /**
- * <p>拦截器 - 数据校验</p>
+ * <p>拦截器 - 验证格式</p>
  * 
  * @author acgist
  * @since 1.0.0

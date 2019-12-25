@@ -30,12 +30,27 @@ public class GatewayEntity extends BaseEntity {
 	 */
 	public enum Status {
 		
-		/** 接收 */
+		/**
+		 * <p>接收</p>
+		 * <p>收到网关请求</p>
+		 */
 		RECEIVE,
-		/** 响应：同步响应 */
+		/**
+		 * <p>响应</p>
+		 * <p>同步发送响应（需要异步通知）</p>
+		 */
 		ANSWER,
-		/** 完成：异步回调 */
+		/**
+		 * <p>完成</p>
+		 * <p>不用异步通知：同步响应完成</p>
+		 * <p>需要异步通知：异步通知完成</p>
+		 */
 		FINISH,
+		/**
+		 * <p>失败</p>
+		 * <p>异步通知失败</p>
+		 */
+		FAIL;
 		
 	}
 	

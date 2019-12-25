@@ -14,7 +14,7 @@ import com.acgist.data.service.pojo.message.OrderMessage;
  * @since 1.0.0
  */
 @Service(retries = 0, version = "${acgist.service.version}")
-public class OrderService implements IOrderService {
+public class OrderServiceImpl implements IOrderService {
 	
 	@Override
 	public OrderMessage build(OrderEntity order) {

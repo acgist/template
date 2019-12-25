@@ -19,7 +19,7 @@ import com.acgist.data.user.repository.UserRepository;
  * @since 1.0.0
  */
 @Service(retries = 0, version = "${acgist.service.version}")
-public class UserService implements IUserService {
+public class UserServiceImpl implements IUserService {
 
 	@Autowired
 	private UserRepository userRepository;
@@ -27,7 +27,7 @@ public class UserService implements IUserService {
 	@Override
 	@Cacheable(AcgistServiceUserCache.AUTHO_MESSAGE)
 	public AuthoMessage autho(String name) {
-		final UserEntity entity = userRepository.findByName(name);
+		final UserEntity entity = this.userRepository.findByName(name);
 		final AuthoMessage authoMessage = new AuthoMessage();
 		if(entity == null) {
 			authoMessage.buildMessage(AcgistCode.CODE_2000);
@@ -39,6 +39,11 @@ public class UserService implements IUserService {
 		return authoMessage;
 	}
 
+	@Override
+	public UserEntity findByName(String name) {
+		return this.userRepository.findByName(name);
+	}
+	
 	@Override
 	public LoginMessage login(String name, String password) {
 		return null;

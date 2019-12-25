@@ -24,7 +24,7 @@ import com.acgist.utils.GatewayUtils;
  * @since 1.0.0
  */
 @Component
-@Scope("session")
+@Scope("request")
 public final class GatewaySession implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -34,7 +34,15 @@ public final class GatewaySession implements Serializable {
 	public static final GatewaySession getInstance(ApplicationContext context) {
 		return context.getBean(GatewaySession.class);
 	}
-	
+
+	/**
+	 * <p>是否处理完成</p>
+	 */
+	private boolean done = false;
+	/**
+	 * <p>是否是网关请求</p>
+	 */
+	private boolean gateway = false;
 	/**
 	 * <p>请求编号</p>
 	 */
@@ -57,12 +65,30 @@ public final class GatewaySession implements Serializable {
 	private AuthoMessage authoMessage;
 	
 	/**
+	 * <p>判断是否处理完成</p>
+	 * 
+	 * @return 是否完成
+	 */
+	public boolean done() {
+		return this.done;
+	}
+	
+	/**
+	 * <p>判断是否保存</p>
+	 * 
+	 * @return 是否保存
+	 */
+	public boolean save() {
+		return this.gatewayType.isSave();
+	}
+	
+	/**
 	 * <p>判断是否是网关请求</p>
 	 * 
 	 * @return 是否是网关请求
 	 */
 	public boolean gateway() {
-		return this.response != null;
+		return this.gateway;
 	}
 	
 	/**
@@ -71,6 +97,7 @@ public final class GatewaySession implements Serializable {
 	 * @param request 请求
 	 */
 	public void buildResponse(GatewayRequest request) {
+		this.gateway = true;
 		this.request = request;
 		this.response = this.buildResponse();
 		this.response.setQueryId(this.queryId);
@@ -96,6 +123,17 @@ public final class GatewaySession implements Serializable {
 	 * <p>设置响应</p>
 	 * 
 	 * @param code 响应编码
+	 * 
+	 * @return 响应
+	 */
+	public GatewayResponse buildResponse(AcgistCode code) {
+		return this.buildResponse(code.getCode(), code.getMessage());
+	}
+	
+	/**
+	 * <p>设置响应</p>
+	 * 
+	 * @param code 响应编码
 	 * @param message 响应信息
 	 * 
 	 * @return 响应
@@ -107,9 +145,10 @@ public final class GatewaySession implements Serializable {
 		if(this.authoMessage != null) {
 			GatewayUtils.sign(this.authoMessage.getPassword(), this.response);
 		}
+		this.done = true;
 		return this.response;
 	}
-	
+
 	public String getQueryId() {
 		return queryId;
 	}

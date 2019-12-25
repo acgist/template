@@ -1,7 +1,9 @@
-package com.acgist.core.gateway.response;
+package com.acgist.core.gateway.gateway.response;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+
+import com.acgist.core.gateway.response.GatewayResponse;
 
 /**
  * <p>响应 - 用户信息查询</p>

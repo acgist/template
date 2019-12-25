@@ -15,7 +15,7 @@ import com.acgist.utils.DateUtils;
  * @since 1.0.0
  */
 @Service(retries = 0, version = "${acgist.service.version}")
-public class CodeService implements ICodeService {
+public class CodeServiceImpl implements ICodeService {
 
 	/**
 	 * <p>编号最小索引</p>

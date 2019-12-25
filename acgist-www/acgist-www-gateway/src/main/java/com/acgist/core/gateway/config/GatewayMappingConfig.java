@@ -6,10 +6,10 @@ import org.springframework.context.annotation.Configuration;
 
 import com.acgist.core.gateway.GatewayMapping;
 import com.acgist.core.gateway.GatewayType;
-import com.acgist.core.gateway.request.UserNickRequest;
-import com.acgist.core.gateway.request.UserRequest;
-import com.acgist.core.gateway.response.UserNickResponse;
-import com.acgist.core.gateway.response.UserResponse;
+import com.acgist.core.gateway.gateway.request.UserRequest;
+import com.acgist.core.gateway.gateway.request.UserUpdateRequest;
+import com.acgist.core.gateway.gateway.response.UserResponse;
+import com.acgist.core.gateway.gateway.response.UserUpdateResponse;
 
 /**
  * <p>config - 网关映射</p>
@@ -24,7 +24,7 @@ public class GatewayMappingConfig {
 	public void config() {
 		final var mapping = GatewayMapping.getInstance();
 		mapping.register(new GatewayType(true, false, "用户信息查询", "/gateway/user", UserRequest.class, UserResponse.class));
-		mapping.register(new GatewayType(true, false, "用户昵称修改", "/gateway/user/nick", UserNickRequest.class, UserNickResponse.class));
+		mapping.register(new GatewayType(true, false, "用户信息修改", "/gateway/user/update", UserUpdateRequest.class, UserUpdateResponse.class));
 	}
 	
 }

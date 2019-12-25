@@ -1,11 +1,11 @@
-package com.acgist.core.gateway.service;
+package com.acgist.core.service;
 
 import com.acgist.core.gateway.request.GatewayRequest;
 import com.acgist.core.gateway.response.GatewayResponse;
 import com.acgist.data.service.pojo.entity.GatewayEntity.Status;
 
 /**
- * <p>service - 网关</p>
+ * <p>服务 - 网关</p>
  * 
  * @author acgist
  * @since 1.0.0

@@ -40,7 +40,7 @@ public abstract class Gateway extends Pojo implements Serializable {
 	/**
 	 * <p>请求时间</p>
 	 */
-	@Pattern(regexp = AcgistConst.TIMESTAMP_FORMAT, message = "请求时间格式错误")
+	@Pattern(regexp = AcgistConst.TIMESTAMP_REGEX, message = "请求时间格式错误")
 	@NotBlank(message = "请求时间不能为空")
 	protected String requestTime;
 	/**

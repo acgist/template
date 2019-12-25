@@ -1,15 +1,17 @@
-package com.acgist.core.gateway.response;
+package com.acgist.core.gateway.gateway.request;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.acgist.core.gateway.request.GatewayRequest;
+
 /**
- * <p>响应 - 用户昵称修改</p>
+ * <p>请求 - 用户昵称修改</p>
  * 
  * @author acgist
  * @since 1.0.0
  */
-public class UserNickResponse extends GatewayResponse {
+public class UserUpdateRequest extends GatewayRequest {
 
 	private static final long serialVersionUID = 1L;
 

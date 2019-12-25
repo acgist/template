@@ -10,6 +10,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.acgist.core.gateway.interceptor.GatewayInteceptor;
 import com.acgist.core.gateway.interceptor.SaveInteceptor;
 import com.acgist.core.gateway.interceptor.SignInteceptor;
+import com.acgist.core.gateway.interceptor.TimeInteceptor;
+import com.acgist.core.gateway.interceptor.UpdateInteceptor;
 import com.acgist.core.gateway.interceptor.VerifyInteceptor;
 
 /**
@@ -28,9 +30,13 @@ public class InterceptorConfig implements WebMvcConfigurer {
 	@Autowired
 	private VerifyInteceptor verifyInteceptor;
 	@Autowired
+	private TimeInteceptor timeInteceptor;
+	@Autowired
 	private SignInteceptor signInteceptor;
 	@Autowired
 	private SaveInteceptor saveInteceptor;
+	@Autowired
+	private UpdateInteceptor updateInteceptor;
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
@@ -38,10 +44,14 @@ public class InterceptorConfig implements WebMvcConfigurer {
 		registry.addInterceptor(this.gatewayInteceptor).addPathPatterns("/gateway/**");
 		LOGGER.info("配置拦截器：verifyInteceptor");
 		registry.addInterceptor(this.verifyInteceptor).addPathPatterns("/gateway/**");
+		LOGGER.info("配置拦截器：timeInteceptor");
+		registry.addInterceptor(this.timeInteceptor).addPathPatterns("/gateway/**");
 		LOGGER.info("配置拦截器：signInteceptor");
 		registry.addInterceptor(this.signInteceptor).addPathPatterns("/gateway/**");
 		LOGGER.info("配置拦截器：saveInteceptor");
 		registry.addInterceptor(this.saveInteceptor).addPathPatterns("/gateway/**");
+		LOGGER.info("配置拦截器：updateInteceptor");
+		registry.addInterceptor(this.updateInteceptor).addPathPatterns("/**");
 		WebMvcConfigurer.super.addInterceptors(registry);
 	}
 
