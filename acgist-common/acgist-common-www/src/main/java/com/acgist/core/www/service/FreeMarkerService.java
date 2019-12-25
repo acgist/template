@@ -42,7 +42,7 @@ public class FreeMarkerService {
 	/**
 	 * <p>生成静态文件</p>
 	 * 
-	 * @param templatePath 模板路径
+	 * @param templatePath 模板路径：index.ftl
 	 * @param data 数据
 	 * @param htmlPath 生成HTML路径：/article/
 	 * @param htmlName 生成HTML文件名称：index.html
