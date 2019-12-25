@@ -38,8 +38,8 @@ public class UserService extends GatewayService {
 		final var request = (UserUpdateRequest) session.getRequest();
 		final var response = (UserUpdateResponse) session.getResponse();
 		final UserEntity entity = new UserEntity();
-		entity.setName(request.getUsername());
 		entity.setNick(request.getNick());
+		entity.setName(request.getUsername());
 		final var message = this.userService.update(entity);
 		if(message.fail()) {
 			return session.buildResponse(message);
