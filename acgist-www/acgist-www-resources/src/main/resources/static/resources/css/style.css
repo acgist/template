@@ -20,13 +20,11 @@ h1, h2, h3, h4, h5, h6{padding:1rem 0;}
 .header a:hover{text-decoration:none;background:#1ABC9C;color:#fff;transition:all 200ms ease-in-out;}
 /** 底部 */
 .footer{background:#2D3237;color:#BBBBBB;padding:1rem 0;text-align:center;}
-.footer p{margin:0.4rem 0;}
 .footer a{color:#BBBBBB;}
 .footer a:hover{color:#FFFFFF;}
 .footer .copyright{font-size:0.8rem;}
 .main{margin:4.2rem auto 1rem auto;}
 /** 错误 */
-.error p{padding:0.2rem 0;}
 /** 首页 */
 .home{text-align:center;font-size:4rem;}
 /** 登录 */
