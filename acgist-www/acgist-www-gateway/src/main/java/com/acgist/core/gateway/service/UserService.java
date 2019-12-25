@@ -14,7 +14,7 @@ import com.acgist.data.service.pojo.entity.UserEntity;
 @Service
 public class UserService extends GatewayService {
 	
-	@Reference(version = "${acgist.service.version}")
+	@Reference(version = "${acgist.version}")
 	private IUserService userService;
 	
 	public GatewayResponse select() {

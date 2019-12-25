@@ -18,7 +18,7 @@ public class OrderService {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(OrderService.class);
 	
-	@Reference(version = "${acgist.service.version}")
+	@Reference(version = "${acgist.version}")
 	private IOrderService orderService;
 	
 	public void build() {

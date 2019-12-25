@@ -28,7 +28,7 @@ public class UpdateInteceptor implements HandlerInterceptor {
 
 	@Autowired
 	private ApplicationContext context;
-	@Reference(version = "${acgist.service.version}")
+	@Reference(version = "${acgist.version}")
 	private IGatewayService gatewayService;
 	
 	@Override

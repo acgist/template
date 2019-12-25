@@ -10,7 +10,7 @@ import com.acgist.core.service.IPayService;
  * @author acgist
  * @since 1.0.0
  */
-@Service(retries = 0, version = "${acgist.service.version}")
+@Service(retries = 0, version = "${acgist.version}")
 public class PayServiceImpl implements IPayService {
 
 }

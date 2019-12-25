@@ -15,7 +15,7 @@ import com.acgist.main.AcgistWwwGatewayApplication;
 @SpringBootTest(classes = AcgistWwwGatewayApplication.class)
 public class CostTest {
 
-	@Reference(version = "${acgist.service.version}")
+	@Reference(version = "${acgist.version}")
 	private IUserService userService;
 	
 	@Test
