@@ -11,6 +11,7 @@ a{color:#008CBA;}
 a:link{text-decoration:none;}
 a:hover{color:#0078A0;text-decoration:none;}
 a:visited{text-decoration:none;}
+p{margin:0 0 0.4rem 0;}
 /** 头部 */
 .header{position:fixed;box-shadow:0px 0px 1px rgba(0,0,0,0.2);background:rgba(255,255,255,0.8);width:100%;left:0;top:0;z-index:999;overflow:hidden;}
 .header nav{margin:auto;}
