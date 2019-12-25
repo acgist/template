@@ -15,7 +15,6 @@ import com.acgist.core.config.AcgistCode;
 import com.acgist.core.config.AcgistConst;
 import com.acgist.core.exception.ErrorCodeException;
 import com.acgist.core.gateway.Gateway;
-import com.acgist.core.gateway.response.GatewayResponse;
 
 /**
  * <p>utils - 网关信息</p>
@@ -120,23 +119,4 @@ public class GatewayUtils {
 		return StringUtils.equals(sign, trueSign);
 	}
 
-	/**
-	 * <p>设置响应</p>
-	 * 
-	 * @param password 密码
-	 * @param code 响应编码
-	 * @param message 响应信息
-	 * @param response 响应
-	 */
-	public static final void response(String password, String code, String message, GatewayResponse response) {
-		response.setCode(code);
-		response.setMessage(message);
-		response.setResponseTime(DateUtils.nowTimestamp());
-		sign(password, response);
-		final String errorMessage = ValidatorUtils.verify(response);
-		if(StringUtils.isNotEmpty(errorMessage)) {
-			LOGGER.warn("响应参数错误：{}", errorMessage);
-		}
-	}
-	
 }

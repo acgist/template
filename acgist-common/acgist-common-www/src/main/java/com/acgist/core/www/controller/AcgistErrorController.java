@@ -5,7 +5,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.error.ErrorController;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Primary;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -14,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.acgist.core.config.AcgistCode;
+import com.acgist.core.gateway.gateway.GatewaySession;
+import com.acgist.core.pojo.Pojo;
 import com.acgist.core.pojo.message.ResultMessage;
 
 /**
- * <p>统一错误页面</p>
+ * <p>统一错误处理</p>
  * 
  * @author acgist
  * @since 1.0.0
@@ -32,8 +36,11 @@ public class AcgistErrorController implements ErrorController {
 	 */
 	public static final String ERROR_PATH = "/error";
 	
+	@Autowired
+	private ApplicationContext context;
+	
 	/**
-	 * <p>处理JSON错误</p>
+	 * <p>统一错误处理</p>
 	 * 
 	 * @param code 错误编码
 	 * @param message 错误信息
@@ -41,21 +48,21 @@ public class AcgistErrorController implements ErrorController {
 	 */
 	@Primary
 	@ResponseBody
-	@RequestMapping(value = ERROR_PATH, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResultMessage index(String code, String message, HttpServletResponse response) {
-		AcgistCode acgistCode;
-		if(StringUtils.isEmpty(code)) {
-			acgistCode = AcgistCode.valueOfStatus(response.getStatus());
-		} else {
-			acgistCode = AcgistCode.valueOfCode(code);
-		}
+	@RequestMapping(value = ERROR_PATH)
+	public Pojo index(String code, String message, HttpServletResponse response) {
+		final AcgistCode acgistCode = acgistCode(code, response);
 		message = AcgistCode.message(acgistCode, message);
-		LOGGER.warn("系统错误（接口），错误编码：{}，错误描述：{}", acgistCode.getCode(), message);
-		return ResultMessage.newInstance().buildMessage(acgistCode, message);
+		LOGGER.warn("系统错误（网关），错误编码：{}，错误描述：{}", acgistCode.getCode(), message);
+		final GatewaySession gatewaySession = GatewaySession.getInstance(this.context);
+		if(gatewaySession.gateway()) {
+			return gatewaySession.buildResponse(acgistCode.getCode(), message);
+		} else {
+			return ResultMessage.newInstance().buildMessage(acgistCode, message);
+		}
 	}
 
 	/**
-	 * <p>处理非JSON错误</p>
+	 * <p>页面错误处理</p>
 	 * 
 	 * @param code 错误编码
 	 * @param message 错误信息
@@ -65,19 +72,30 @@ public class AcgistErrorController implements ErrorController {
 	@Primary
 	@RequestMapping(value = ERROR_PATH, produces = MediaType.TEXT_HTML_VALUE)
 	public String index(String code, String message, ModelMap model, HttpServletResponse response) {
-		AcgistCode acgistCode;
-		if(StringUtils.isEmpty(code)) {
-			acgistCode = AcgistCode.valueOfStatus(response.getStatus());
-		} else {
-			acgistCode = AcgistCode.valueOfCode(code);
-		}
+		final AcgistCode acgistCode = acgistCode(code, response);
 		message = AcgistCode.message(acgistCode, message);
+		LOGGER.warn("系统错误（页面），错误编码：{}，错误信息：{}", acgistCode.getCode(), message);
 		model.put("code", acgistCode.getCode());
 		model.put("message", message);
-		LOGGER.warn("系统错误（页面），错误编码：{}，错误信息：{}", acgistCode.getCode(), message);
 		return getErrorPath();
 	}
 
+	/**
+	 * <p>获取状态编码</p>
+	 * 
+	 * @param code 错误编码
+	 * @param response 响应
+	 * 
+	 * @return 状态编码
+	 */
+	private AcgistCode acgistCode(String code, HttpServletResponse response) {
+		if(StringUtils.isEmpty(code)) {
+			return AcgistCode.valueOfStatus(response.getStatus());
+		} else {
+			return AcgistCode.valueOfCode(code);
+		}
+	}
+	
 	@Override
 	public String getErrorPath() {
 		return ERROR_PATH;

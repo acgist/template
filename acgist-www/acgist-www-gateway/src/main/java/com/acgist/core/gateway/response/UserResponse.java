@@ -1,6 +1,7 @@
 package com.acgist.core.gateway.response;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 /**
  * <p>响应 - 用户信息查询</p>
@@ -15,15 +16,18 @@ public class UserResponse extends GatewayResponse {
 	/**
 	 * <p>用户邮箱</p>
 	 */
+	@Size(max = 40, message = "用户邮箱长度不能超过40")
 	@NotBlank(message = "用户邮箱不能为空")
 	private String mail;
 	/**
 	 * <p>用户昵称</p>
 	 */
+	@Size(max = 20, message = "用户昵称长度不能超过20")
 	private String nick;
 	/**
 	 * <p>用户手机</p>
 	 */
+	@Size(max = 20, message = "用户手机长度不能超过20")
 	private String mobile;
 
 	public String getMail() {

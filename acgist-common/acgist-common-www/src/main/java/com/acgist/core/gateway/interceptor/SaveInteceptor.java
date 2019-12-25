@@ -27,7 +27,7 @@ public class SaveInteceptor implements HandlerInterceptor {
 
 	@Autowired
 	private ApplicationContext context;
-	@Autowired
+	@Autowired(required = false)
 	private IGatewayService gatewayService;
 	
 	@Override

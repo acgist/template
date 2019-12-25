@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * <p>config - freemarker</p>
+ * <p>config - FreeMarker</p>
  * 
  * @author acgist
  * @since 1.0.0

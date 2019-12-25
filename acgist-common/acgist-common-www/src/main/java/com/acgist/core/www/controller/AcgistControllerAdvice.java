@@ -18,7 +18,6 @@ import com.acgist.utils.RedirectUtils;
 
 /**
  * <p>统一异常处理</p>
- * <p>异常和状态编码参考：DefaultHandlerExceptionResolver</p>
  * 
  * @author acgist
  * @since 1.0.0
@@ -29,7 +28,7 @@ public class AcgistControllerAdvice {
 	private static final Logger LOGGER = LoggerFactory.getLogger(AcgistControllerAdvice.class);
 	
 	/**
-	 * <p>所有异常处理</p>
+	 * <p>异常处理</p>
 	 * 
 	 * @param e 异常
 	 * @param request 请求
@@ -39,7 +38,7 @@ public class AcgistControllerAdvice {
 	@ExceptionHandler(Exception.class)
 	public void exception(Exception e, HttpServletRequest request, HttpServletResponse response) {
 		LOGGER.error("系统异常", e);
-		if (e instanceof ErrorCodeException) {
+		if (e != null && e instanceof ErrorCodeException) {
 			final var exception = (ErrorCodeException) e;
 			final var code = AcgistCode.valueOfCode(exception.getCode());
 			RedirectUtils.error(code, e.getMessage(), request, response);
@@ -50,7 +49,8 @@ public class AcgistControllerAdvice {
 	}
 	
 	/**
-	 * <p>通过异常获取状态编码</p>
+	 * <p>获取状态编码</p>
+	 * <p>异常和状态编码参考：DefaultHandlerExceptionResolver</p>
 	 * 
 	 * @param e 异常
 	 * @param response 响应
@@ -63,8 +63,12 @@ public class AcgistControllerAdvice {
 		while (t != null && t.getCause() != null) {
 			t = t.getCause();
 		}
-		if(t == null && response != null) {
-			code = AcgistCode.valueOfStatus(response.getStatus());
+		if(t == null) {
+			if(response != null) {
+				code = AcgistCode.valueOfStatus(response.getStatus());
+			} else {
+				code = AcgistCode.CODE_9999;
+			}
 		} else if (t instanceof HttpRequestMethodNotSupportedException) {
 			code = AcgistCode.CODE_4405;
 		} else if (t instanceof HttpMediaTypeNotSupportedException) {

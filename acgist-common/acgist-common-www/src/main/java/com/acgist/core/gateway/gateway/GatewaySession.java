@@ -1,5 +1,7 @@
 package com.acgist.core.gateway.gateway;
 
+import java.io.Serializable;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
@@ -12,16 +14,20 @@ import com.acgist.core.gateway.GatewayType;
 import com.acgist.core.gateway.request.GatewayRequest;
 import com.acgist.core.gateway.response.GatewayResponse;
 import com.acgist.data.service.pojo.message.AuthoMessage;
+import com.acgist.utils.DateUtils;
+import com.acgist.utils.GatewayUtils;
 
 /**
- * <p>网关 - 请求</p>
+ * <p>网关组件</p>
  * 
  * @author acgist
  * @since 1.0.0
  */
 @Component
 @Scope("session")
-public final class GatewaySession {
+public final class GatewaySession implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(GatewaySession.class);
 
@@ -51,6 +57,15 @@ public final class GatewaySession {
 	private AuthoMessage authoMessage;
 	
 	/**
+	 * <p>判断是否是网关请求</p>
+	 * 
+	 * @return 是否是网关请求
+	 */
+	public boolean gateway() {
+		return this.response != null;
+	}
+	
+	/**
 	 * <p>生成响应</p>
 	 * 
 	 * @param request 请求
@@ -59,7 +74,8 @@ public final class GatewaySession {
 		this.request = request;
 		this.response = this.buildResponse();
 		this.response.setQueryId(this.queryId);
-		this.response.valueOfRequest(this.request); // 设置需要原样返回的参数
+		// 设置原样返回参数
+		this.response.valueOfRequest(this.request);
 	}
 	
 	/**
@@ -76,6 +92,24 @@ public final class GatewaySession {
 		throw new ErrorCodeException(AcgistCode.CODE_9999);
 	}
 
+	/**
+	 * <p>设置响应</p>
+	 * 
+	 * @param code 响应编码
+	 * @param message 响应信息
+	 * 
+	 * @return 响应
+	 */
+	public GatewayResponse buildResponse(String code, String message) {
+		this.response.setCode(code);
+		this.response.setMessage(message);
+		this.response.setResponseTime(DateUtils.nowTimestamp());
+		if(this.authoMessage != null) {
+			GatewayUtils.sign(this.authoMessage.getPassword(), this.response);
+		}
+		return this.response;
+	}
+	
 	public String getQueryId() {
 		return queryId;
 	}

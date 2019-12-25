@@ -3,8 +3,11 @@ package com.acgist.core.gateway.response;
 import java.util.Map;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import com.acgist.core.config.AcgistCode;
+import com.acgist.core.config.AcgistConst;
 import com.acgist.core.gateway.Gateway;
 import com.acgist.core.gateway.request.GatewayRequest;
 import com.acgist.core.pojo.message.ResultMessage;
@@ -24,26 +27,25 @@ public class GatewayResponse extends Gateway {
 	/**
 	 * <p>请求编号</p>
 	 */
+	@Size(max = 32, message = "用户名称长度不能超过32")
 	@NotBlank(message = "请求编号不能为空")
 	protected String queryId;
 	/**
-	 * <p>请求时间</p>
-	 */
-	@NotBlank(message = "请求时间不能为空")
-	protected String requestTime;
-	/**
 	 * <p>响应时间</p>
 	 */
+	@Pattern(regexp = AcgistConst.TIMESTAMP_FORMAT, message = "响应时间格式错误")
 	@NotBlank(message = "响应时间不能为空")
 	protected String responseTime;
 	/**
 	 * <p>响应编码</p>
 	 */
+	@Size(max = 4, message = "响应编码长度不能超过4")
 	@NotBlank(message = "响应编码不能为空")
 	protected String code;
 	/**
 	 * <p>响应内容</p>
 	 */
+	@Size(max = 256, message = "响应内容长度不能超过256")
 	@NotBlank(message = "响应内容不能为空")
 	protected String message;
 
@@ -59,14 +61,6 @@ public class GatewayResponse extends Gateway {
 		this.queryId = queryId;
 	}
 	
-	public String getRequestTime() {
-		return requestTime;
-	}
-
-	public void setRequestTime(String requestTime) {
-		this.requestTime = requestTime;
-	}
-
 	public String getResponseTime() {
 		return responseTime;
 	}
@@ -159,23 +153,23 @@ public class GatewayResponse extends Gateway {
 	/**
 	 * <p>失败响应</p>
 	 * 
-	 * @param code 失败编码
-	 * 
-	 * @return 响应
-	 */
-	public GatewayResponse buildResponse(AcgistCode code) {
-		return buildResponse(code.getCode(), code.getMessage());
-	}
-	
-	/**
-	 * <p>失败响应</p>
-	 * 
 	 * @param message 服务消息
 	 * 
 	 * @return 响应
 	 */
 	public GatewayResponse buildResponse(ResultMessage message) {
 		return buildResponse(message.getCode(), message.getMessage());
+	}
+	
+	/**
+	 * <p>失败响应</p>
+	 * 
+	 * @param code 失败编码
+	 * 
+	 * @return 响应
+	 */
+	public GatewayResponse buildResponse(AcgistCode code) {
+		return buildResponse(code.getCode(), code.getMessage());
 	}
 	
 	/**
