@@ -13,7 +13,7 @@
 
 	<body>
 		<#include "/include/header.ftl">
-		<div class="container error">
+		<div class="error main">
 			<p>错误代码：${code}</p>
 			<p>错误描述：${message}</p>
 			<p>系统时间：${.now?string("yyyy-MM-dd HH:mm:ss")}</p>

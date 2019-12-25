@@ -1,4 +1,4 @@
-<footer class="container-fluid footer">
+<footer class="footer">
 	<p>
 		<a href="/">首页</a>
 	</p>

@@ -1,5 +1,5 @@
-<header class="container-fluid header">
-	<nav class="container header-menu">
+<header class="header">
+	<nav>
 		<a href="/">首页</a>
 		<a href="/product">产品中心</a>
 		<a href="/user">用户中心</a>
