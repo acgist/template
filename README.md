@@ -14,10 +14,9 @@
 |[MySQL](https://dev.mysql.com/downloads/mysql/5.7.html)|5.7.28|
 |[RabbitMQ](https://www.rabbitmq.com/)|
 |[ZooKeeper](https://zookeeper.apache.org/)|3.5.6|
-|[Vue.js](https://cn.vuejs.org/)|2.X|
 |[Node.js](https://nodejs.org/en/)|12.14.0|
-|Bootstrap|-|
-|[iview-admin](https://github.com/iview/iview-admin)|-|
+|[Ant Design](https://ant.design/index-cn)||
+|[Ant Design Pro](https://pro.ant.design/index-cn)||
 |[Dubbo](https://github.com/apache/dubbo)|2.7.4.1|
 |[DubboAdmin](https://github.com/apache/dubbo-admin)|0.1|
 |[SprintBoot](https://start.spring.io/)|2.2.2.RELEASE|
