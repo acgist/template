@@ -13,7 +13,7 @@ import com.acgist.data.service.pojo.message.LoginMessage;
 import com.acgist.data.user.repository.UserRepository;
 
 /**
- * <p>服务 - 用户</p>
+ * <p>service - 用户</p>
  * 
  * @author acgist
  * @since 1.0.0

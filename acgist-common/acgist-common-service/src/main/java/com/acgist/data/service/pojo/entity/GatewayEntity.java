@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 import com.acgist.data.pojo.entity.BaseEntity;
 
 /**
- * <p>entity - 网关信息</p>
+ * <p>entity - 网关</p>
  * 
  * @author acgist
  * @since 1.0.0

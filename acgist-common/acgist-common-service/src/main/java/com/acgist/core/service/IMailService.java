@@ -3,7 +3,7 @@ package com.acgist.core.service;
 import com.acgist.data.service.pojo.dto.MailDto;
 
 /**
- * <p>service - 邮件</p>
+ * <p>服务 - 邮件</p>
  * 
  * @author acgist
  * @since 1.0.0

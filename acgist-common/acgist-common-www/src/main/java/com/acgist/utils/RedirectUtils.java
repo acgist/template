@@ -19,7 +19,7 @@ import com.acgist.core.config.AcgistCode;
  * @author acgist
  * @since 1.0.0
  */
-public class RedirectUtils {
+public final class RedirectUtils {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(RedirectUtils.class);
 
