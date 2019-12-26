@@ -10,7 +10,7 @@
 	<packaging>pom</packaging>
 
 	<name>acgist-parent</name>
-	<description>简单的项目</description>
+	<description>简单模板项目</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

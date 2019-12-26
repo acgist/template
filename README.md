@@ -2,7 +2,7 @@
 
 ## 介绍
 
-简单的项目，提供一套完整建站模板。
+简单模板项目
 
 ## 软件技术
 
@@ -40,6 +40,7 @@
 |com.acgist.*.服务模块.aop|AOP|
 |com.acgist.*.服务模块.pojo|POJO|
 |com.acgist.*.服务模块.config|配置|
+|com.acgist.*.服务模块.www|网站|
 |com.acgist.*.服务模块.gateway|网关|
 |com.acgist.*.服务模块.service|本地服务或者服务接口|
 |com.acgist.*.服务模块.service.impl|服务接口实现|
