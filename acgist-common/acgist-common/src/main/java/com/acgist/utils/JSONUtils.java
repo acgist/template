@@ -7,11 +7,15 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
+import com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator;
 
 /**
  * <p>utils - JSON</p>
@@ -34,10 +38,8 @@ public final class JSONUtils {
 		if (object == null) {
 			return null;
 		}
-		final ObjectMapper mapper = new ObjectMapper();
+		final ObjectMapper mapper = buildMapper();
 		try {
-			// 使用注解：@JsonInclude(Include.NON_NULL)
-			mapper.setSerializationInclusion(Include.NON_NULL);
 			return mapper.writeValueAsString(object);
 		} catch (JsonProcessingException e) {
 			LOGGER.error("Java对象转JSON字符串异常：{}", object, e);
@@ -56,7 +58,7 @@ public final class JSONUtils {
 		if (json == null) {
 			return null;
 		}
-		final ObjectMapper mapper = new ObjectMapper();
+		final ObjectMapper mapper = buildMapper();
 		try {
 			final JavaType type = mapper.getTypeFactory().constructParametricType(Map.class, String.class, Object.class);
 			return mapper.readValue(json, type);
@@ -77,7 +79,7 @@ public final class JSONUtils {
 		if (json == null) {
 			return null;
 		}
-		final ObjectMapper mapper = new ObjectMapper();
+		final ObjectMapper mapper = buildMapper();
 		try {
 			final JavaType type = mapper.getTypeFactory().constructParametricType(Map.class, Object.class, Object.class);
 			return mapper.readValue(json, type);
@@ -100,7 +102,7 @@ public final class JSONUtils {
 		if (json == null) {
 			return null;
 		}
-		final ObjectMapper mapper = new ObjectMapper();
+		final ObjectMapper mapper = buildMapper();
 		try {
 			final JavaType type = mapper.getTypeFactory().constructParametricType(List.class, clazz);
 			return mapper.readValue(json, type);
@@ -123,15 +125,32 @@ public final class JSONUtils {
 		if(json == null || clazz == null) {
 			return null;
 		}
-		final ObjectMapper mapper = new ObjectMapper();
+		final ObjectMapper mapper = buildMapper();
 		try {
-			// 使用注解：@JsonIgnoreProperties(ignoreUnknown = true)
-			mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 			return mapper.readValue(json, clazz);
 		} catch (IOException e) {
 			LOGGER.error("JSON字符串转Java对象异常：{}", json, e);
 		}
 		return null;
+	}
+	
+	/**
+	 * <p>创建ObjectMapper</p>
+	 * 
+	 * @return ObjectMapper
+	 */
+	public static final ObjectMapper buildMapper() {
+		final ObjectMapper mapper = new ObjectMapper();
+		final PolymorphicTypeValidator validator = BasicPolymorphicTypeValidator.builder()
+			.allowIfBaseType(Object.class)
+			.build();
+		// 使用注解：@JsonIgnoreProperties(ignoreUnknown = true)
+		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		mapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
+		mapper.activateDefaultTyping(validator, ObjectMapper.DefaultTyping.NON_FINAL);
+		// 使用注解：@JsonInclude(Include.NON_NULL)
+		mapper.setSerializationInclusion(Include.NON_NULL);
+		return mapper;
 	}
 
 }
