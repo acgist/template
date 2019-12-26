@@ -18,7 +18,7 @@ import com.acgist.data.repository.BaseExtendRepositoryImpl;
 public class AcgistServiceUserApplication {
 
 	public static void main(String[] args) {
-		ApplicationLauncher.newInstance().web(args, AcgistServiceUserApplication.class);
+		ApplicationLauncher.getInstance().web(args, AcgistServiceUserApplication.class);
 	}
 
 }

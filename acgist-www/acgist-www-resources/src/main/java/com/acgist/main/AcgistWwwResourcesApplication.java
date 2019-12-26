@@ -7,7 +7,7 @@ import com.acgist.main.ApplicationLauncher;
 public class AcgistWwwResourcesApplication {
 
 	public static void main(String[] args) {
-		ApplicationLauncher.newInstance().web(args, AcgistWwwResourcesApplication.class);
+		ApplicationLauncher.getInstance().web(args, AcgistWwwResourcesApplication.class);
 	}
 	
 }

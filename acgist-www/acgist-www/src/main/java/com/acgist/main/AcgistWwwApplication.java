@@ -20,7 +20,7 @@ import com.acgist.data.repository.BaseExtendRepositoryImpl;
 public class AcgistWwwApplication {
 
 	public static void main(String[] args) {
-		ApplicationLauncher.newInstance().web(args, AcgistWwwApplication.class);
+		ApplicationLauncher.getInstance().web(args, AcgistWwwApplication.class);
 	}
 
 }

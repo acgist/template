@@ -20,7 +20,7 @@ import com.acgist.data.repository.BaseExtendRepositoryImpl;
 public class AcgistServiceApplication {
 
 	public static void main(String[] args) {
-		ApplicationLauncher.newInstance().run(args, AcgistServiceApplication.class);
+		ApplicationLauncher.getInstance().run(args, AcgistServiceApplication.class);
 	}
 	
 }

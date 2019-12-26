@@ -16,7 +16,7 @@ import com.acgist.data.repository.BaseExtendRepositoryImpl;
 public class AcgistWwwGatewayApplication {
 
 	public static void main(String[] args) {
-		ApplicationLauncher.newInstance().web(args, AcgistWwwGatewayApplication.class);
+		ApplicationLauncher.getInstance().web(args, AcgistWwwGatewayApplication.class);
 	}
 
 }

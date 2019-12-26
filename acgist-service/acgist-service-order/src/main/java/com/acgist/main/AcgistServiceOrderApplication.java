@@ -18,7 +18,7 @@ import com.acgist.data.repository.BaseExtendRepositoryImpl;
 public class AcgistServiceOrderApplication {
 
 	public static void main(String[] args) {
-		ApplicationLauncher.newInstance().run(args, AcgistServiceOrderApplication.class);
+		ApplicationLauncher.getInstance().run(args, AcgistServiceOrderApplication.class);
 	}
 	
 }

@@ -4,6 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
+import com.acgist.utils.UuidUtils;
+
 /**
  * <p>启动器</p>
  * 
@@ -12,11 +14,28 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
  */
 public class ApplicationLauncher {
 	
+	private static final ApplicationLauncher INSTANCE = new ApplicationLauncher();
+	
+	/**
+	 * <p>实例ID</p>
+	 */
+	private final String id;
+	
 	private ApplicationLauncher() {
+		this.id = UuidUtils.uuid().toUpperCase();
 	}
 
-	public static final ApplicationLauncher newInstance() {
-		return new ApplicationLauncher();
+	public static final ApplicationLauncher getInstance() {
+		return INSTANCE;
+	}
+	
+	/**
+	 * <p>获取实例ID</p>
+	 * 
+	 * @return 实例ID
+	 */
+	public String id() {
+		return this.id;
 	}
 	
 	/**
