@@ -2,7 +2,6 @@ package com.acgist.core.www.service;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -15,7 +14,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ResourceUtils;
 
 import com.acgist.core.config.AcgistConst;
 import com.acgist.utils.FileUtils;
@@ -57,13 +55,8 @@ public class FreeMarkerService {
 		if (!htmlPath.endsWith("/")) {
 			htmlPath += "/";
 		}
-		File htmlFile = null;
-		try {
-			htmlFile = ResourceUtils.getFile(htmlPath + htmlName);
-			FileUtils.mkdirs(htmlFile.getPath(), true);
-		} catch (FileNotFoundException e) {
-			LOGGER.error("生成静态文件异常", e);
-		}
+		final File htmlFile = FileUtils.file(htmlPath + htmlName);
+		FileUtils.mkdirs(htmlFile.getPath(), true);
 		try (final Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(htmlFile), AcgistConst.DEFAULT_CHARSET))) {
 			final Template template = this.configuration.getTemplate(templatePath, AcgistConst.DEFAULT_CHARSET);
 			template.process(data, writer);

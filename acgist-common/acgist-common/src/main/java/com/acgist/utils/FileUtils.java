@@ -1,6 +1,11 @@
 package com.acgist.utils;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.util.ResourceUtils;
 
 /**
  * <p>utils - 文件</p>
@@ -9,7 +14,26 @@ import java.io.File;
  * @since 1.0.0
  */
 public final class FileUtils {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(FileUtils.class);
 
+	/**
+	 * <p>通过Spring资源工具获取文件</p>
+	 * <p>支持：{@code file:}、{@code classpath:}</p>
+	 * 
+	 * @param path 文件路径
+	 * 
+	 * @return 文件
+	 */
+	public static final File file(String path) {
+		try {
+			return ResourceUtils.getFile(path);
+		} catch (FileNotFoundException e) {
+			LOGGER.error("获取文件异常：", path, e);
+		}
+		return null;
+	}
+	
 	/**
 	 * <p>生成目录</p>
 	 * 
