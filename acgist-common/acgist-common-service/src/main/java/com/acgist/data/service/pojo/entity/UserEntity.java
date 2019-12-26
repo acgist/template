@@ -1,10 +1,19 @@
 package com.acgist.data.service.pojo.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.Index;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.acgist.data.pojo.entity.BaseEntity;
@@ -17,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * @since 1.0.0
  */
 @Entity
-@Table(name = "tb_user", indexes = {
+@Table(name = "ts_user", indexes = {
 	@Index(name = "index_user_name", columnList = "name", unique = true),
 	@Index(name = "index_user_mail", columnList = "mail", unique = true),
 	@Index(name = "index_user_mobile", columnList = "mobile", unique = true)
@@ -26,6 +35,26 @@ public final class UserEntity extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * <p>角色类型</p>
+	 */
+	public enum Type {
+		
+		/**
+		 * <p>用户权限</p>
+		 */
+		USER,
+		/**
+		 * <p>后台权限</p>
+		 */
+		ADMIN;
+		
+	}
+	/**
+	 * <p>用户类型</p>
+	 */
+	@NotNull(message = "用户类型不能为空")
+	private UserEntity.Type type;
 	/**
 	 * <p>用户名称</p>
 	 */
@@ -55,7 +84,21 @@ public final class UserEntity extends BaseEntity {
 	@NotBlank(message = "用户密码不能为空")
 	@JsonIgnore
 	private String password;
+	/**
+	 * <p>角色列表</p>
+	 */
+	@JsonIgnore
+	private transient List<RoleEntity> roles;
 
+	@Column(nullable = false)
+	public UserEntity.Type getType() {
+		return type;
+	}
+
+	public void setType(UserEntity.Type type) {
+		this.type = type;
+	}
+	
 	@Column(length = 20, nullable = false)
 	public String getName() {
 		return name;
@@ -101,4 +144,42 @@ public final class UserEntity extends BaseEntity {
 		this.password = password;
 	}
 
+	@ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
+	@JoinTable(
+		name = "ts_user_role",
+		joinColumns = @JoinColumn(
+			name = "user_id",
+			referencedColumnName = "id",
+			foreignKey = @ForeignKey(name = "key_user_role_user_id")
+		),
+		inverseJoinColumns = @JoinColumn(
+			name = "role_id",
+			referencedColumnName = "id",
+			foreignKey = @ForeignKey(name = "key_user_role_role_id")
+		)
+	)
+	public List<RoleEntity> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<RoleEntity> roles) {
+		this.roles = roles;
+	}
+	
+	public boolean hasRole(RoleEntity role) {
+		if(this.roles == null) {
+			return false;
+		}
+		return this.roles.contains(role);
+	}
+	
+	public boolean hasPermission(PermissionEntity permission) {
+		if(this.roles == null) {
+			return false;
+		}
+		return this.roles
+			.stream()
+			.anyMatch(role -> role.hasPermission(permission));
+	}
+	
 }

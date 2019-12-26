@@ -8,6 +8,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.acgist.core.gateway.interceptor.GatewayInteceptor;
+import com.acgist.core.gateway.interceptor.PermissionInteceptor;
 import com.acgist.core.gateway.interceptor.SaveInteceptor;
 import com.acgist.core.gateway.interceptor.SignInteceptor;
 import com.acgist.core.gateway.interceptor.TimeInteceptor;
@@ -34,6 +35,8 @@ public class InterceptorConfig implements WebMvcConfigurer {
 	@Autowired
 	private SignInteceptor signInteceptor;
 	@Autowired
+	private PermissionInteceptor permissionInteceptor;
+	@Autowired
 	private SaveInteceptor saveInteceptor;
 	@Autowired
 	private UpdateInteceptor updateInteceptor;
@@ -48,6 +51,8 @@ public class InterceptorConfig implements WebMvcConfigurer {
 		registry.addInterceptor(this.timeInteceptor).addPathPatterns("/gateway/**");
 		LOGGER.info("配置拦截器：signInteceptor");
 		registry.addInterceptor(this.signInteceptor).addPathPatterns("/gateway/**");
+		LOGGER.info("配置拦截器：permissionInteceptor");
+		registry.addInterceptor(this.permissionInteceptor).addPathPatterns("/gateway/**");
 		LOGGER.info("配置拦截器：saveInteceptor");
 		registry.addInterceptor(this.saveInteceptor).addPathPatterns("/gateway/**");
 		LOGGER.info("配置拦截器：updateInteceptor");

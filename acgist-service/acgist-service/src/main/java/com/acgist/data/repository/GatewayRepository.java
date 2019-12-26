@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.acgist.data.repository.BaseExtendRepository;
 import com.acgist.data.service.pojo.entity.GatewayEntity;
 
 /**
@@ -21,7 +20,7 @@ public interface GatewayRepository extends BaseExtendRepository<GatewayEntity> {
 	 */
 	@Modifying
 	@Transactional(readOnly = false)
-	@Query(value = "UPDATE tb_gateway model SET model.status = :#{#gateway.getStatus().ordinal()}, model.`code` = :#{#gateway.code}, model.message = :#{#gateway.message}, model.response = :#{#gateway.response} WHERE model.query_id = :#{#gateway.queryId}", nativeQuery = true)
+	@Query(value = "UPDATE GatewayEntity model SET model.status = :#{#gateway.status}, model.code = :#{#gateway.code}, model.message = :#{#gateway.message}, model.response = :#{#gateway.response} WHERE model.queryId = :#{#gateway.queryId}")
 	void updateResponse(GatewayEntity gateway);
 	
 }

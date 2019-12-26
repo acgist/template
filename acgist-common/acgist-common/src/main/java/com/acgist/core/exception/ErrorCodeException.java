@@ -27,7 +27,20 @@ public final class ErrorCodeException extends RuntimeException {
 		super(message);
 		this.code = code;
 	}
-
+	
+	public ErrorCodeException(AcgistCode code, Throwable t) {
+		this(code.getCode(), code.getMessage(), t);
+	}
+	
+	public ErrorCodeException(AcgistCode code, String message, Throwable t) {
+		this(code.getCode(), message, t);
+	}
+	
+	public ErrorCodeException(String code, String message, Throwable t) {
+		super(message, t);
+		this.code = code;
+	}
+	
 	/**
 	 * <p>错误编码</p>
 	 * 

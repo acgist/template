@@ -1,8 +1,9 @@
 package com.acgist.utils;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
+
+import com.acgist.core.config.AcgistCode;
+import com.acgist.core.exception.ErrorCodeException;
 
 /**
  * <p>utils - Bean</p>
@@ -12,8 +13,21 @@ import org.springframework.context.ApplicationContext;
  */
 public final class BeanUtils {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(BeanUtils.class);
-
+	/**
+	 * <p>获取Class</p>
+	 * 
+	 * @param clazz 名称
+	 * 
+	 * @return Class
+	 */
+	public static final Class<?> forName(String clazz) {
+		try {
+			return Class.forName(clazz);
+		} catch (ClassNotFoundException e) {
+			throw new ErrorCodeException(AcgistCode.CODE_9999, e);
+		}
+	}
+	
 	/**
 	 * <p>获取对象实例</p>
 	 * 
@@ -38,9 +52,19 @@ public final class BeanUtils {
 		try {
 			return clazz.getDeclaredConstructor().newInstance();
 		} catch (Exception e) {
-			LOGGER.error("获取实例异常：{}", clazz, e);
+			throw new ErrorCodeException(AcgistCode.CODE_9999, e);
 		}
-		return null;
+	}
+	
+	/**
+	 * <p>获取对象实例</p>
+	 * 
+	 * @param clazz 类型
+	 * 
+	 * @return 实例
+	 */
+	public static final Object newInstance(String clazz) {
+		return newInstance(forName(clazz));
 	}
 	
 }

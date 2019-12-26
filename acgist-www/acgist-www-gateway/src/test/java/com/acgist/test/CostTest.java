@@ -23,7 +23,7 @@ public class CostTest {
 		AuthoMessage message = null;
 		long begin = System.currentTimeMillis();
 		for (int i = 0; i < 100000; i++) {
-			message = userService.autho("test");
+			message = userService.permission("test");
 		}
 		System.out.println(System.currentTimeMillis() - begin);
 		System.out.println(message);

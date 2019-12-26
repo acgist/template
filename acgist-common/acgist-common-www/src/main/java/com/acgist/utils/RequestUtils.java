@@ -13,8 +13,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.acgist.core.gateway.GatewayType;
 import com.acgist.core.gateway.request.GatewayRequest;
+import com.acgist.data.service.pojo.entity.PermissionEntity;
 
 /**
  * <p>utils - request</p>
@@ -73,12 +73,12 @@ public final class RequestUtils {
 	/**
 	 * <p>获取请求网关信息</p>
 	 * 
-	 * @param gatewayType 请求类型
+	 * @param permission 权限
 	 * @param request 请求
 	 * 
 	 * @return 网关信息
 	 */
-	public static final GatewayRequest gateway(GatewayType gatewayType, HttpServletRequest request) {
+	public static final GatewayRequest gateway(PermissionEntity permission, HttpServletRequest request) {
 		GatewayRequest gatewayRequest = null;
 		// 读取请求数据
 		final StringBuffer builder = new StringBuffer();
@@ -92,8 +92,9 @@ public final class RequestUtils {
 		} catch (Exception e) {
 			LOGGER.error("获取请求数据异常", e);
 		}
+		final Class<?> requestClazz = BeanUtils.forName(permission.getRequestClazz());
 		if(builder.length() != 0) {
-			gatewayRequest = (GatewayRequest) JSONUtils.toJava(builder.toString(), gatewayType.getRequestClazz());
+			gatewayRequest = (GatewayRequest) JSONUtils.toJava(builder.toString(), requestClazz);
 		}
 		// 读取请求表单
 		final var from = request.getParameterMap().entrySet().stream()
@@ -101,7 +102,7 @@ public final class RequestUtils {
 			.collect(Collectors.toMap(entry -> entry.getKey(), entry -> entry.getValue()[0]));
 		if(MapUtils.isEmpty(from)) {
 			if(gatewayRequest == null) {
-				gatewayRequest = gatewayType.newRequest();
+				gatewayRequest = (GatewayRequest) BeanUtils.newInstance(requestClazz);
 			}
 			GatewayUtils.pack(gatewayRequest, from);
 		}

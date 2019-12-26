@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import com.acgist.core.config.AcgistCode;
-import com.acgist.core.gateway.GatewayMapping;
-import com.acgist.core.gateway.GatewayType;
 import com.acgist.core.gateway.gateway.GatewaySession;
 import com.acgist.core.gateway.request.GatewayRequest;
+import com.acgist.core.www.service.PermissionService;
+import com.acgist.data.service.pojo.entity.PermissionEntity;
 import com.acgist.utils.RedirectUtils;
 import com.acgist.utils.RequestUtils;
 import com.acgist.utils.UuidUtils;
@@ -28,18 +28,20 @@ public class GatewayInteceptor implements HandlerInterceptor {
 	
 	@Autowired
 	private ApplicationContext context;
+	@Autowired
+	private PermissionService permissionService;
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		final GatewaySession gatewaySession = GatewaySession.getInstance(this.context);
 		gatewaySession.setQueryId(UuidUtils.uuid());
-		final GatewayType gatewayType = GatewayMapping.getInstance().getGatewayType(request.getRequestURI());
-		if(gatewayType == null) {
+		final PermissionEntity permission = this.permissionService.getPermission(request.getRequestURI());
+		if(permission == null) {
 			RedirectUtils.error(AcgistCode.CODE_1000, request, response);
 			return false;
 		}
-		gatewaySession.setGatewayType(gatewayType);
-		final GatewayRequest gatewayRequest = RequestUtils.gateway(gatewayType, request);
+		gatewaySession.setPermission(permission);
+		final GatewayRequest gatewayRequest = RequestUtils.gateway(permission, request);
 		if(gatewayRequest == null) {
 			RedirectUtils.error(AcgistCode.CODE_4400, "请求数据不能为空", request, response);
 			return false;

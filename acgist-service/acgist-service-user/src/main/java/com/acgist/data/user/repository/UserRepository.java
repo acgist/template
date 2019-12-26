@@ -21,7 +21,7 @@ public interface UserRepository extends BaseExtendRepository<UserEntity> {
 	 * 
 	 * @return 用户信息
 	 */
-	@Query(value = "SELECT * FROM tb_user model WHERE model.name = :name LIMIT 1", nativeQuery = true)
+	@Query(value = "SELECT * FROM ts_user model WHERE model.name = :name LIMIT 1", nativeQuery = true)
 	UserEntity findByName(String name);
 	
 	/**
@@ -32,7 +32,7 @@ public interface UserRepository extends BaseExtendRepository<UserEntity> {
 	 */
 	@Modifying
 	@Transactional(readOnly = false)
-	@Query(value = "UPDATE tb_user model SET model.nick = :nick WHERE model.name = :name", nativeQuery = true)
+	@Query(value = "UPDATE UserEntity model SET model.nick = :nick WHERE model.name = :name")
 	void update(String nick, String name);
 	
 }

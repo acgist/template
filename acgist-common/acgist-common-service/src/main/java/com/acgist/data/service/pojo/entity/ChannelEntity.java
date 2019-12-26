@@ -15,7 +15,7 @@ import com.acgist.data.pojo.entity.BaseEntity;
  * @since 1.0.0
  */
 @Entity
-@Table(name = "tb_channel")
+@Table(name = "ts_channel")
 public class ChannelEntity extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;

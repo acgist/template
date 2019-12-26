@@ -18,7 +18,7 @@ import com.acgist.data.pojo.entity.BaseEntity;
  * @since 1.0.0
  */
 @Entity
-@Table(name = "tb_gateway", indexes = {
+@Table(name = "ts_gateway", indexes = {
 	@Index(name = "index_gateway_query_id", columnList = "queryId", unique = true)
 })
 public class GatewayEntity extends BaseEntity {

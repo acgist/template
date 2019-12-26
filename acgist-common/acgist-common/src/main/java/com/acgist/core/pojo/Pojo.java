@@ -6,6 +6,7 @@ import com.acgist.utils.JSONUtils;
 
 /**
  * <p>message - POJO</p>
+ * <p>禁止添加业务逻辑</p>
  * 
  * @author acgist
  * @since 1.0.0

@@ -2,8 +2,8 @@ package com.acgist.core.service;
 
 import com.acgist.core.pojo.message.ResultMessage;
 import com.acgist.data.service.pojo.entity.UserEntity;
-import com.acgist.data.service.pojo.message.AuthoMessage;
 import com.acgist.data.service.pojo.message.LoginMessage;
+import com.acgist.data.service.pojo.message.AuthoMessage;
 import com.acgist.data.service.pojo.message.UserMessage;
 
 /**
@@ -21,7 +21,7 @@ public interface IUserService {
 	 * 
 	 * @return 授权信息
 	 */
-	AuthoMessage autho(String name);
+	AuthoMessage permission(String name);
 	
 	/**
 	 * <p>根据用户名称查询用户信息</p>

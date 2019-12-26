@@ -1,5 +1,7 @@
 package com.acgist.core.user.service.impl;
 
+import javax.transaction.Transactional;
+
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -8,6 +10,7 @@ import com.acgist.core.config.AcgistCode;
 import com.acgist.core.pojo.message.ResultMessage;
 import com.acgist.core.service.IUserService;
 import com.acgist.core.user.config.AcgistServiceUserCache;
+import com.acgist.data.service.pojo.entity.RoleEntity;
 import com.acgist.data.service.pojo.entity.UserEntity;
 import com.acgist.data.service.pojo.message.AuthoMessage;
 import com.acgist.data.service.pojo.message.LoginMessage;
@@ -27,8 +30,9 @@ public class UserServiceImpl implements IUserService {
 	private UserRepository userRepository;
 	
 	@Override
+	@Transactional
 	@Cacheable(AcgistServiceUserCache.AUTHO_MESSAGE)
-	public AuthoMessage autho(String name) {
+	public AuthoMessage permission(String name) {
 		final UserEntity entity = this.userRepository.findByName(name);
 		final AuthoMessage authoMessage = new AuthoMessage();
 		if(entity == null) {
@@ -37,13 +41,19 @@ public class UserServiceImpl implements IUserService {
 			authoMessage.buildSuccess();
 			authoMessage.setName(entity.getName());
 			authoMessage.setPassword(entity.getPassword());
+			final String[] roles = entity.getRoles().stream()
+				.map(RoleEntity::getId)
+				.toArray(String[]::new);
+			authoMessage.setRoles(roles);
 		}
 		return authoMessage;
 	}
 
 	@Override
 	public UserMessage findByName(String name) {
-		return new UserMessage(this.userRepository.findByName(name));
+		final UserMessage message = new UserMessage(this.userRepository.findByName(name));
+		message.buildSuccess();
+		return message;
 	}
 	
 	@Override

@@ -2,19 +2,17 @@ package com.acgist.core.gateway.gateway;
 
 import java.io.Serializable;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.acgist.core.config.AcgistCode;
-import com.acgist.core.exception.ErrorCodeException;
-import com.acgist.core.gateway.GatewayType;
 import com.acgist.core.gateway.request.GatewayRequest;
 import com.acgist.core.gateway.response.GatewayResponse;
 import com.acgist.core.pojo.message.ResultMessage;
+import com.acgist.data.service.pojo.entity.PermissionEntity;
 import com.acgist.data.service.pojo.message.AuthoMessage;
+import com.acgist.utils.BeanUtils;
 import com.acgist.utils.DateUtils;
 import com.acgist.utils.GatewayUtils;
 
@@ -30,8 +28,6 @@ public final class GatewaySession implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(GatewaySession.class);
-
 	public static final GatewaySession getInstance(ApplicationContext context) {
 		return context.getBean(GatewaySession.class);
 	}
@@ -49,10 +45,6 @@ public final class GatewaySession implements Serializable {
 	 */
 	private String queryId;
 	/**
-	 * <p>网关类型</p>
-	 */
-	private GatewayType gatewayType;
-	/**
 	 * <p>请求</p>
 	 */
 	private GatewayRequest request;
@@ -64,6 +56,10 @@ public final class GatewaySession implements Serializable {
 	 * <p>授权</p>
 	 */
 	private AuthoMessage authoMessage;
+	/**
+	 * <p>授权</p>
+	 */
+	private PermissionEntity permission;
 	
 	/**
 	 * <p>判断是否处理完成</p>
@@ -80,7 +76,7 @@ public final class GatewaySession implements Serializable {
 	 * @return 是否保存
 	 */
 	public boolean save() {
-		return this.gatewayType.isSave();
+		return this.permission.getSave();
 	}
 	
 	/**
@@ -112,12 +108,7 @@ public final class GatewaySession implements Serializable {
 	 * @return 响应
 	 */
 	private GatewayResponse buildResponse() {
-		try {
-			return (GatewayResponse) this.gatewayType.getResponseClazz().getDeclaredConstructor().newInstance();
-		} catch (Exception e) {
-			LOGGER.error("生成响应异常", e);
-		}
-		throw new ErrorCodeException(AcgistCode.CODE_9999);
+		return (GatewayResponse) BeanUtils.newInstance(this.permission.getResponseClazz());
 	}
 
 	/**
@@ -169,14 +160,6 @@ public final class GatewaySession implements Serializable {
 		this.queryId = queryId;
 	}
 
-	public GatewayType getGatewayType() {
-		return gatewayType;
-	}
-
-	public void setGatewayType(GatewayType gatewayType) {
-		this.gatewayType = gatewayType;
-	}
-
 	public GatewayRequest getRequest() {
 		return request;
 	}
@@ -199,6 +182,14 @@ public final class GatewaySession implements Serializable {
 
 	public void setAuthoMessage(AuthoMessage authoMessage) {
 		this.authoMessage = authoMessage;
+	}
+	
+	public PermissionEntity getPermission() {
+		return permission;
+	}
+	
+	public void setPermission(PermissionEntity permission) {
+		this.permission = permission;
 	}
 	
 }

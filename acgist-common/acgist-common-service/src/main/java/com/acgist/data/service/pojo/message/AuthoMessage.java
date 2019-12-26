@@ -20,6 +20,10 @@ public class AuthoMessage extends ResultMessage {
 	 * <p>用户密码</p>
 	 */
 	private String password;
+	/**
+	 * <p>角色数组</p>
+	 */
+	private String[] roles;
 
 	public String getName() {
 		return name;
@@ -37,15 +41,12 @@ public class AuthoMessage extends ResultMessage {
 		this.password = password;
 	}
 
-	/**
-	 * <p>生成缓存Key</p>
-	 * 
-	 * @param name 用户名称
-	 * 
-	 * @return key
-	 */
-	public static final String buildCacheKey(String name) {
-		return "AuthoMessage:" + name;
+	public String[] getRoles() {
+		return roles;
 	}
-	
+
+	public void setRoles(String[] roles) {
+		this.roles = roles;
+	}
+
 }
