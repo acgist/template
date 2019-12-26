@@ -111,6 +111,8 @@ public final class HTTPClient {
 	private static final String USER_AGENT;
 	/**
 	 * <p>HTTP客户端线程池</p>
+	 * 
+	 * TODO：线程池优化，部分应用调整
 	 */
 	private static final ExecutorService EXECUTOR = SystemThreadContext.newExecutor(2, 100, 1000, 60L, SystemThreadContext.ACGIST_THREAD_HTTP_CLIENT);
 	
@@ -324,7 +326,7 @@ public final class HTTPClient {
 		}
 		final String body = data.entrySet().stream()
 			.map(entry -> {
-				return entry.getKey() + "=" + URLUtils.encoding(entry.getValue());
+				return entry.getKey() + "=" + URLUtils.encode(entry.getValue());
 			})
 			.collect(Collectors.joining("&"));
 		return BodyPublishers.ofString(body);

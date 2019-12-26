@@ -28,7 +28,7 @@ public class FreeMarkerConfig {
 	private freemarker.template.Configuration configuration;
 
 	@PostConstruct
-	public void init() throws Exception {
+	public void config() throws Exception {
 		LOGGER.info("设置FreeMarker静态文件域名：{}", staticUrl);
 		this.configuration.setSharedVariable("staticUrl", this.staticUrl);
 		LOGGER.info("设置FreeMarker空值优化处理");

@@ -42,7 +42,7 @@ public class PermissionService {
 	public void init() {
 		if(this.permission) {
 			LOGGER.info("加载权限");
-			this.permissionMessage = this.permissionService.getPermission();
+			this.permissionMessage = this.permissionService.allPermission();
 		}
 	}
 	

@@ -21,7 +21,7 @@ public interface IUserService {
 	 * 
 	 * @return 授权信息
 	 */
-	AuthoMessage permission(String name);
+	AuthoMessage getAuthoMessage(String name);
 	
 	/**
 	 * <p>根据用户名称查询用户信息</p>

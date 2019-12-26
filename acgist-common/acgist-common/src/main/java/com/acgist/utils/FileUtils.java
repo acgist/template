@@ -25,7 +25,7 @@ public final class FileUtils {
 	 * 
 	 * @return 文件
 	 */
-	public static final File file(String path) {
+	public static final File getFile(String path) {
 		try {
 			return ResourceUtils.getFile(path);
 		} catch (FileNotFoundException e) {

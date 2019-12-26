@@ -61,7 +61,7 @@ public final class RedirectUtils {
 	 */
 	public static final void error(AcgistCode code, String message, HttpServletRequest request, HttpServletResponse response) {
 		message = AcgistCode.message(code, message);
-		final String location = String.format(ERROR_LOCATION, code.getCode(), URLUtils.encoding(message));
+		final String location = String.format(ERROR_LOCATION, code.getCode(), URLUtils.encode(message));
 		requestDispatcher(request, response, location);
 	}
 

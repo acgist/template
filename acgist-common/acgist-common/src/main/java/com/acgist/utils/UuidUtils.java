@@ -15,7 +15,7 @@ public final class UuidUtils {
 	 * 
 	 * @return UUID
 	 */
-	public static final String uuid() {
+	public static final String buildUuid() {
 		return UUID.randomUUID().toString().replace("-", "");
 	}
 	

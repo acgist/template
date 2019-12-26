@@ -22,7 +22,7 @@ public final class RandomUtils {
 	 * 
 	 * @return 随机数工具
 	 */
-	public static final Random random() {
+	public static final Random buildRandom() {
 		try {
 			return SecureRandom.getInstanceStrong();
 		} catch (NoSuchAlgorithmException e) {

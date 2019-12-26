@@ -34,14 +34,14 @@ public class GatewayInteceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		final GatewaySession gatewaySession = GatewaySession.getInstance(this.context);
-		gatewaySession.setQueryId(UuidUtils.uuid());
+		gatewaySession.setQueryId(UuidUtils.buildUuid());
 		final PermissionEntity permission = this.permissionService.getPermission(request.getRequestURI());
 		if(permission == null) {
 			RedirectUtils.error(AcgistCode.CODE_1000, request, response);
 			return false;
 		}
 		gatewaySession.setPermission(permission);
-		final GatewayRequest gatewayRequest = RequestUtils.gateway(permission, request);
+		final GatewayRequest gatewayRequest = RequestUtils.requestGateway(permission, request);
 		if(gatewayRequest == null) {
 			RedirectUtils.error(AcgistCode.CODE_4400, "请求数据不能为空", request, response);
 			return false;

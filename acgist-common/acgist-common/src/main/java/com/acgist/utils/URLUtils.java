@@ -31,7 +31,7 @@ public final class URLUtils {
 	 * 
 	 * @return 编码内容
 	 */
-	public static final String encoding(String value) {
+	public static final String encode(String value) {
 		if (value == null) {
 			return null;
 		}
@@ -50,7 +50,7 @@ public final class URLUtils {
 	 * 
 	 * @return 原始内容
 	 */
-	public static final String decoding(String value) {
+	public static final String decode(String value) {
 		if(value == null) {
 			return null;
 		}

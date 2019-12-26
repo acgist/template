@@ -23,7 +23,7 @@ public class DubboTest extends BaseTest {
 		reference.setVersion("1.0.0");
 		reference.setTimeout(30000);
 		final var service = reference.get();
-		final var result = service.getPermission();
+		final var result = service.allPermission();
 		this.log(result);
 	}
 	

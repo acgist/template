@@ -55,7 +55,7 @@ public class FreeMarkerService {
 		if (!htmlPath.endsWith("/")) {
 			htmlPath += "/";
 		}
-		final File htmlFile = FileUtils.file(htmlPath + htmlName);
+		final File htmlFile = FileUtils.getFile(htmlPath + htmlName);
 		FileUtils.mkdirs(htmlFile.getPath(), true);
 		try (final Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(htmlFile), AcgistConst.DEFAULT_CHARSET))) {
 			final Template template = this.configuration.getTemplate(templatePath, AcgistConst.DEFAULT_CHARSET);

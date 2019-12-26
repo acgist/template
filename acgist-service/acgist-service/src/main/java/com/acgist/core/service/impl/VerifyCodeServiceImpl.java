@@ -44,7 +44,7 @@ public class VerifyCodeServiceImpl implements IVerifyCodeService {
 	
 	@Override
 	public String build(String key) {
-		final Random random = RandomUtils.random();
+		final Random random = RandomUtils.buildRandom();
 		final StringBuilder builder = new StringBuilder();
 		for (int index = 0; index < this.length; index++) {
 			builder.append(random.nextInt(10));
@@ -62,7 +62,7 @@ public class VerifyCodeServiceImpl implements IVerifyCodeService {
 		mailDto.setSubject(message.getName());
 		mailDto.setContent(message.getContent());
 		mailDto.setReceiver(mail);
-		return this.mailService.mail(mailDto);
+		return this.mailService.send(mailDto);
 	}
 
 	@Override
@@ -79,12 +79,12 @@ public class VerifyCodeServiceImpl implements IVerifyCodeService {
 	public ResultMessage verify(String key, String code) {
 		final String trueCode = this.redisService.get(key);
 		if(trueCode == null) {
-			return ResultMessage.newInstance().buildMessage(AcgistCode.CODE_0001, "验证码失效");
+			return ResultMessage.newInstance().buildMessage(AcgistCode.CODE_9999, "验证码失效");
 		}
 		if(trueCode.equalsIgnoreCase(code)) {
 			return ResultMessage.newInstance().buildSuccess();
 		}
-		return ResultMessage.newInstance().buildMessage(AcgistCode.CODE_0001, "验证码错误");
+		return ResultMessage.newInstance().buildMessage(AcgistCode.CODE_9999, "验证码错误");
 	}
 	
 	/**

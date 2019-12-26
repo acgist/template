@@ -17,6 +17,6 @@ public interface IMailService {
 	 * 
 	 * @return 是否发送成功
 	 */
-	boolean mail(MailDto mail);
+	boolean send(MailDto mail);
 	
 }

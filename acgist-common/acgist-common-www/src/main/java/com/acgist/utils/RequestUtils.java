@@ -54,12 +54,12 @@ public final class RequestUtils {
 	 * 
 	 * @return 请求信息
 	 */
-	public static final String requestFormMessage(HttpServletRequest request) {
+	public static final String requestMessage(HttpServletRequest request) {
 		final Map<String, String> message = new HashMap<>();
 		message.put(IP, clientIP(request));
 		message.put(URI, request.getRequestURI());
 		message.put(METHOD, request.getMethod());
-		message.put(QUERY, request.getQueryString());
+		message.put(QUERY, request.getQueryString()); // TODO：JSON数据
 		final String form = request.getParameterMap().entrySet().stream()
 			.map(entry -> {
 				return entry.getKey() + "=" + String.join(",", entry.getValue());
@@ -78,7 +78,7 @@ public final class RequestUtils {
 	 * 
 	 * @return 网关信息
 	 */
-	public static final GatewayRequest gateway(PermissionEntity permission, HttpServletRequest request) {
+	public static final GatewayRequest requestGateway(PermissionEntity permission, HttpServletRequest request) {
 		GatewayRequest gatewayRequest = null;
 		// 读取请求数据
 		final StringBuffer builder = new StringBuffer();

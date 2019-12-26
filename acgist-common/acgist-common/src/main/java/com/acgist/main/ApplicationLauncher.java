@@ -22,7 +22,7 @@ public class ApplicationLauncher {
 	private final String id;
 	
 	private ApplicationLauncher() {
-		this.id = UuidUtils.uuid().toUpperCase();
+		this.id = UuidUtils.buildUuid().toUpperCase();
 	}
 
 	public static final ApplicationLauncher getInstance() {

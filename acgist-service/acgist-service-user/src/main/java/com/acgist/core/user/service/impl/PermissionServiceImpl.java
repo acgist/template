@@ -25,7 +25,7 @@ public class PermissionServiceImpl implements IPermissionService {
 	
 	@Override
 	@Transactional
-	public PermissionMessage getPermission() {
+	public PermissionMessage allPermission() {
 		final var allRoles = this.roleRepository.findAll();
 		final PermissionMessage message = new PermissionMessage();
 		// 手动创建瞬时对象

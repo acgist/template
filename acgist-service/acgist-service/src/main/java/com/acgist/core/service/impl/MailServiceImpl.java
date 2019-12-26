@@ -15,7 +15,7 @@ import com.acgist.data.service.pojo.dto.MailDto;
 public class MailServiceImpl implements IMailService {
 
 	@Override
-	public boolean mail(MailDto mail) {
+	public boolean send(MailDto mail) {
 		// TODO：实现
 		return false;
 	}

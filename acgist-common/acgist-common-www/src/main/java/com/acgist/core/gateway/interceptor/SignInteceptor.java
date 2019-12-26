@@ -35,7 +35,7 @@ public class SignInteceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		final GatewaySession gatewaySession = GatewaySession.getInstance(this.context);
 		final GatewayRequest gatewayRequest = gatewaySession.getRequest();
-		final AuthoMessage authoMessage = this.userService.permission(gatewayRequest.getUsername());
+		final AuthoMessage authoMessage = this.userService.getAuthoMessage(gatewayRequest.getUsername());
 		if(authoMessage.fail()) {
 			RedirectUtils.error(authoMessage.getCode(), request, response);
 			return false;

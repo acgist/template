@@ -32,7 +32,7 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	@Transactional
 	@Cacheable(AcgistServiceUserCache.AUTHO_MESSAGE)
-	public AuthoMessage permission(String name) {
+	public AuthoMessage getAuthoMessage(String name) {
 		final UserEntity entity = this.userRepository.findByName(name);
 		final AuthoMessage authoMessage = new AuthoMessage();
 		if(entity == null) {

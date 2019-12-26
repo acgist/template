@@ -11,11 +11,11 @@ import com.acgist.data.service.pojo.message.PermissionMessage;
 public interface IPermissionService {
 
 	/**
-	 * <p>获取权限</p>
+	 * <p>获取所有权限</p>
 	 * <p>获取权限建议缓存不用每次进行查询</p>
 	 * 
 	 * @return 权限信息
 	 */
-	PermissionMessage getPermission();
+	PermissionMessage allPermission();
 	
 }
