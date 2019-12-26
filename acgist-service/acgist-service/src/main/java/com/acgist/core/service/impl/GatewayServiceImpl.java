@@ -13,7 +13,7 @@ import com.acgist.data.service.pojo.entity.GatewayEntity;
  * @author acgist
  * @since 1.0.0
  */
-@Service(version = "${acgist.version}")
+@Service(version = "${acgist.service.version}")
 public class GatewayServiceImpl implements IGatewayService {
 
 	@Autowired

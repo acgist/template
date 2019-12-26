@@ -14,7 +14,7 @@ import com.acgist.utils.DateUtils;
  * @author acgist
  * @since 1.0.0
  */
-@Service(retries = 0, version = "${acgist.version}")
+@Service(retries = 0, version = "${acgist.service.version}")
 public class CodeServiceImpl implements ICodeService {
 
 	/**

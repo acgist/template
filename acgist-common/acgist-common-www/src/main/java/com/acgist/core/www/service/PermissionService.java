@@ -35,7 +35,7 @@ public class PermissionService {
 	 */
 	private PermissionMessage permissionMessage;
 	
-	@Reference(version = "${acgist.version}")
+	@Reference(version = "${acgist.service.version}")
 	private IPermissionService permissionService;
 	
 	@PostConstruct

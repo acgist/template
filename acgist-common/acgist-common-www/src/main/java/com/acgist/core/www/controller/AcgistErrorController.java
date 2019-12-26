@@ -37,7 +37,7 @@ public class AcgistErrorController implements ErrorController {
 	 */
 	public static final String ERROR_PATH = "/error";
 	
-	@Value("${acgist.error:/error}")
+	@Value("${acgist.error.template:/error}")
 	private String error;
 	
 	@Autowired

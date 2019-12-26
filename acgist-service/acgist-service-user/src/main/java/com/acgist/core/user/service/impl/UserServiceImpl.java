@@ -23,7 +23,7 @@ import com.acgist.data.user.repository.UserRepository;
  * @author acgist
  * @since 1.0.0
  */
-@Service(retries = 0, version = "${acgist.version}")
+@Service(retries = 0, version = "${acgist.service.version}")
 public class UserServiceImpl implements IUserService {
 
 	@Autowired

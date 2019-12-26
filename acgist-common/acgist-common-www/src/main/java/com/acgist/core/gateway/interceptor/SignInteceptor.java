@@ -26,7 +26,7 @@ import com.acgist.utils.RedirectUtils;
 @Component
 public class SignInteceptor implements HandlerInterceptor {
 
-	@Reference(version = "${acgist.version}")
+	@Reference(version = "${acgist.service.version}")
 	private IUserService userService;
 	@Autowired
 	private ApplicationContext context;

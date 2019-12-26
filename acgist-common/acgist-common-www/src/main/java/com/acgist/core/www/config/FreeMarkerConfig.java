@@ -19,7 +19,7 @@ public class FreeMarkerConfig {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(FreeMarkerConfig.class);
 	
-	@Value("${acgist.static.url:}")
+	@Value("${acgist.static.base.url:}")
 	private String staticUrl;
 	@Value("${spring.freemarker.settings.classic_compatible:true}")
 	private Boolean compatible;
