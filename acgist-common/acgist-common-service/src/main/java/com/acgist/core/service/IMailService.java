@@ -14,7 +14,9 @@ public interface IMailService {
 	 * <p>发送邮件</p>
 	 * 
 	 * @param mail 邮件信息
+	 * 
+	 * @return 是否发送成功
 	 */
-	void mail(MailDto mail);
+	boolean mail(MailDto mail);
 	
 }

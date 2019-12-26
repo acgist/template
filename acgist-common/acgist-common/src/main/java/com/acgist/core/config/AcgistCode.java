@@ -34,6 +34,8 @@ import com.acgist.core.exception.ErrorCodeException;
 public enum AcgistCode {
 
 	CODE_0000("0000", "成功"),
+	/** 自定义描述 */
+	CODE_0001("0001", "自定义描述"),
 	
 	CODE_1000("1000", "未知服务"),
 	CODE_1002("1001", "服务超时"),

@@ -1,5 +1,7 @@
 package com.acgist.core.service;
 
+import com.acgist.core.pojo.message.ResultMessage;
+
 /**
  * <p>service - 验证码</p>
  * 
@@ -41,8 +43,8 @@ public interface IVerifyCodeService {
 	 * @param key 验证码Key
 	 * @param code 验证码
 	 * 
-	 * @return 验证是否成功
+	 * @return 验证结果
 	 */
-	boolean verify(String key, String code);
+	ResultMessage verify(String key, String code);
 	
 }

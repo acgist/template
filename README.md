@@ -101,5 +101,5 @@
 |配置|默认|说明|
 |:--|:--|:--|
 |`acgist.service.version`|`1.0.0`|服务版本|
-|`acgist.gateway.duration`|`10`|网关时间相差（分钟）|
+|`acgist.gateway.duration`|`10`|请求有效时间（分钟）|
 |`acgist.static.base.url`|`http://192.168.1.100:28888`|静态资源基础域名|
