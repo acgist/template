@@ -75,3 +75,29 @@
 #### 级联查询
 
 级联查询一般使用延迟加载和瞬时状态，使用`Dubbo`查询时可能会出现信息等于`null`，这是需要传输时手动创建对象。
+
+## 配置说明
+
+#### 覆盖
+
+|配置|默认|说明|
+|:--|:--|:--|
+|`acgist.index`|`index.html`|首页|
+|`acgist.index.template`|`index.ftl`|首页模板|
+|`acgist.error`|`/error`|错误模板|
+|`acgist.html.path`|-|静态页面路径|
+|`acgist.static.path`|-|静态资源路径|
+|`acgist.permission`|`false`|加载权限数据|
+|`acgist.dubbo.port`|随机|`Dubbo`端口|
+|`acgist.session.name`|`ACGISTID`|配置`SessionCookieID`|
+|`acgist.redis.database`|`0`|`Redis`索引|
+|`acgist.zookeeper.port`|`2181`|`ZooKeeper`端口|
+|`acgist.zookeeper.host`|`127.0.0.1`|`ZooKeeper`地址|
+
+#### 固定
+
+|配置|默认|说明|
+|:--|:--|:--|
+|`acgist.version`|`1.0.0`|软件和服务版本|
+|`acgist.static.url`|`http://192.168.1.100:28888`|静态资源域名|
+|`acgist.gateway.duration`|`10`|网关时间相差（分钟）|
