@@ -1,0 +1,4 @@
+-- 权限
+
+INSERT INTO `acgist`.`ts_permission` (`id`, `create_date`, `modify_date`, `name`, `notify`, `parent`, `path`, `request_clazz`, `response_clazz`, `save`, `sort`, `type`) VALUES ('938efc35278411eaa08c02004c4f4f50', '2019-12-26 10:09:11.000000', '2019-12-26 10:09:15.000000', '用户信息查询', b'0', NULL, '/gateway/user', 'com.acgist.core.gateway.gateway.request.UserRequest', 'com.acgist.core.gateway.gateway.response.UserResponse', b'0', '0', '0');
+INSERT INTO `acgist`.`ts_permission` (`id`, `create_date`, `modify_date`, `name`, `notify`, `parent`, `path`, `request_clazz`, `response_clazz`, `save`, `sort`, `type`) VALUES ('938efc35278411eaa08c02004c4f4f51', '2019-12-26 10:11:09.000000', '2019-12-26 10:11:12.000000', '用户信息修改', b'0', NULL, '/gateway/user/update', '\r\ncom.acgist.core.gateway.gateway.request.UserUpdateRequest\r\n\r\n', '\r\ncom.acgist.core.gateway.gateway.request.UserUpdateRequest\r\n\r\n', b'1', '1', '0');

@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Primary;
@@ -35,6 +36,9 @@ public class AcgistErrorController implements ErrorController {
 	 * <p>错误请求地址</p>
 	 */
 	public static final String ERROR_PATH = "/error";
+	
+	@Value("${acgist.error:/error}")
+	private String error;
 	
 	@Autowired
 	private ApplicationContext context;
@@ -98,7 +102,7 @@ public class AcgistErrorController implements ErrorController {
 	
 	@Override
 	public String getErrorPath() {
-		return ERROR_PATH;
+		return this.error;
 	}
 	
 }
