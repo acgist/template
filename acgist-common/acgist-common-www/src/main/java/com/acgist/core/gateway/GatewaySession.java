@@ -1,6 +1,7 @@
 package com.acgist.core.gateway;
 
 import java.io.Serializable;
+import java.security.PrivateKey;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
@@ -44,6 +45,10 @@ public final class GatewaySession implements Serializable {
 	 * <p>请求编号</p>
 	 */
 	private String queryId;
+	/**
+	 * <p>私钥</p>
+	 */
+	private PrivateKey privateKey;
 	/**
 	 * <p>请求</p>
 	 */
@@ -89,12 +94,23 @@ public final class GatewaySession implements Serializable {
 	}
 	
 	/**
+	 * <p>设置网关请求</p>
+	 * 
+	 * @param queryId 请求编号
+	 * @param privateKey 私钥
+	 */
+	public void buildGateway(String queryId, PrivateKey privateKey) {
+		this.gateway = true;
+		this.queryId = queryId;
+		this.privateKey = privateKey;
+	}
+	
+	/**
 	 * <p>生成响应</p>
 	 * 
 	 * @param request 请求
 	 */
-	public void buildResponse(GatewayRequest request) {
-		this.gateway = true;
+	public void buildRequest(GatewayRequest request) {
 		this.request = request;
 		this.response = this.buildResponse();
 		this.response.setQueryId(this.queryId);
@@ -142,16 +158,19 @@ public final class GatewaySession implements Serializable {
 	 * @return 响应
 	 */
 	public GatewayResponse buildResponse(String code, String message) {
+		this.done = true;
+		if(this.response == null) {
+			this.response = GatewayResponse.newInstance();
+		}
 		this.response.setCode(code);
 		this.response.setMessage(message);
 		this.response.setResponseTime(DateUtils.nowTimestamp());
-		if(this.authoMessage != null) {
-			GatewayUtils.signature(this.authoMessage.getPassword(), this.response);
+		if(this.privateKey != null) {
+			GatewayUtils.signature(this.privateKey, this.response);
 		}
-		this.done = true;
 		return this.response;
 	}
-
+	
 	public String getQueryId() {
 		return queryId;
 	}

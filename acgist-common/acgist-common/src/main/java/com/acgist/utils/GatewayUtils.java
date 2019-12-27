@@ -1,6 +1,8 @@
 package com.acgist.utils;
 
 import java.lang.reflect.InvocationTargetException;
+import java.security.PrivateKey;
+import java.security.PublicKey;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
@@ -77,6 +79,32 @@ public class GatewayUtils {
 	}
 	
 	/**
+	 * <p>生成摘要</p>
+	 * 
+	 * @param password 密码
+	 * @param gateway 网关信息
+	 * 
+	 * @return 摘要
+	 */
+	private static final String buildDigest(String password, Gateway gateway) {
+		final Map<String, String> data = gateway.data();
+		final StringBuilder builder = new StringBuilder();
+		if(password != null) {
+			builder.append(password);
+		}
+		data.entrySet().stream()
+			.filter(entry -> !Gateway.PROPERTY_SIGNATURE.equals(entry.getKey()))
+			.sorted((a, b) -> StringUtils.compare(a.getKey(), b.getKey()))
+			.forEach(entry -> {
+				builder.append(entry.getKey()).append(entry.getValue());
+			});
+		if(password != null) {
+			builder.append(password);
+		}
+		return builder.toString();
+	}
+	
+	/**
 	 * <p>签名</p>
 	 * 
 	 * @param password 密码
@@ -88,16 +116,9 @@ public class GatewayUtils {
 		if(StringUtils.isEmpty(password) || gateway == null) {
 			throw new ErrorCodeException(AcgistCode.CODE_3000);
 		}
-		final Map<String, String> data = gateway.data();
-		final StringBuffer buffer = new StringBuffer(password);
-		data.entrySet().stream()
-			.filter(entry -> !Gateway.PROPERTY_SIGNATURE.equals(entry.getKey()))
-			.sorted((a, b) -> StringUtils.compare(a.getKey(), b.getKey()))
-			.forEach(entry -> {
-				buffer.append(entry.getKey()).append(entry.getValue());
-			});
-		buffer.append(password);
-		gateway.setSignature(DigestUtils.md5Hex(buffer.toString()));
+		final String digest = buildDigest(password, gateway);
+		// 签名
+		gateway.setSignature(DigestUtils.md5Hex(digest));
 		return gateway.getSignature();
 	}
 	
@@ -116,7 +137,42 @@ public class GatewayUtils {
 		final Map<String, String> data = gateway.data();
 		final String signature = data.get(Gateway.PROPERTY_SIGNATURE);
 		final String trueSignature = signature(password, gateway);
+		// 验签
 		return StringUtils.equals(signature, trueSignature);
+	}
+	
+	/**
+	 * <p>签名</p>
+	 * 
+	 * @param privateKey 私钥
+	 * @param gateway 网关信息
+	 * 
+	 * @return 签名
+	 */
+	public static final String signature(PrivateKey privateKey, Gateway gateway) {
+		if(privateKey == null || gateway == null) {
+			throw new ErrorCodeException(AcgistCode.CODE_3000);
+		}
+		final String digest = buildDigest(null, gateway);
+		// 签名
+		gateway.setSignature(RsaUtils.signature(digest, privateKey));
+		return gateway.getSignature();
+	}
+	
+	/**
+	 * <p>验签</p>
+	 * 
+	 * @param publicKey 公钥
+	 * @param gateway 网关信息
+	 * 
+	 * @return 验证结果
+	 */
+	public static final boolean verify(PublicKey publicKey, Gateway gateway) {
+		if(publicKey == null || gateway == null) {
+			throw new ErrorCodeException(AcgistCode.CODE_3000);
+		}
+		final String digest = buildDigest(null, gateway);
+		return RsaUtils.verify(digest, gateway.getSignature(), publicKey);
 	}
 
 }

@@ -13,6 +13,11 @@ public final class ErrorCodeException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 
 	public ErrorCodeException() {
+		this(AcgistCode.CODE_9999);
+	}
+	
+	public ErrorCodeException(Throwable t) {
+		this(AcgistCode.CODE_9999, t);
 	}
 
 	public ErrorCodeException(AcgistCode code) {

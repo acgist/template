@@ -1,5 +1,7 @@
 package com.acgist.core.interceptor;
 
+import java.security.PrivateKey;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -26,6 +28,8 @@ import com.acgist.utils.UuidUtils;
 @Component
 public class GatewayInteceptor implements HandlerInterceptor {
 	
+	@Autowired(required = false)
+	private PrivateKey privateKey;
 	@Autowired
 	private ApplicationContext context;
 	@Autowired
@@ -34,7 +38,7 @@ public class GatewayInteceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		final GatewaySession gatewaySession = GatewaySession.getInstance(this.context);
-		gatewaySession.setQueryId(UuidUtils.buildUuid());
+		gatewaySession.buildGateway(UuidUtils.buildUuid(), this.privateKey);
 		final PermissionEntity permission = this.permissionService.getPermission(request.getRequestURI());
 		if(permission == null) {
 			RedirectUtils.error(AcgistCode.CODE_1000, request, response);
@@ -46,7 +50,7 @@ public class GatewayInteceptor implements HandlerInterceptor {
 			RedirectUtils.error(AcgistCode.CODE_4400, "请求数据不能为空", request, response);
 			return false;
 		}
-		gatewaySession.buildResponse(gatewayRequest);
+		gatewaySession.buildRequest(gatewayRequest);
 		return true;
 	}
 	

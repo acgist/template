@@ -3,7 +3,7 @@ package com.acgist.test;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicLong;
-import java.util.function.Function;
+import java.util.function.Consumer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -73,14 +73,14 @@ public class BaseTest {
 	 * 
 	 * @throws InterruptedException 线程中断
 	 */
-	protected void cost(int count, int thread, Function<Void, Void> function) throws InterruptedException {
+	protected void cost(int count, int thread, Consumer<Void> function) throws InterruptedException {
 		this.cost();
 		final CountDownLatch latch = new CountDownLatch(count);
 		final var executor = Executors.newFixedThreadPool(thread);
 		for (int index = 0; index < count; index++) {
 			executor.submit(() -> {
 				try {
-					function.apply(null);
+					function.accept(null);
 				} catch (Exception e) {
 					this.LOGGER.error("执行异常", e);
 				} finally {
