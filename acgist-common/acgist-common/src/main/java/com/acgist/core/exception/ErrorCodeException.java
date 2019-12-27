@@ -15,10 +15,6 @@ public final class ErrorCodeException extends RuntimeException {
 	public ErrorCodeException() {
 		this(AcgistCode.CODE_9999);
 	}
-	
-	public ErrorCodeException(Throwable t) {
-		this(AcgistCode.CODE_9999, t);
-	}
 
 	public ErrorCodeException(AcgistCode code) {
 		this(code.getCode(), code.getMessage());
@@ -31,6 +27,10 @@ public final class ErrorCodeException extends RuntimeException {
 	public ErrorCodeException(String code, String message) {
 		super(message);
 		this.code = code;
+	}
+	
+	public ErrorCodeException(Throwable t) {
+		this(AcgistCode.CODE_9999, t);
 	}
 	
 	public ErrorCodeException(AcgistCode code, Throwable t) {
