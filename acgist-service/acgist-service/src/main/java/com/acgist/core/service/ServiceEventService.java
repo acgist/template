@@ -16,10 +16,15 @@ import com.acgist.data.pojo.queue.EventQueueMessage;
 public class ServiceEventService extends EventService {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ServiceEventService.class);
-	
+
 	@Override
-	protected void doMessage(EventQueueMessage message) {
-		LOGGER.debug("收到事件消息：{}", message);
+	protected void doCache(EventQueueMessage message) {
+		LOGGER.info("缓存事件");
 	}
 
+	@Override
+	protected void doConfig(EventQueueMessage message) {
+		LOGGER.info("配置事件");
+	}
+	
 }

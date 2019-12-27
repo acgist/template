@@ -9,8 +9,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.acgist.data.pojo.entity.BaseEntity;
-
 /**
  * <p>entity - 网关</p>
  * 
@@ -61,6 +59,12 @@ public class GatewayEntity extends BaseEntity {
 	@NotBlank(message = "请求编号不能为空")
 	private String queryId;
 	/**
+	 * <p>权限名称</p>
+	 */
+	@Size(max = 20, message = "权限名称长度不能超过20")
+	@NotBlank(message = "权限名称不能为空")
+	private String permission;
+	/**
 	 * <p>网关状态</p>
 	 */
 	@NotNull(message = "网关状态不能为空")
@@ -97,6 +101,15 @@ public class GatewayEntity extends BaseEntity {
 
 	public void setQueryId(String queryId) {
 		this.queryId = queryId;
+	}
+
+	@Column(length = 20, nullable = false)
+	public String getPermission() {
+		return permission;
+	}
+
+	public void setPermission(String permission) {
+		this.permission = permission;
 	}
 
 	@Column(nullable = false)

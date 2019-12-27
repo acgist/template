@@ -19,6 +19,7 @@ public class QueueMessage extends Pojo {
 	private RabbitConfig.Type type;
 	/**
 	 * <p>消息目标：{@code application.name}</p>
+	 * <p>空字符串：匹配所有目标</p>
 	 */
 	private String target;
 

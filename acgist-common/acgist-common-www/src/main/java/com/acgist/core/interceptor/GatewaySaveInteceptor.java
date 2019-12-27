@@ -51,6 +51,7 @@ public class GatewaySaveInteceptor implements HandlerInterceptor {
 			entity.setMessage(gatewayResponse.getMessage());
 			entity.setResponse(gatewayResponse.toString());
 			entity.setUsername(gatewayRequest.getUsername());
+			entity.setPermission(permission.getName());
 			this.rabbitTemplate.convertAndSend(RabbitConfig.EXCHANGE_GATEWAY, RabbitConfig.QUEUE_GATEWAY_SAVE, entity);
 		}
 	}
