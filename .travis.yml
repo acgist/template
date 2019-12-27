@@ -1,0 +1,17 @@
+# 系统
+os:
+  - osx
+  - linux
+
+# 语言
+language: java
+
+# Java版本
+jdk:
+  - openjdk11
+
+# 跳过安装
+install: true
+
+# 编译命令
+script: mvn clean package -P release -D skipTests=true -B -V
