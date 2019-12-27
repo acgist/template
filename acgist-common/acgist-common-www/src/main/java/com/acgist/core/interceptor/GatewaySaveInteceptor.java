@@ -39,9 +39,15 @@ public class GatewaySaveInteceptor implements HandlerInterceptor {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
 		final GatewaySession gatewaySession = GatewaySession.getInstance(this.context);
 		final PermissionEntity permission = gatewaySession.getPermission();
-		if(gatewaySession.done() && permission.getSave()) {
-			final GatewayRequest gatewayRequest = gatewaySession.getRequest();
-			final GatewayResponse gatewayResponse = gatewaySession.getResponse();
+		final GatewayRequest gatewayRequest = gatewaySession.getRequest();
+		final GatewayResponse gatewayResponse = gatewaySession.getResponse();
+		if(
+			gatewaySession.done() &&
+			permission != null &&
+			permission.getSave() &&
+			gatewayRequest != null &&
+			gatewayResponse != null
+		) {
 			final Status status = permission.getNotify() ? Status.ANSWER : Status.FINISH;
 			final GatewayEntity entity = new GatewayEntity();
 			entity.setCode(gatewayResponse.getCode());
