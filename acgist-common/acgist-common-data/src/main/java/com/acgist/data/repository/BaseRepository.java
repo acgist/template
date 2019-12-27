@@ -31,7 +31,7 @@ import com.acgist.data.pojo.select.PageResult;
  */
 @NoRepositoryBean
 @Transactional(readOnly = true)
-public interface BaseRepository<T extends BaseEntity> extends JpaRepository<T, String>, JpaSpecificationExecutor<T>  {
+public interface BaseRepository<T extends BaseEntity> extends JpaRepository<T, String>, JpaSpecificationExecutor<T> {
 
 	/**
 	 * <p>相似查询拼接</p>

@@ -45,16 +45,6 @@
 	</modules>
 
 	<dependencies>
-		<!-- Java移除模块 -->
-		<dependency>
-			<groupId>javax.activation</groupId>
-			<artifactId>activation</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish.jaxb</groupId>
-			<artifactId>jaxb-runtime</artifactId>
-		</dependency>
-
 		<!-- 测试 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

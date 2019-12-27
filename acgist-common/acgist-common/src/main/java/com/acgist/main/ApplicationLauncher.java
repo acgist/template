@@ -67,10 +67,10 @@ public class ApplicationLauncher {
 	 */
 	public ApplicationLauncher run(String[] args, Class<?> clazz) {
 		final var application = new SpringApplicationBuilder(clazz)
-		    .web(WebApplicationType.NONE)
-		    .build();
-	    application.run(args);
-	    return this;
+			.web(WebApplicationType.NONE)
+			.build();
+		application.run(args);
+		return this;
 	}
 
 	/**
