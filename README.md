@@ -44,6 +44,7 @@
 |com.acgist.*.服务模块.gateway|网关|
 |com.acgist.*.服务模块.service|本地服务或者服务接口|
 |com.acgist.*.服务模块.service.impl|服务接口实现|
+|com.acgist.*.服务模块.listener|监听|
 |com.acgist.*.服务模块.exception|异常|
 |com.acgist.*.服务模块.repository|数据库|
 |com.acgist.*.服务模块.controller|控制器|

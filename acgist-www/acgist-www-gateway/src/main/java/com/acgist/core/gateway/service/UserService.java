@@ -8,8 +8,9 @@ import com.acgist.core.gateway.gateway.request.UserUpdateRequest;
 import com.acgist.core.gateway.gateway.response.UserResponse;
 import com.acgist.core.gateway.gateway.response.UserUpdateResponse;
 import com.acgist.core.gateway.response.GatewayResponse;
+import com.acgist.core.service.GatewayService;
 import com.acgist.core.service.IUserService;
-import com.acgist.data.service.pojo.entity.UserEntity;
+import com.acgist.data.pojo.entity.UserEntity;
 
 @Service
 public class UserService extends GatewayService {

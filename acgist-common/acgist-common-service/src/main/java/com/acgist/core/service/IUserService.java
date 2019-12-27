@@ -1,10 +1,10 @@
 package com.acgist.core.service;
 
 import com.acgist.core.pojo.message.ResultMessage;
-import com.acgist.data.service.pojo.entity.UserEntity;
-import com.acgist.data.service.pojo.message.LoginMessage;
-import com.acgist.data.service.pojo.message.AuthoMessage;
-import com.acgist.data.service.pojo.message.UserMessage;
+import com.acgist.data.pojo.entity.UserEntity;
+import com.acgist.data.pojo.message.AuthoMessage;
+import com.acgist.data.pojo.message.LoginMessage;
+import com.acgist.data.pojo.message.UserMessage;
 
 /**
  * <p>服务 - 用户</p>

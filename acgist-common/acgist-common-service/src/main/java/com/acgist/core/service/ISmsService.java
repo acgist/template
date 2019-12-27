@@ -1,6 +1,6 @@
 package com.acgist.core.service;
 
-import com.acgist.data.service.pojo.dto.SmsDto;
+import com.acgist.data.pojo.dto.SmsDto;
 
 /**
  * <p>服务 - 发送短信</p>

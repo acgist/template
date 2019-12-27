@@ -19,10 +19,16 @@ public class ApplicationLauncher {
 	/**
 	 * <p>实例ID</p>
 	 */
+	public static final String APPLICATION_INSTANCE_ID = "acgist.id";
+	
+	/**
+	 * <p>实例ID</p>
+	 */
 	private final String id;
 	
 	private ApplicationLauncher() {
 		this.id = UuidUtils.buildUuid().toUpperCase();
+		System.setProperty(APPLICATION_INSTANCE_ID, this.id);
 	}
 
 	public static final ApplicationLauncher getInstance() {

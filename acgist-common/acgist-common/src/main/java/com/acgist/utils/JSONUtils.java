@@ -28,6 +28,12 @@ public final class JSONUtils {
 	private static final Logger LOGGER = LoggerFactory.getLogger(JSONUtils.class);
 
 	/**
+	 * <p>ObjectMapper</p>
+	 * <p>线程安全，建议使用单例可以明显提升性能。</p>
+	 */
+	private static final ObjectMapper MAPPER = buildMapper();
+	
+	/**
 	 * <p>将Java对象转JSON字符串</p>
 	 * 
 	 * @param object Java对象
@@ -38,7 +44,7 @@ public final class JSONUtils {
 		if (object == null) {
 			return null;
 		}
-		final ObjectMapper mapper = buildMapper();
+		final ObjectMapper mapper = getMapper();
 		try {
 			return mapper.writeValueAsString(object);
 		} catch (JsonProcessingException e) {
@@ -58,7 +64,7 @@ public final class JSONUtils {
 		if (json == null) {
 			return null;
 		}
-		final ObjectMapper mapper = buildMapper();
+		final ObjectMapper mapper = getMapper();
 		try {
 			final JavaType type = mapper.getTypeFactory().constructParametricType(Map.class, String.class, Object.class);
 			return mapper.readValue(json, type);
@@ -79,7 +85,7 @@ public final class JSONUtils {
 		if (json == null) {
 			return null;
 		}
-		final ObjectMapper mapper = buildMapper();
+		final ObjectMapper mapper = getMapper();
 		try {
 			final JavaType type = mapper.getTypeFactory().constructParametricType(Map.class, Object.class, Object.class);
 			return mapper.readValue(json, type);
@@ -102,7 +108,7 @@ public final class JSONUtils {
 		if (json == null) {
 			return null;
 		}
-		final ObjectMapper mapper = buildMapper();
+		final ObjectMapper mapper = getMapper();
 		try {
 			final JavaType type = mapper.getTypeFactory().constructParametricType(List.class, clazz);
 			return mapper.readValue(json, type);
@@ -125,13 +131,22 @@ public final class JSONUtils {
 		if(json == null || clazz == null) {
 			return null;
 		}
-		final ObjectMapper mapper = buildMapper();
+		final ObjectMapper mapper = getMapper();
 		try {
 			return mapper.readValue(json, clazz);
 		} catch (IOException e) {
 			LOGGER.error("JSON字符串转Java对象异常：{}", json, e);
 		}
 		return null;
+	}
+	
+	/**
+	 * <p>获取ObjectMapper</p>
+	 * 
+	 * @return ObjectMapper
+	 */
+	public static final ObjectMapper getMapper() {
+		return MAPPER;
 	}
 	
 	/**

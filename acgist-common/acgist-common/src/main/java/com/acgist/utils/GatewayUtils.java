@@ -84,21 +84,21 @@ public class GatewayUtils {
 	 * 
 	 * @return 签名
 	 */
-	public static final String sign(String password, Gateway gateway) {
+	public static final String signature(String password, Gateway gateway) {
 		if(StringUtils.isEmpty(password) || gateway == null) {
 			throw new ErrorCodeException(AcgistCode.CODE_3000);
 		}
 		final Map<String, String> data = gateway.data();
 		final StringBuffer buffer = new StringBuffer(password);
 		data.entrySet().stream()
-			.filter(entry -> !Gateway.PROPERTY_SIGN.equals(entry.getKey()))
+			.filter(entry -> !Gateway.PROPERTY_SIGNATURE.equals(entry.getKey()))
 			.sorted((a, b) -> StringUtils.compare(a.getKey(), b.getKey()))
 			.forEach(entry -> {
 				buffer.append(entry.getKey()).append(entry.getValue());
 			});
 		buffer.append(password);
-		gateway.setSign(DigestUtils.md5Hex(buffer.toString()));
-		return gateway.getSign();
+		gateway.setSignature(DigestUtils.md5Hex(buffer.toString()));
+		return gateway.getSignature();
 	}
 	
 	/**
@@ -114,9 +114,9 @@ public class GatewayUtils {
 			throw new ErrorCodeException(AcgistCode.CODE_3000);
 		}
 		final Map<String, String> data = gateway.data();
-		final String sign = data.get(Gateway.PROPERTY_SIGN);
-		final String trueSign = sign(password, gateway);
-		return StringUtils.equals(sign, trueSign);
+		final String signature = data.get(Gateway.PROPERTY_SIGNATURE);
+		final String trueSignature = signature(password, gateway);
+		return StringUtils.equals(signature, trueSignature);
 	}
 
 }

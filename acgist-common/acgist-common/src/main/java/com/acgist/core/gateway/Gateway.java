@@ -29,7 +29,7 @@ public abstract class Gateway extends Pojo implements Serializable {
 	/**
 	 * <p>签名</p>
 	 */
-	public static final String PROPERTY_SIGN = "sign";
+	public static final String PROPERTY_SIGNATURE = "signature";
 
 	/**
 	 * <p>用户名称</p>
@@ -49,7 +49,7 @@ public abstract class Gateway extends Pojo implements Serializable {
 	 */
 	@Size(max = 40, message = "签名长度不能超过40")
 	@NotBlank(message = "签名不能为空")
-	protected String sign;
+	protected String signature;
 	/**
 	 * <p>请求保留数据</p>
 	 * <p>原样返回</p>
@@ -73,12 +73,12 @@ public abstract class Gateway extends Pojo implements Serializable {
 		this.requestTime = requestTime;
 	}
 	
-	public String getSign() {
-		return sign;
+	public String getSignature() {
+		return signature;
 	}
 
-	public void setSign(String sign) {
-		this.sign = sign;
+	public void setSignature(String signature) {
+		this.signature = signature;
 	}
 	
 	public String getReserved() {

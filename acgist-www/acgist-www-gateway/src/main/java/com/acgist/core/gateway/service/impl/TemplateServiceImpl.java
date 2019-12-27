@@ -7,12 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.acgist.core.config.AcgistCode;
 import com.acgist.core.exception.ErrorCodeException;
+import com.acgist.core.service.FreeMarkerService;
 import com.acgist.core.service.ITemplateService;
-import com.acgist.core.www.service.FreeMarkerService;
 import com.acgist.data.gateway.repository.TemplateRepository;
-import com.acgist.data.service.pojo.entity.TemplateEntity;
-import com.acgist.data.service.pojo.entity.TemplateEntity.Type;
-import com.acgist.data.service.pojo.message.TemplateMessage;
+import com.acgist.data.pojo.entity.TemplateEntity;
+import com.acgist.data.pojo.entity.TemplateEntity.Type;
+import com.acgist.data.pojo.message.TemplateMessage;
 
 /**
  * <p>服务 - 模板</p>

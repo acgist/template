@@ -1,6 +1,6 @@
 package com.acgist.core.service;
 
-import com.acgist.data.service.pojo.message.PermissionMessage;
+import com.acgist.data.pojo.message.PermissionMessage;
 
 /**
  * <p>service - 权限</p>

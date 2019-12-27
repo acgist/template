@@ -7,13 +7,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.acgist.core.gateway.interceptor.GatewayInteceptor;
-import com.acgist.core.gateway.interceptor.PermissionInteceptor;
-import com.acgist.core.gateway.interceptor.SaveInteceptor;
-import com.acgist.core.gateway.interceptor.SignInteceptor;
-import com.acgist.core.gateway.interceptor.TimeInteceptor;
-import com.acgist.core.gateway.interceptor.UpdateInteceptor;
-import com.acgist.core.gateway.interceptor.VerifyInteceptor;
+import com.acgist.core.interceptor.GatewayInteceptor;
+import com.acgist.core.interceptor.GatewayPermissionInteceptor;
+import com.acgist.core.interceptor.GatewaySaveInteceptor;
+import com.acgist.core.interceptor.GatewaySignatureInteceptor;
+import com.acgist.core.interceptor.GatewayTimeInteceptor;
+import com.acgist.core.interceptor.GatewayVerifyInteceptor;
 
 /**
  * <p>config - 拦截器</p>
@@ -29,34 +28,30 @@ public class InterceptorConfig implements WebMvcConfigurer {
 	@Autowired
 	private GatewayInteceptor gatewayInteceptor;
 	@Autowired
-	private VerifyInteceptor verifyInteceptor;
+	private GatewayVerifyInteceptor gatewayVerifyInteceptor;
 	@Autowired
-	private TimeInteceptor timeInteceptor;
+	private GatewayTimeInteceptor gatewayTimeInteceptor;
 	@Autowired
-	private SignInteceptor signInteceptor;
+	private GatewaySignatureInteceptor gatewaySignatureInteceptor;
 	@Autowired
-	private PermissionInteceptor permissionInteceptor;
+	private GatewayPermissionInteceptor gatewayPermissionInteceptor;
 	@Autowired
-	private SaveInteceptor saveInteceptor;
-	@Autowired
-	private UpdateInteceptor updateInteceptor;
+	private GatewaySaveInteceptor gatewaySaveInteceptor;
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		LOGGER.info("配置拦截器：gatewayInteceptor");
 		registry.addInterceptor(this.gatewayInteceptor).addPathPatterns("/gateway/**");
-		LOGGER.info("配置拦截器：verifyInteceptor");
-		registry.addInterceptor(this.verifyInteceptor).addPathPatterns("/gateway/**");
-		LOGGER.info("配置拦截器：timeInteceptor");
-		registry.addInterceptor(this.timeInteceptor).addPathPatterns("/gateway/**");
-		LOGGER.info("配置拦截器：signInteceptor");
-		registry.addInterceptor(this.signInteceptor).addPathPatterns("/gateway/**");
-		LOGGER.info("配置拦截器：permissionInteceptor");
-		registry.addInterceptor(this.permissionInteceptor).addPathPatterns("/gateway/**");
-		LOGGER.info("配置拦截器：saveInteceptor");
-		registry.addInterceptor(this.saveInteceptor).addPathPatterns("/gateway/**");
-		LOGGER.info("配置拦截器：updateInteceptor");
-		registry.addInterceptor(this.updateInteceptor).addPathPatterns("/**");
+		LOGGER.info("配置拦截器：gatewayVerifyInteceptor");
+		registry.addInterceptor(this.gatewayVerifyInteceptor).addPathPatterns("/gateway/**");
+		LOGGER.info("配置拦截器：gatewayTimeInteceptor");
+		registry.addInterceptor(this.gatewayTimeInteceptor).addPathPatterns("/gateway/**");
+		LOGGER.info("配置拦截器：gatewaySignatureInteceptor");
+		registry.addInterceptor(this.gatewaySignatureInteceptor).addPathPatterns("/gateway/**");
+		LOGGER.info("配置拦截器：gatewayPermissionInteceptor");
+		registry.addInterceptor(this.gatewayPermissionInteceptor).addPathPatterns("/gateway/**");
+		LOGGER.info("配置拦截器：gatewaySaveInteceptor");
+		registry.addInterceptor(this.gatewaySaveInteceptor).addPathPatterns("/**");
 		WebMvcConfigurer.super.addInterceptors(registry);
 	}
 

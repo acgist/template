@@ -19,8 +19,9 @@ import com.acgist.data.pojo.select.Order;
  * // 指定排序
  * @Query(value = "SELECT entity FROM UserEntity entity")
  * List<UserEntity> findAllUsers(Sort sort);
+ * // JPQL复杂类型
+ * UPDATE GatewayEntity model SET model.status = :#{#gateway.status}, model.code = :#{#gateway.code}, model.message = :#{#gateway.message}, model.response = :#{#gateway.response} WHERE model.queryId = :#{#gateway.queryId}
  * </pre>
- * 
  * @author acgist
  * @since 1.0.0
  */

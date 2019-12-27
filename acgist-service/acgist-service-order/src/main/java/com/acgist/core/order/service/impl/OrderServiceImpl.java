@@ -4,8 +4,8 @@ import org.apache.dubbo.config.annotation.Service;
 
 import com.acgist.core.config.AcgistCode;
 import com.acgist.core.service.IOrderService;
-import com.acgist.data.service.pojo.entity.OrderEntity;
-import com.acgist.data.service.pojo.message.OrderMessage;
+import com.acgist.data.pojo.entity.OrderEntity;
+import com.acgist.data.pojo.message.OrderMessage;
 
 /**
  * <p>服务 - 订单</p>

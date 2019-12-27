@@ -3,7 +3,7 @@ package com.acgist.core.service.impl;
 import org.apache.dubbo.config.annotation.Service;
 
 import com.acgist.core.service.ISmsService;
-import com.acgist.data.service.pojo.dto.SmsDto;
+import com.acgist.data.pojo.dto.SmsDto;
 
 /**
  * <p>service - 短信</p>

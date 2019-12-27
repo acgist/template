@@ -3,7 +3,7 @@ package com.acgist.core.service.impl;
 import org.apache.dubbo.config.annotation.Service;
 
 import com.acgist.core.service.IMailService;
-import com.acgist.data.service.pojo.dto.MailDto;
+import com.acgist.data.pojo.dto.MailDto;
 
 /**
  * <p>service - 邮件</p>

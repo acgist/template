@@ -10,11 +10,11 @@ import com.acgist.core.config.AcgistCode;
 import com.acgist.core.pojo.message.ResultMessage;
 import com.acgist.core.service.IUserService;
 import com.acgist.core.user.config.AcgistServiceUserCache;
-import com.acgist.data.service.pojo.entity.RoleEntity;
-import com.acgist.data.service.pojo.entity.UserEntity;
-import com.acgist.data.service.pojo.message.AuthoMessage;
-import com.acgist.data.service.pojo.message.LoginMessage;
-import com.acgist.data.service.pojo.message.UserMessage;
+import com.acgist.data.pojo.entity.RoleEntity;
+import com.acgist.data.pojo.entity.UserEntity;
+import com.acgist.data.pojo.message.AuthoMessage;
+import com.acgist.data.pojo.message.LoginMessage;
+import com.acgist.data.pojo.message.UserMessage;
 import com.acgist.data.user.repository.UserRepository;
 
 /**

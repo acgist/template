@@ -4,7 +4,7 @@
 
 ## 缓存
 
-添加依赖：
+#### 依赖
 
 ```xml
 <dependency>
@@ -17,7 +17,7 @@
 </dependency>
 ```
 
-添加注解：
+#### 注解
 
 ```java
 @ComponentScan({"com.acgist.data"})
@@ -25,7 +25,7 @@
 
 ## 数据库
 
-添加依赖：
+#### 依赖
 
 ```xml
 <dependency>
@@ -34,7 +34,7 @@
 </dependency>
 ```
 
-添加注解：
+#### 注解
 
 ```java
 @EntityScan("com.acgist.data.**.entity")
@@ -45,7 +45,7 @@
 
 ## Redis
 
-添加依赖：
+#### 依赖
 
 ```xml
 <dependency>
@@ -54,7 +54,7 @@
 </dependency>
 ```
 
-添加注解：
+#### 注解
 
 ```java
 @ComponentScan({"com.acgist.data"})

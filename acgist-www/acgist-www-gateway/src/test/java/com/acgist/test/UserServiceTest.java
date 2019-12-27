@@ -18,15 +18,15 @@ public class UserServiceTest extends BaseTest {
 	
 	@Test
 	public void testCost() throws NetException, InterruptedException {
-		UserRequest request = new UserRequest();
+		UserUpdateRequest request = new UserUpdateRequest();
 		request.setRequestTime(DateUtils.nowTimestamp());
 		request.setReserved("测试");
+		request.setNick("你说什么");
 		request.setUsername("testtest");
-		GatewayUtils.sign("test", request);
-		this.log(request.toString());
+		GatewayUtils.signature("test", request);
 		this.cost(10000, 100, (a) -> {
 			try {
-				HTTPClient.newInstance("http://localhost:28800/gateway/user").post(request.toString(), BodyHandlers.ofString());
+				HTTPClient.newInstance("http://localhost:28800/gateway/user/update").post(request.toString(), BodyHandlers.ofString());
 			} catch (NetException e) {
 				e.printStackTrace();
 			}
@@ -41,7 +41,7 @@ public class UserServiceTest extends BaseTest {
 		request.setRequestTime(DateUtils.nowTimestamp());
 		request.setReserved("测试");
 		request.setUsername("testtest");
-		GatewayUtils.sign(password, request);
+		GatewayUtils.signature(password, request);
 		this.log(request.toString());
 		HttpResponse<String> body = HTTPClient.newInstance("http://localhost:28800/gateway/user").post(request.toString(), BodyHandlers.ofString());
 		this.log(body.body());
@@ -56,7 +56,7 @@ public class UserServiceTest extends BaseTest {
 		request.setReserved("测试");
 		request.setNick("你说什么");
 		request.setUsername("testtest");
-		GatewayUtils.sign("test", request);
+		GatewayUtils.signature("test", request);
 		this.log(request.toString());
 		HttpResponse<String> body = HTTPClient.newInstance("http://localhost:28800/gateway/user/update").post(request.toString(), BodyHandlers.ofString());
 		this.log(body.body());

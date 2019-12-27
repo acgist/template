@@ -2,8 +2,8 @@ package com.acgist.core.service;
 
 import java.util.Map;
 
-import com.acgist.data.service.pojo.entity.TemplateEntity;
-import com.acgist.data.service.pojo.message.TemplateMessage;
+import com.acgist.data.pojo.entity.TemplateEntity;
+import com.acgist.data.pojo.message.TemplateMessage;
 
 /**
  * <p>服务 - 模板</p>

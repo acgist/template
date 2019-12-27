@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.acgist.core.service.IPermissionService;
-import com.acgist.data.service.pojo.message.PermissionMessage;
+import com.acgist.data.pojo.message.PermissionMessage;
 import com.acgist.data.user.repository.RoleRepository;
 
 /**

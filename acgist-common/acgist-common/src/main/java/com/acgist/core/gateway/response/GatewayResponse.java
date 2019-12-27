@@ -112,7 +112,7 @@ public class GatewayResponse extends Gateway {
 	 */
 	public GatewayResponse valueOfMap(final Map<String, String> data) {
 		if(data != null) {
-			data.remove(Gateway.PROPERTY_SIGN); // 移除签名
+			data.remove(Gateway.PROPERTY_SIGNATURE); // 移除签名
 			GatewayUtils.pack(this, data);
 		}
 		return this;

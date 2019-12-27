@@ -14,7 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.acgist.core.gateway.request.GatewayRequest;
-import com.acgist.data.service.pojo.entity.PermissionEntity;
+import com.acgist.data.pojo.entity.PermissionEntity;
 
 /**
  * <p>utils - request</p>

@@ -5,8 +5,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.acgist.data.pojo.entity.UserEntity;
 import com.acgist.data.repository.BaseExtendRepository;
-import com.acgist.data.service.pojo.entity.UserEntity;
 
 /**
  * <p>repository - 订单</p>
