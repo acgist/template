@@ -44,6 +44,36 @@
 		<module>acgist-service</module>
 	</modules>
 
+	<profiles>
+		<!-- 开发 -->
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<acgist.profile>dev</acgist.profile>
+				<acgist.npm.profile>dev</acgist.npm.profile>
+			</properties>
+		</profile>
+		<!-- 测试 -->
+		<profile>
+			<id>test</id>
+			<properties>
+				<acgist.profile>test</acgist.profile>
+				<acgist.npm.profile>test</acgist.npm.profile>
+			</properties>
+		</profile>
+		<!-- 生产 -->
+		<profile>
+			<id>prod</id>
+			<properties>
+				<acgist.profile>prod</acgist.profile>
+				<acgist.npm.profile>prod</acgist.npm.profile>
+			</properties>
+		</profile>
+	</profiles>
+
 	<dependencies>
 		<!-- 测试 -->
 		<dependency>
@@ -207,5 +237,5 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
+	
 </project>

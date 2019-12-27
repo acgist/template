@@ -19,6 +19,10 @@
 	</parent>
 
 	<dependencies>
+		<dependency>
+			<groupId>com.acgist</groupId>
+			<artifactId>acgist-common</artifactId>
+		</dependency>
 	</dependencies>
 
 </project>
