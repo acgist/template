@@ -362,4 +362,26 @@ public class RsaUtils {
 		}
 	}
 	
+	/**
+	 * <p>公钥转字符串</p>
+	 * 
+	 * @param publicKey 公钥
+	 * 
+	 * @return 公钥字符串
+	 */
+	public static final String toString(PublicKey publicKey) {
+		return base64Encode(publicKey.getEncoded());
+	}
+	
+	/**
+	 * <p>私钥转字符串</p>
+	 * 
+	 * @param publicKey 私钥
+	 * 
+	 * @return 私钥字符串
+	 */
+	public static final String toString(PrivateKey privateKey) {
+		return base64Encode(privateKey.getEncoded());
+	}
+	
 }
