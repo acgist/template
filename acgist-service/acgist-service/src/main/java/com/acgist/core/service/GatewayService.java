@@ -28,7 +28,7 @@ public class GatewayService {
 		// 通知：成功、已经响应
 		if(
 			AcgistCode.success(entity.getCode()) &&
-			GatewayEntity.Status.ANSWER != entity.getStatus()
+			GatewayEntity.Status.ANSWER == entity.getStatus()
 		) {
 			// 发送通知队列
 			this.rabbitTemplate.convertAndSend(RabbitConfig.EXCHANGE_GATEWAY, RabbitConfig.QUEUE_GATEWAY_NOTIFY, entity);

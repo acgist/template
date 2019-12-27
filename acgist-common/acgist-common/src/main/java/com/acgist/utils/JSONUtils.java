@@ -150,21 +150,34 @@ public final class JSONUtils {
 	}
 	
 	/**
-	 * <p>创建ObjectMapper</p>
+	 * <p>创建默认ObjectMapper</p>
 	 * 
 	 * @return ObjectMapper
 	 */
 	public static final ObjectMapper buildMapper() {
 		final ObjectMapper mapper = new ObjectMapper();
+		mapper
+			.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+			.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY)
+			.setSerializationInclusion(Include.NON_NULL);
+		return mapper;
+	}
+	
+	/**
+	 * <p>创建序列化ObjectMapper</p>
+	 * 
+	 * @return ObjectMapper
+	 */
+	public static final ObjectMapper buildSerializeMapper() {
+		final ObjectMapper mapper = new ObjectMapper();
 		final PolymorphicTypeValidator validator = BasicPolymorphicTypeValidator.builder()
 			.allowIfBaseType(Object.class)
 			.build();
-		// 使用注解：@JsonIgnoreProperties(ignoreUnknown = true)
-		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-		mapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
-		mapper.activateDefaultTyping(validator, ObjectMapper.DefaultTyping.NON_FINAL);
-		// 使用注解：@JsonInclude(Include.NON_NULL)
-		mapper.setSerializationInclusion(Include.NON_NULL);
+		mapper
+			.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+			.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY)
+			.activateDefaultTyping(validator, ObjectMapper.DefaultTyping.NON_FINAL)
+			.setSerializationInclusion(Include.NON_NULL);
 		return mapper;
 	}
 

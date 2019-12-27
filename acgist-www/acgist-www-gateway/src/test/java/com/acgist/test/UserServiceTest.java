@@ -33,7 +33,7 @@ public class UserServiceTest extends BaseTest {
 			return null;
 		});
 	}
-
+	
 	@Test
 	public void testUser() throws NetException {
 		String password = "test";
@@ -44,8 +44,9 @@ public class UserServiceTest extends BaseTest {
 		GatewayUtils.signature(password, request);
 		this.log(request.toString());
 		HttpResponse<String> body = HTTPClient.newInstance("http://localhost:28800/gateway/user").post(request.toString(), BodyHandlers.ofString());
-		this.log(body.body());
-		final var response = JSONUtils.toJava(body.body(), UserResponse.class);
+		String json = body.body();
+		this.log(json);
+		final var response = JSONUtils.toJava(json, UserResponse.class);
 		this.log("验签：" + GatewayUtils.verify(password, response));
 	}
 	

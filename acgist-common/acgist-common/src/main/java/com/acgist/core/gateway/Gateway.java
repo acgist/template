@@ -10,9 +10,6 @@ import javax.validation.constraints.Size;
 import com.acgist.core.config.AcgistConst;
 import com.acgist.core.pojo.Pojo;
 import com.acgist.utils.GatewayUtils;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 /**
  * <p>网关</p>
@@ -20,8 +17,6 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
  * @author acgist
  * @since 1.0.0
  */
-@JsonInclude(Include.NON_NULL)
-@JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class Gateway extends Pojo implements Serializable {
 
 	private static final long serialVersionUID = 1L;

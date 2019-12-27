@@ -31,7 +31,7 @@ public final class SerializeService {
 	 * @return value序列化方法
 	 */
 	public static final RedisSerializer<?> buildValueSerializer() {
-		final ObjectMapper mapper = JSONUtils.buildMapper();
+		final ObjectMapper mapper = JSONUtils.buildSerializeMapper();
 		final Jackson2JsonRedisSerializer<?> serializer = new Jackson2JsonRedisSerializer<>(Object.class);
 		serializer.setObjectMapper(mapper);
 		return serializer;

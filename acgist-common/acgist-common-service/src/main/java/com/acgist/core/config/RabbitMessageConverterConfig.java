@@ -26,7 +26,7 @@ public class RabbitMessageConverterConfig {
 	@Bean
 	public MessageConverter rabbitMessageConverter() {
 		LOGGER.info("配置Rabbit消息转换器");
-		return new Jackson2JsonMessageConverter(JSONUtils.buildMapper());
+		return new Jackson2JsonMessageConverter(JSONUtils.buildSerializeMapper());
 	}
 
 }

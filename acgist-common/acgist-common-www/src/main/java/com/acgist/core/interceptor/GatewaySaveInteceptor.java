@@ -3,8 +3,10 @@ package com.acgist.core.interceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -25,6 +27,7 @@ import com.acgist.data.pojo.entity.PermissionEntity;
  * @since 1.0.0
  */
 @Component
+@ConditionalOnClass(EnableRabbit.class)
 public class GatewaySaveInteceptor implements HandlerInterceptor {
 
 	@Autowired

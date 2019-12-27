@@ -21,4 +21,17 @@ public class JSONUtilsTest extends BaseTest {
 		this.costed();
 	}
 	
+	@Test
+	public void testJson() {
+		GatewayResponse response = new GatewayResponse();
+		response.setCode("0000");
+		response.setMessage("成功");
+		String json;
+		json = JSONUtils.toJSON(response);
+		System.out.println(json);
+		response = JSONUtils.toJava(json, GatewayResponse.class);
+		System.out.println(response.getCode());
+		System.out.println(response.getMessage());
+	}
+	
 }
