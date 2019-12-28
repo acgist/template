@@ -34,9 +34,17 @@
 		</encoder>
 	</appender>
 
+	<springProfile name="dev,test">
 	<root level="INFO">
 		<appender-ref ref="file" />
 		<appender-ref ref="console" />
 	</root>
+	</springProfile>
+	
+	<springProfile name="prod">
+	<root level="INFO">
+		<appender-ref ref="file" />
+	</root>
+	</springProfile>
 
 </configuration>
