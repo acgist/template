@@ -1,7 +1,6 @@
 package com.acgist.data.pojo.message;
 
 import com.acgist.data.pojo.entity.UserEntity;
-import com.acgist.data.pojo.message.EntityResultMessage;
 
 /**
  * <p>message - 用户信息</p>

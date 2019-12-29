@@ -4,7 +4,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.acgist.core.config.AcgistWwwConstSession;
-import com.acgist.core.pojo.session.BaseSession;
 
 /**
  * <p>session - 用户</p>

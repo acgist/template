@@ -83,7 +83,6 @@ public final class URLUtils {
 				address.isLoopbackAddress() ||
 				address.isSiteLocalAddress();
 		} catch (MalformedURLException | UnknownHostException e) {
-			e.printStackTrace();
 			return true;
 		}
 	}

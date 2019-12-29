@@ -6,8 +6,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import com.acgist.data.pojo.entity.BaseEntity;
-
 /**
  * <p>entity - 支付通道</p>
  * 

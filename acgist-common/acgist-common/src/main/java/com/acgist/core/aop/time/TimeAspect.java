@@ -36,7 +36,7 @@ public final class TimeAspect {
 		} finally {
 			final long endTime = System.currentTimeMillis();
 			final long executeTime = endTime - beginTime;
-			if (executeTime > point.time()) {
+			if (point != null && executeTime > point.time()) {
 				LOGGER.info("{}执行时间{}", point.name(), executeTime);
 			}
 		}

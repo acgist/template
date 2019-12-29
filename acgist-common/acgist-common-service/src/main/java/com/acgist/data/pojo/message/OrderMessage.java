@@ -1,7 +1,6 @@
 package com.acgist.data.pojo.message;
 
 import com.acgist.data.pojo.entity.OrderEntity;
-import com.acgist.data.pojo.message.EntityResultMessage;
 
 /**
  * <p>message - 订单信息</p>

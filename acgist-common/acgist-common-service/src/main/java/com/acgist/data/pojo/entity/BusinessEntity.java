@@ -8,8 +8,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.acgist.data.pojo.entity.BaseEntity;
-
 /**
  * <p>entity - 支付订单</p>
  * 
