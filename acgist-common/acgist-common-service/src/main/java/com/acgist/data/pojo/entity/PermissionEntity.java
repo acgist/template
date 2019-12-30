@@ -1,6 +1,9 @@
 package com.acgist.data.pojo.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Index;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -78,6 +81,7 @@ public final class PermissionEntity extends BaseEntity {
 	@Size(max = 32, message = "父级菜单长度不能超过32")
 	private String parent;
 
+	@Column(nullable = false)
 	public Boolean getSave() {
 		return save;
 	}
@@ -86,6 +90,8 @@ public final class PermissionEntity extends BaseEntity {
 		this.save = save;
 	}
 
+	@Enumerated(EnumType.STRING)
+	@Column(length = 64, nullable = false)
 	public UserEntity.Type getType() {
 		return type;
 	}
@@ -94,6 +100,7 @@ public final class PermissionEntity extends BaseEntity {
 		this.type = type;
 	}
 
+	@Column(length = 20, nullable = false)
 	public String getName() {
 		return name;
 	}
@@ -102,6 +109,7 @@ public final class PermissionEntity extends BaseEntity {
 		this.name = name;
 	}
 
+	@Column(length = 256, nullable = false)
 	public String getPath() {
 		return path;
 	}
@@ -110,6 +118,7 @@ public final class PermissionEntity extends BaseEntity {
 		this.path = path;
 	}
 
+	@Column(nullable = false)
 	public Integer getSort() {
 		return sort;
 	}
@@ -118,6 +127,7 @@ public final class PermissionEntity extends BaseEntity {
 		this.sort = sort;
 	}
 
+	@Column(nullable = false)
 	public Boolean getNotify() {
 		return notify;
 	}
@@ -126,6 +136,7 @@ public final class PermissionEntity extends BaseEntity {
 		this.notify = notify;
 	}
 	
+	@Column(length = 256)
 	public String getRequestClazz() {
 		return requestClazz;
 	}
@@ -134,6 +145,7 @@ public final class PermissionEntity extends BaseEntity {
 		this.requestClazz = requestClazz;
 	}
 
+	@Column(length = 256)
 	public String getResponseClazz() {
 		return responseClazz;
 	}
@@ -142,6 +154,7 @@ public final class PermissionEntity extends BaseEntity {
 		this.responseClazz = responseClazz;
 	}
 
+	@Column(length = 32)
 	public String getParent() {
 		return parent;
 	}

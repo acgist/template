@@ -30,6 +30,8 @@ import com.acgist.utils.RandomUtils;
  */
 @Service(retries = 0, version = "${acgist.service.version}")
 public class VerifyCodeServiceImpl implements IVerifyCodeService {
+	
+//	private static final Logger LOGGER = LoggerFactory.getLogger(VerifyCodeServiceImpl.class);
 
 	@Value("${acgist.verify.code.length:6}")
 	private int length;
@@ -85,6 +87,7 @@ public class VerifyCodeServiceImpl implements IVerifyCodeService {
 			return ResultMessage.newInstance().buildMessage(AcgistCode.CODE_9999, "验证码失效");
 		}
 		if(trueCode.equalsIgnoreCase(code)) {
+			this.redisService.delete(key);
 			return ResultMessage.newInstance().buildSuccess();
 		}
 		return ResultMessage.newInstance().buildMessage(AcgistCode.CODE_9999, "验证码错误");

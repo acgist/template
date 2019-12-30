@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.Index;
@@ -90,7 +92,8 @@ public final class UserEntity extends BaseEntity {
 	@JsonIgnore
 	private transient List<RoleEntity> roles;
 
-	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
+	@Column(length = 64, nullable = false)
 	public UserEntity.Type getType() {
 		return type;
 	}

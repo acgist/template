@@ -28,6 +28,7 @@
 					<p>
 						<label for="mail">用户邮箱</label>
 						<input value="${mail}" id="mail" name="mail" type="email" required="required" maxlength="40" placeholder="用户邮箱" />
+						<button id="sendCode" class="button" type="button">获取验证码</button>
 					</p>
 					<p>
 						<label for="mobile">用户手机</label>
@@ -35,7 +36,11 @@
 					</p>
 					<p>
 						<label for="password">用户密码</label>
-						<input value="${password}" id="password" name="password" type="password" required="required" maxlength="20" placeholder="用户密码" />
+						<input value="" id="password" name="password" type="password" required="required" maxlength="20" placeholder="用户密码" />
+					</p>
+					<p>
+						<label for="code">验证码</label>
+						<input value="" id="code" name="code" type="text" maxlength="6" placeholder="验证码" />
 					</p>
 					<p class="center">
 						<button id="register" class="button" type="submit">注册</button>
@@ -51,6 +56,27 @@
 				encrypt.setPublicKey(key);
 			});
 			$(function() {
+				$("#sendCode").click(function() {
+					var success = true;
+					var mail = $("#mail").val();
+					$.ajax({
+						url : "/check/user/mail",
+						async : false,
+						method : "GET",
+						data : {"mail" : mail},
+						success : function(message) {
+							if("0000" !== message.code) {
+								success = false;
+								alert(message.message);
+							}
+						}
+					});
+					if(success) {
+						$.get("/send/mail/code", {"mail" : mail}, function(message) {
+							alert(message.message);
+						});
+					}
+				});
 				$("#register").submit(function() {
 					var success = true;
 					var name = $("#name").val();
@@ -92,6 +118,7 @@
 						if("0000" === message.code) {
 							location.href = "/login";
 						} else {
+							$("#password").val(password);
 							$("#token").val(message.token);
 							alert(message.message);
 						}

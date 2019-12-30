@@ -127,13 +127,12 @@ public class UserContoller {
 	@ResponseBody
 	public TokenResultMessage register(String name, String nick, String mail, String mobile, String password, String code, HttpServletRequest request) {
 		final TokenResultMessage message = new TokenResultMessage();
-//		TODO：没有实现发送邮件
-//		final ResultMessage resultMessage = this.verifyCodeService.verify(mail, code);
-//		if(resultMessage.fail()) {
-//			message.buildMessage(message);
-//			message.setToken((String) request.getSession().getAttribute(AcgistConstSession.SESSION_CSRF_TOKEN));
-//			return message;
-//		}
+		final ResultMessage resultMessage = this.verifyCodeService.verify(mail, code);
+		if(resultMessage.fail()) {
+			message.buildMessage(resultMessage);
+			message.setToken((String) request.getSession().getAttribute(AcgistConstSession.SESSION_CSRF_TOKEN));
+			return message;
+		}
 		password = RsaUtils.decrypt(this.privateKey, password); // 解密
 		final UserEntity user = new UserEntity();
 		user.setName(name);

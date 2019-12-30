@@ -2,6 +2,8 @@ package com.acgist.data.pojo.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Index;
 import javax.persistence.Lob;
 import javax.persistence.Table;
@@ -112,7 +114,8 @@ public class GatewayEntity extends BaseEntity {
 		this.permission = permission;
 	}
 
-	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
+	@Column(length = 64, nullable = false)
 	public Status getStatus() {
 		return status;
 	}

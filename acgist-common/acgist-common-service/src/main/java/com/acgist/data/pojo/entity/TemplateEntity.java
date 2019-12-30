@@ -2,6 +2,8 @@ package com.acgist.data.pojo.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Index;
 import javax.persistence.Lob;
 import javax.persistence.Table;
@@ -32,11 +34,11 @@ public class TemplateEntity extends BaseEntity {
 		CODE_SMS,
 		/** 验证码邮件 */
 		CODE_MAIL,
-		/** 注册邮件 */
+		/** 注册短信 */
 		REGISTER_SMS,
 		/** 注册邮件 */
 		REGISTER_MAIL,
-		/** 找回密码邮件 */
+		/** 找回密码短信 */
 		PASSWORD_SMS,
 		/** 找回密码邮件 */
 		PASSWORD_MAIL;
@@ -60,7 +62,8 @@ public class TemplateEntity extends BaseEntity {
 	@NotBlank(message = "模板内容不能为空")
 	private String content;
 
-	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
+	@Column(length = 64, nullable = false)
 	public Type getType() {
 		return type;
 	}

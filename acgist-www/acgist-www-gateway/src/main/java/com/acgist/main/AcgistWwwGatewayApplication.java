@@ -1,5 +1,6 @@
 package com.acgist.main;
 
+import org.apache.dubbo.config.spring.context.annotation.DubboComponentScan;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -12,6 +13,7 @@ import com.acgist.data.repository.BaseExtendRepositoryImpl;
 @EntityScan("com.acgist.data.**.entity")
 @EnableRabbit
 @ComponentScan({ "com.acgist.core", "com.acgist.data" })
+@DubboComponentScan({ "com.acgist.core.**.service.impl" })
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = "com.acgist.data.**.repository", repositoryBaseClass = BaseExtendRepositoryImpl.class)
 @EnableTransactionManagement

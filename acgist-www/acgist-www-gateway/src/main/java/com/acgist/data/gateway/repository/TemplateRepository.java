@@ -22,7 +22,7 @@ public interface TemplateRepository extends BaseExtendRepository<TemplateEntity>
 	 * @return 模板（缓存）
 	 */
 	@Cacheable(AcgistWwwGatewayCache.TEMPLATE)
-	@Query(value = "SELECT * FROM tb_template model WHERE model.type = :type limit 1", nativeQuery = true)
-	TemplateEntity findByType(TemplateEntity.Type type);
+	@Query(value = "SELECT * FROM ts_template model WHERE model.type = :type limit 1", nativeQuery = true)
+	TemplateEntity findByType(String type);
 	
 }

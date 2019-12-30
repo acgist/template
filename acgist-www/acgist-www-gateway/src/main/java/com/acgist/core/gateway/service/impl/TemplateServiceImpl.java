@@ -30,7 +30,7 @@ public class TemplateServiceImpl implements ITemplateService {
 	
 	@Override
 	public TemplateMessage build(Type type, Map<String, Object> data) {
-		final TemplateEntity template = this.templateRepository.findByType(type);
+		final TemplateEntity template = this.templateRepository.findByType(type.name());
 		if(template == null) {
 			throw new ErrorCodeException(AcgistCode.CODE_3003, "没有配置模板");
 		}
