@@ -20,6 +20,10 @@ public class LoginMessage extends ResultMessage {
 	 * <p>用户名称</p>
 	 */
 	private String name;
+	/**
+	 * <p>用户昵称</p>
+	 */
+	private String nick;
 
 	public String getId() {
 		return id;
@@ -35,6 +39,14 @@ public class LoginMessage extends ResultMessage {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getNick() {
+		return nick;
+	}
+
+	public void setNick(String nick) {
+		this.nick = nick;
 	}
 
 }

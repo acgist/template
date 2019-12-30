@@ -15,6 +15,13 @@ import com.acgist.data.pojo.message.UserMessage;
 public interface IUserService {
 
 	/**
+	 * <p>创建用户</p>
+	 * 
+	 * @param user 用户
+	 */
+	ResultMessage save(UserEntity user);
+	
+	/**
 	 * <p>获取用户授权信息</p>
 	 * 
 	 * @param name 用户名
@@ -51,4 +58,22 @@ public interface IUserService {
 	 */
 	LoginMessage login(String name, String password);
 	
+	/**
+	 * <p>验证用户名称是否存在</p>
+	 * 
+	 * @param name 用户名称
+	 * 
+	 * @return 是否存在
+	 */
+	boolean checkUserName(String name);
+	
+	/**
+	 * <p>验证用户邮箱是否存在</p>
+	 * 
+	 * @param mail 用户邮箱
+	 * 
+	 * @return 是否存在
+	 */
+	boolean checkUserMail(String mail);
+
 }

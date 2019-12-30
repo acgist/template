@@ -27,6 +27,10 @@ public class UserSession extends BaseSession {
 	 * <p>用户名称</p>
 	 */
 	private String name;
+	/**
+	 * <p>用户昵称</p>
+	 */
+	private String nick;
 
 	public String getId() {
 		return id;
@@ -42,6 +46,14 @@ public class UserSession extends BaseSession {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getNick() {
+		return nick;
+	}
+
+	public void setNick(String nick) {
+		this.nick = nick;
 	}
 
 	/**

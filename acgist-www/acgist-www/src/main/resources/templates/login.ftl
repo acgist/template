@@ -15,39 +15,33 @@
 		<#include "/include/header.ftl">
 		<div class="main">
 			<div class="login">
-				<form action="javascript:void(0)">
+				<form id="login" action="javascript:void(0);">
 					<p>
 						<label for="name">用户名称</label>
-						<input id="name" name="name" type="text" placeholder="用户名称" minlength="4" maxlength="20" />
+						<input id="name" name="name" type="text" required="required" maxlength="20" placeholder="用户名称" />
 					</p>
 					<p>
 						<label for="password">用户密码</label>
-						<input id="password" name="password" type="password" placeholder="用户名称" minlength="8" maxlength="20" />
+						<input id="password" name="password" type="password" required="required" maxlength="20" placeholder="用户密码" />
 					</p>
-					<p>
-						<button id="login" class="button" type="submit">登陆</button>
+					<p class="center">
+						<button class="button" type="submit">登陆</button>
 					</p>
 				</form>
+				<p class="register"><a href="/register">注册</a></p>
 			</div>
 		</div>
 		<#include "/include/footer.ftl">
 	    <script type="text/javascript">
-	    	var token = "${token}";
+	    	var token = "${SESSION_CRSF_TOKEN}";
 			var encrypt = new JSEncrypt();
 			$.get("/rsa/public/key", function(key) {
 				encrypt.setPublicKey(key);
 			});
 			$(function() {
-				$('#login').click(function() {
+				$("#login").submit(function(e) {
 					var name = $("#name").val();
 					var password = $("#password").val();
-					if(
-						!name || name.length < 4 ||
-						!password || password.length < 8
-					) {
-						alert("登陆信息格式错误");
-						return;
-					}
 					var encrypted = encrypt.encrypt(password);
 					$.post("/login", {"name" : name, "password" : encrypted, "token" : token}, function(message) {
 						if("0000" === message.code) {
@@ -57,6 +51,7 @@
 							alert(message.message);
 						}
 					});
+					return false;
 				});
 			});
 	    </script>

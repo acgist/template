@@ -32,6 +32,12 @@ public class UserServiceImpl implements IUserService {
 	private UserRepository userRepository;
 	
 	@Override
+	public ResultMessage save(UserEntity user) {
+		this.userRepository.save(user);
+		return ResultMessage.newInstance().buildSuccess();
+	}
+	
+	@Override
 	@Transactional
 	@Cacheable(AcgistServiceUserCache.AUTHO_MESSAGE)
 	public AuthoMessage getAuthoMessage(String name) {
@@ -78,8 +84,19 @@ public class UserServiceImpl implements IUserService {
 		}
 		message.setId(user.getId());
 		message.setName(user.getName());
+		message.setNick(user.getNick());
 		message.buildSuccess();
 		return message;
+	}
+	
+	@Override
+	public boolean checkUserName(String name) {
+		return this.userRepository.findIdByName(name) == null;
+	}
+	
+	@Override
+	public boolean checkUserMail(String mail) {
+		return this.userRepository.findIdByMail(mail) == null;
 	}
 
 }

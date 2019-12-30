@@ -9,10 +9,16 @@ import com.acgist.data.pojo.entity.UserEntity;
 import com.acgist.data.repository.BaseExtendRepository;
 
 /**
- * <p>repository - 订单</p>
+ * <p>repository - 用户</p>
  */
 @Repository
 public interface UserRepository extends BaseExtendRepository<UserEntity> {
+	
+	@Query(value = "SELECT id FROM ts_user model WHERE model.name = :name LIMIT 1", nativeQuery = true)
+	String findIdByName(String name);
+	
+	@Query(value = "SELECT id FROM ts_user model WHERE model.mail = :mail LIMIT 1", nativeQuery = true)
+	String findIdByMail(String mail);
 
 	/**
 	 * <p>根据用户名称查询用户信息</p>

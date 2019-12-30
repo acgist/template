@@ -37,5 +37,10 @@ public interface AcgistConst {
 	 * <p>时间戳格式：{@value}</p>
 	 */
 	String TIMESTAMP_REGEX = "\\d{14}";
+	
+	/**
+	 * <p>邮箱格式：{@value}</p>
+	 */
+	String MAIL_REGEX = "^[a-zA-Z0-9]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$";
 
 }
