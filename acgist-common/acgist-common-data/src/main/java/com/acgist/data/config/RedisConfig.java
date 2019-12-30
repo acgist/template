@@ -12,7 +12,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import com.acgist.data.service.SerializeService;
 
 /**
- * <p>config - redis</p>
+ * <p>config - Redis</p>
  */
 @Configuration
 @ConditionalOnClass(RedisConfiguration.class)

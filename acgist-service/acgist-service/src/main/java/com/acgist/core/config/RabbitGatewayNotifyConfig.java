@@ -12,7 +12,6 @@ import com.acgist.core.service.GatewayService;
 import com.acgist.data.pojo.entity.GatewayEntity;
 
 /**
- * 
  * <p>config - 网关通知队列</p>
  * 
  * @author acgist

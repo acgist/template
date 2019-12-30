@@ -39,12 +39,14 @@ public class GatewayInteceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		final GatewaySession gatewaySession = GatewaySession.getInstance(this.context);
 		gatewaySession.buildGateway(UuidUtils.buildUuid(), this.privateKey);
+		// 设置权限
 		final PermissionEntity permission = this.permissionService.getPermission(request.getRequestURI());
 		if(permission == null) {
 			RedirectUtils.error(AcgistCode.CODE_1000, request, response);
 			return false;
 		}
 		gatewaySession.setPermission(permission);
+		// 请求数据
 		final GatewayRequest gatewayRequest = RequestUtils.requestGateway(permission, request);
 		if(gatewayRequest == null) {
 			RedirectUtils.error(AcgistCode.CODE_4400, "请求数据不能为空", request, response);

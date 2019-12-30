@@ -40,9 +40,7 @@ public class RsaConfig {
 	
 	@Bean
 	public PublicKey publicKey() {
-		if(
-			StringUtils.isNotEmpty(this.publicKey)
-		) {
+		if(StringUtils.isNotEmpty(this.publicKey)) {
 			LOGGER.info("配置RSA公钥：{}", this.publicKey);
 			try {
 				// TODO：加载失败加载密钥文件
@@ -56,9 +54,7 @@ public class RsaConfig {
 	
 	@Bean
 	public PrivateKey privateKey() {
-		if(
-			StringUtils.isNotEmpty(this.privateKey)
-		) {
+		if(StringUtils.isNotEmpty(this.privateKey)) {
 			LOGGER.info("配置RSA私钥：{}", this.privateKey);
 			try {
 				// TODO：加载失败加载密钥文件

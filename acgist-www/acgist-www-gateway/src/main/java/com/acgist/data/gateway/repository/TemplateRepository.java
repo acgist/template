@@ -14,8 +14,15 @@ import com.acgist.data.repository.BaseExtendRepository;
 @Repository
 public interface TemplateRepository extends BaseExtendRepository<TemplateEntity> {
 
+	/**
+	 * <p>查询模板</p>
+	 * 
+	 * @param type 模板类型
+	 * 
+	 * @return 模板（缓存）
+	 */
 	@Cacheable(AcgistWwwGatewayCache.TEMPLATE)
-	@Query(value = "SELECT * FROM tb_template model WHERE model.type = :type", nativeQuery = true)
+	@Query(value = "SELECT * FROM tb_template model WHERE model.type = :type limit 1", nativeQuery = true)
 	TemplateEntity findByType(TemplateEntity.Type type);
 	
 }

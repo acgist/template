@@ -7,7 +7,9 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.groups.Default;
 
+import com.acgist.core.config.AcgistCode;
 import com.acgist.core.pojo.Pojo;
+import com.acgist.core.pojo.message.ResultMessage;
 
 /**
  * <p>utils - 数据校验</p>
@@ -24,11 +26,12 @@ public final class ValidatorUtils {
 	 * 
 	 * @param pojo 数据
 	 * 
-	 * @return 校验结果：{@code null}=成功
+	 * @return 结果
 	 */
-	public static final String verify(Pojo pojo) {
+	public static final ResultMessage verify(Pojo pojo) {
+		final ResultMessage message = new ResultMessage();
 		if(pojo == null) {
-			return null;
+			return message.buildMessage(AcgistCode.CODE_3000);
 		}
 		final StringBuffer messageBuilder = new StringBuffer();
 		final Set<ConstraintViolation<Pojo>> set = VALIDATOR.validate(pojo, Default.class);
@@ -43,10 +46,10 @@ public final class ValidatorUtils {
 			}
 		}
 		if(messageBuilder.length() == 0) {
-			return null;
+			return message.buildSuccess();
 		}
 		messageBuilder.setLength(messageBuilder.length() - 1);
-		return messageBuilder.toString();
+		return message.buildMessage(AcgistCode.CODE_3000, messageBuilder.toString());
 	}
 	
 }

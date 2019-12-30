@@ -40,10 +40,10 @@ public class FreeMarkerService {
 	/**
 	 * <p>生成静态文件</p>
 	 * 
-	 * @param templatePath 模板路径：index.ftl
+	 * @param templatePath 模板路径：{@code index.ftl}
 	 * @param data 数据
-	 * @param htmlPath 生成HTML路径：/article/
-	 * @param htmlName 生成HTML文件名称：index.html
+	 * @param htmlPath 生成HTML路径：{@code /article/}
+	 * @param htmlName 生成HTML文件名称：{@code index.html}
 	 * 
 	 * @return 是否成功
 	 */
@@ -87,6 +87,15 @@ public class FreeMarkerService {
 			LOGGER.error("生成文本异常", e);
 		}
 		return content;
+	}
+	
+	/**
+	 * <p>清空缓存</p>
+	 * 
+	 * TODO：event
+	 */
+	public void cleanCache() {
+		this.configuration.clearTemplateCache();
 	}
 
 }

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.acgist.data.config.RedisConfig;
 
 /**
- * <p>service - redis</p>
+ * <p>service - Redis</p>
  * 
  * @author acgist
  * @since 1.0.0

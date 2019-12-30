@@ -22,7 +22,7 @@ public abstract class Gateway extends Pojo implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	/**
-	 * <p>签名</p>
+	 * <p>签名：{@value}</p>
 	 */
 	public static final String PROPERTY_SIGNATURE = "signature";
 
@@ -85,9 +85,9 @@ public abstract class Gateway extends Pojo implements Serializable {
 	}
 
 	/**
-	 * <p>获取请求参数</p>
+	 * <p>获取参数Map</p>
 	 * 
-	 * @return 请求参数
+	 * @return 参数Map
 	 */
 	public Map<String, String> data() {
 		return GatewayUtils.unpack(this);

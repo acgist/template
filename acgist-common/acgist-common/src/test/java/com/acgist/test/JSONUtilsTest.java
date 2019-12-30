@@ -28,10 +28,10 @@ public class JSONUtilsTest extends BaseTest {
 		response.setMessage("成功");
 		String json;
 		json = JSONUtils.toJSON(response);
-		System.out.println(json);
+		this.log(json);
 		response = JSONUtils.toJava(json, GatewayResponse.class);
-		System.out.println(response.getCode());
-		System.out.println(response.getMessage());
+		this.log(response.getCode());
+		this.log(response.getMessage());
 	}
 	
 }

@@ -15,7 +15,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 public final class SerializeService {
 
-
 	/**
 	 * <p>创建key序列化方法</p>
 	 * 

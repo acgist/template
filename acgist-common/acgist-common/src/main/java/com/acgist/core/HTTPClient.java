@@ -111,10 +111,8 @@ public final class HTTPClient {
 	private static final String USER_AGENT;
 	/**
 	 * <p>HTTP客户端线程池</p>
-	 * 
-	 * TODO：线程池优化，部分应用调整
 	 */
-	private static final ExecutorService EXECUTOR = SystemThreadContext.newExecutor(2, 100, 10000, 60L, SystemThreadContext.ACGIST_THREAD_HTTP_CLIENT);
+	private static final ExecutorService EXECUTOR = SystemThreadContext.newCacheExecutor(SystemThreadContext.ACGIST_THREAD_HTTP_CLIENT);
 	
 	static {
 		final StringBuilder userAgentBuilder = new StringBuilder();

@@ -3,7 +3,7 @@ package com.acgist.core.service;
 import com.acgist.data.pojo.message.PermissionMessage;
 
 /**
- * <p>service - 权限</p>
+ * <p>服务 - 权限</p>
  * 
  * @author acgist
  * @since 1.0.0

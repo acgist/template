@@ -13,8 +13,6 @@ import ch.qos.logback.classic.LoggerContext;
 /**
  * <p>service - 事件处理</p>
  * 
- * TODO：实现应用消息
- * 
  * @author acgist
  * @since 1.0.0
  */

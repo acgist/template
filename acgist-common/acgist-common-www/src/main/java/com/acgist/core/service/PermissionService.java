@@ -54,6 +54,9 @@ public class PermissionService {
 	 * @return 权限
 	 */
 	public PermissionEntity getPermission(String path) {
+		if(this.permissionMessage == null) {
+			return null;
+		}
 		return this.permissionMessage.getPermissions().stream()
 			.filter(permission -> StringUtils.equals(permission.getPath(), path))
 			.findFirst()
@@ -69,6 +72,9 @@ public class PermissionService {
 	 * @return 是否拥有权限
 	 */
 	public boolean hasPermission(String[] roles, PermissionEntity permission) {
+		if(this.permissionMessage == null) {
+			return false;
+		}
 		return this.permissionMessage.getRoles().entrySet().stream()
 			.filter(entry -> ArrayUtils.contains(roles, entry.getKey()))
 			.flatMap(entry -> entry.getValue().stream())

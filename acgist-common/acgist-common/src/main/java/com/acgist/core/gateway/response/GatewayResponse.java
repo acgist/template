@@ -27,7 +27,7 @@ public class GatewayResponse extends Gateway {
 	/**
 	 * <p>请求编号</p>
 	 */
-	@Size(max = 32, message = "用户名称长度不能超过32")
+	@Size(max = 32, message = "请求编号长度不能超过32")
 	@NotBlank(message = "请求编号不能为空")
 	protected String queryId;
 	/**
@@ -85,10 +85,6 @@ public class GatewayResponse extends Gateway {
 		this.message = message;
 	}
 	
-	public void response() {
-		
-	}
-	
 	/**
 	 * <p>将请求数据设置到响应中</p>
 	 * 
@@ -110,7 +106,7 @@ public class GatewayResponse extends Gateway {
 	 * 
 	 * @return 响应
 	 */
-	public GatewayResponse valueOfMap(final Map<String, String> data) {
+	public GatewayResponse valueOfMap(Map<String, String> data) {
 		if(data != null) {
 			data.remove(Gateway.PROPERTY_SIGNATURE); // 移除签名
 			GatewayUtils.pack(this, data);

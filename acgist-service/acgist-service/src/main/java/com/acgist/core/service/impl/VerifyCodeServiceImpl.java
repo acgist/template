@@ -23,7 +23,10 @@ import com.acgist.data.service.RedisService;
 import com.acgist.utils.RandomUtils;
 
 /**
- * <p>服务 - 验证码</p>
+ * <p>service - 验证码</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 @Service(retries = 0, version = "${acgist.service.version}")
 public class VerifyCodeServiceImpl implements IVerifyCodeService {

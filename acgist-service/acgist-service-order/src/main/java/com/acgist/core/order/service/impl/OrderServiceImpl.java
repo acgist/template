@@ -8,7 +8,7 @@ import com.acgist.data.pojo.entity.OrderEntity;
 import com.acgist.data.pojo.message.OrderMessage;
 
 /**
- * <p>服务 - 订单</p>
+ * <p>service - 订单</p>
  * 
  * @author acgist
  * @since 1.0.0

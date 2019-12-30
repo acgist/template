@@ -5,7 +5,7 @@ import org.apache.dubbo.config.annotation.Service;
 import com.acgist.core.service.IPayService;
 
 /**
- * <p>服务 - 支付</p>
+ * <p>service - 支付</p>
  * 
  * @author acgist
  * @since 1.0.0

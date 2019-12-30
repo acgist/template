@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 import com.acgist.core.gateway.request.GatewayRequest;
 
 /**
- * <p>请求 - 用户昵称修改</p>
+ * <p>请求 - 用户信息修改</p>
  * 
  * @author acgist
  * @since 1.0.0

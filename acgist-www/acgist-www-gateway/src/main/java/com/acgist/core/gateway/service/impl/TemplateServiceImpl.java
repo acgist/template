@@ -15,7 +15,10 @@ import com.acgist.data.pojo.entity.TemplateEntity.Type;
 import com.acgist.data.pojo.message.TemplateMessage;
 
 /**
- * <p>服务 - 模板</p>
+ * <p>service - 模板</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
  */
 @Service(retries = 0, version = "${acgist.service.version}")
 public class TemplateServiceImpl implements ITemplateService {

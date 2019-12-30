@@ -3,7 +3,7 @@ package com.acgist.core.service;
 import com.acgist.core.pojo.message.ResultMessage;
 
 /**
- * <p>service - 验证码</p>
+ * <p>服务 - 验证码</p>
  * 
  * @author acgist
  * @since 1.0.0

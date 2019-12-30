@@ -4,11 +4,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,7 +43,7 @@ public final class RequestUtils {
 	/**
 	 * <p>请求信息</p>
 	 */
-	public static final String FORM = "form";
+	public static final String REQUEST = "request";
 	
 	/**
 	 * <p>获取请求表单信息</p>
@@ -55,17 +53,12 @@ public final class RequestUtils {
 	 * @return 请求信息
 	 */
 	public static final String requestMessage(HttpServletRequest request) {
-		final Map<String, String> message = new HashMap<>();
+		final Map<String, Object> message = new HashMap<>();
 		message.put(IP, clientIP(request));
-		message.put(URI, request.getRequestURI());
 		message.put(METHOD, request.getMethod());
-		message.put(QUERY, request.getQueryString()); // TODO：JSON数据
-		final String form = request.getParameterMap().entrySet().stream()
-			.map(entry -> {
-				return entry.getKey() + "=" + String.join(",", entry.getValue());
-			})
-			.collect(Collectors.joining("&"));
-		message.put(FORM, form);
+		message.put(URI, request.getRequestURI());
+		message.put(QUERY, request.getQueryString());
+		message.put(REQUEST, requestData(request));
 		return JSONUtils.toJSON(message);
 	}
 	
@@ -79,8 +72,22 @@ public final class RequestUtils {
 	 * @return 网关信息
 	 */
 	public static final GatewayRequest requestGateway(PermissionEntity permission, HttpServletRequest request) {
-		GatewayRequest gatewayRequest = null;
-		// 读取请求数据
+		final Class<?> requestClazz = BeanUtils.forName(permission.getRequestClazz());
+		final GatewayRequest gatewayRequest = (GatewayRequest) BeanUtils.newInstance(requestClazz);
+		GatewayUtils.pack(gatewayRequest, requestData(request));
+		return gatewayRequest;
+	}
+	
+	/**
+	 * <p>获取请求数据</p>
+	 * 
+	 * @param request 请求
+	 * 
+	 * @return 请求数据
+	 */
+	public static final Map<String, String> requestData(HttpServletRequest request) {
+		final Map<String, String> data;
+		// 请求数据
 		final StringBuffer builder = new StringBuffer();
 		try {
 			String tmp = null;
@@ -92,21 +99,17 @@ public final class RequestUtils {
 		} catch (Exception e) {
 			LOGGER.error("获取请求数据异常", e);
 		}
-		final Class<?> requestClazz = BeanUtils.forName(permission.getRequestClazz());
-		if(builder.length() != 0) {
-			gatewayRequest = (GatewayRequest) JSONUtils.toJava(builder.toString(), requestClazz);
+		final String json = builder.toString();
+		if(json.isEmpty()) {
+			data = new HashMap<String, String>();
+		} else {
+			data = JSONUtils.toMapSimple(json);
 		}
-		// 读取请求表单
-		final var from = request.getParameterMap().entrySet().stream()
+		// 表单数据
+		request.getParameterMap().entrySet().stream()
 			.filter(entry -> entry.getKey() != null && entry.getValue() != null && entry.getValue().length > 0)
-			.collect(Collectors.toMap(entry -> entry.getKey(), entry -> entry.getValue()[0]));
-		if(MapUtils.isEmpty(from)) {
-			if(gatewayRequest == null) {
-				gatewayRequest = (GatewayRequest) BeanUtils.newInstance(requestClazz);
-			}
-			GatewayUtils.pack(gatewayRequest, from);
-		}
-		return gatewayRequest;
+			.forEach(entry -> data.put(entry.getKey(), entry.getValue()[0]));
+		return data;
 	}
 	
 	/**

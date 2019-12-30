@@ -9,6 +9,12 @@ import com.acgist.core.config.RabbitConfig;
 import com.acgist.data.pojo.entity.GatewayEntity;
 import com.acgist.data.repository.GatewayRepository;
 
+/**
+ * <p>service - 网关</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
+ */
 @Service
 public class GatewayService {
 	
@@ -35,6 +41,11 @@ public class GatewayService {
 		}
 	}
 
+	/**
+	 * <p>发送网关通知</p>
+	 * 
+	 * @param entity 网关信息
+	 */
 	public void notify(GatewayEntity entity) {
 		// TODO：发送
 	}

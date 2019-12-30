@@ -60,6 +60,27 @@ public final class JSONUtils {
 	 * 
 	 * @return Map对象
 	 */
+	public static final Map<String, String> toMapSimple(String json) {
+		if (json == null) {
+			return null;
+		}
+		final ObjectMapper mapper = getMapper();
+		try {
+			final JavaType type = mapper.getTypeFactory().constructParametricType(Map.class, String.class, String.class);
+			return mapper.readValue(json, type);
+		} catch (IOException e) {
+			LOGGER.error("JSON字符串转Map对象异常：{}", json, e);
+		}
+		return null;
+	}
+	
+	/**
+	 * <p>将JSON字符串转Map对象</p>
+	 * 
+	 * @param json JSON字符串
+	 * 
+	 * @return Map对象
+	 */
 	public static final Map<String, Object> toMap(String json) {
 		if (json == null) {
 			return null;

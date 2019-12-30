@@ -12,12 +12,23 @@ import com.acgist.core.service.GatewayService;
 import com.acgist.core.service.IUserService;
 import com.acgist.data.pojo.entity.UserEntity;
 
+/**
+ * <p>service - 用户</p>
+ * 
+ * @author acgist
+ * @since 1.0.0
+ */
 @Service
 public class UserService extends GatewayService {
 	
 	@Reference(version = "${acgist.service.version}")
 	private IUserService userService;
 	
+	/**
+	 * <p>用户信息查询</p>
+	 * 
+	 * @return 查询结果
+	 */
 	public GatewayResponse select() {
 		final var session = this.gatewaySession();
 		final var request = session.getRequest();
@@ -34,6 +45,11 @@ public class UserService extends GatewayService {
 		}
 	}
 	
+	/**
+	 * <p>用户信息修改</p>
+	 * 
+	 * @return 修改结果
+	 */
 	public GatewayResponse update() {
 		final var session = this.gatewaySession();
 		final var request = (UserUpdateRequest) session.getRequest();
