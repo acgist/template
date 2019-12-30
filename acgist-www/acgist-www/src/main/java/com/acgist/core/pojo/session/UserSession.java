@@ -56,4 +56,24 @@ public class UserSession extends BaseSession {
 		return (UserSession) session.getAttribute(AcgistWwwConstSession.SESSION_USER);
 	}
 	
+	/**
+	 * <p>登出</p>
+	 * 
+	 * @param request 请求
+	 */
+	public static final void logout(HttpServletRequest request) {
+		request.getSession().removeAttribute(AcgistWwwConstSession.SESSION_USER);
+	}
+	
+	/**
+	 * <p>判断是否已经登陆</p>
+	 * 
+	 * @param request 请求
+	 * 
+	 * @return 是否已经登陆
+	 */
+	public static final boolean exist(HttpServletRequest request) {
+		return get(request) != null;
+	}
+	
 }

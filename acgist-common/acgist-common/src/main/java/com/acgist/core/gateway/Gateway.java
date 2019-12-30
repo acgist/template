@@ -29,7 +29,7 @@ public abstract class Gateway extends Pojo implements Serializable {
 	/**
 	 * <p>用户名称</p>
 	 */
-	@Size(min = 8, max = 20, message = "用户名称长度不能小于8或者超过20")
+	@Size(min = 4, max = 20, message = "用户名称长度不能小于4或者超过20")
 	@NotBlank(message = "用户名称不能为空")
 	protected String username;
 	/**
@@ -42,7 +42,7 @@ public abstract class Gateway extends Pojo implements Serializable {
 	 * <p>签名</p>
 	 * <p>MD5</p>
 	 */
-	@Size(max = 40, message = "签名长度不能超过40")
+	@Size(max = 1024, message = "签名长度不能超过1024")
 	@NotBlank(message = "签名不能为空")
 	protected String signature;
 	/**

@@ -61,41 +61,52 @@ public class ResultMessage extends Pojo {
 	}
 	
 	/**
-	 * <p>成功响应</p>
+	 * <p>成功消息</p>
 	 * 
-	 * @return 响应
+	 * @return 消息
 	 */
 	public ResultMessage buildSuccess() {
 		return buildMessage(AcgistCode.CODE_0000);
 	}
 
 	/**
-	 * <p>失败响应</p>
+	 * <p>失败消息</p>
 	 * 
-	 * @return 响应
+	 * @return 消息
 	 */
 	public ResultMessage buildFail() {
 		return buildMessage(AcgistCode.CODE_9999);
 	}
-
+	
 	/**
-	 * <p>失败响应</p>
+	 * <p>失败消息</p>
 	 * 
 	 * @param code 失败编码
 	 * 
-	 * @return 响应
+	 * @return 消息
 	 */
 	public ResultMessage buildMessage(AcgistCode code) {
 		return buildMessage(code, code.getMessage());
 	}
+
+	/**
+	 * <p>失败消息</p>
+	 * 
+	 * @param message 结果消息
+	 * 
+	 * @return 消息
+	 */
+	public ResultMessage buildMessage(ResultMessage message) {
+		return buildMessage(message.getCode(), message.getMessage());
+	}
 	
 	/**
-	 * <p>失败响应</p>
+	 * <p>失败消息</p>
 	 * 
 	 * @param code 失败编码
 	 * @param message 失败消息
 	 * 
-	 * @return 响应
+	 * @return 消息
 	 */
 	public ResultMessage buildMessage(AcgistCode code, String message) {
 		message = AcgistCode.message(code, message);
@@ -103,12 +114,12 @@ public class ResultMessage extends Pojo {
 	}
 	
 	/**
-	 * <p>失败响应</p>
+	 * <p>失败消息</p>
 	 * 
 	 * @param code 失败编码
 	 * @param message 失败消息
 	 * 
-	 * @return 响应
+	 * @return 消息
 	 */
 	public ResultMessage buildMessage(String code, String message) {
 		this.code = code;

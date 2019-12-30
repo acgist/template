@@ -8,6 +8,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.acgist.core.interceptor.CsrfInterceptor;
+import com.acgist.core.interceptor.UserInterceptor;
 
 /**
  * <p>config - 拦截器</p>
@@ -22,11 +23,15 @@ public class InterceptorConfig implements WebMvcConfigurer {
 	
 	@Autowired
 	private CsrfInterceptor csrfInterceptor;
+	@Autowired
+	private UserInterceptor userInterceptor;
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		LOGGER.info("配置拦截器：csrfInterceptor");
 		registry.addInterceptor(this.csrfInterceptor).addPathPatterns("/**");
+		LOGGER.info("配置拦截器：userInterceptor");
+		registry.addInterceptor(this.userInterceptor).addPathPatterns("/user/**");
 		WebMvcConfigurer.super.addInterceptors(registry);
 	}
 

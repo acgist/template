@@ -26,6 +26,11 @@ import com.acgist.utils.RedirectUtils;
 @Component
 public class CsrfInterceptor implements HandlerInterceptor {
 	
+	/**
+	 * <p>Token：{@value}</p>
+	 */
+	private static final String REQUEST_TOKEN = "token";
+	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		final String method = request.getMethod();
@@ -33,10 +38,10 @@ public class CsrfInterceptor implements HandlerInterceptor {
 		final HttpSession session = request.getSession();
 		final String trueToken = (String) session.getAttribute(AcgistConstSession.SESSION_CSRF_TOKEN);
 		if(
-			HttpMethod.POST.name().equalsIgnoreCase(method) && // 拦截POST请求
-			!AcgistErrorController.ERROR_PATH.equals(uri) // 不拦截错误页面
+			!AcgistErrorController.ERROR_PATH.equals(uri) && // 忽略错误页面
+			HttpMethod.POST.name().equalsIgnoreCase(method) // 拦截POST请求
 		) {
-			final String token = (String) request.getParameter(AcgistConstSession.SESSION_CSRF_TOKEN);
+			final String token = (String) request.getParameter(REQUEST_TOKEN);
 			if(StringUtils.equals(token, trueToken)) {
 				buildCsrfToken(session);
 				return true;

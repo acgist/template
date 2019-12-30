@@ -57,7 +57,7 @@ public final class UserEntity extends BaseEntity {
 	/**
 	 * <p>用户名称</p>
 	 */
-	@Size(min = 8, max = 20, message = "用户名称长度不能小于8或者超过20")
+	@Size(min = 4, max = 20, message = "用户名称长度不能小于4或者超过20")
 	@NotBlank(message = "用户名称不能为空")
 	private String name;
 	/**
@@ -78,8 +78,9 @@ public final class UserEntity extends BaseEntity {
 	private String mobile;
 	/**
 	 * <p>用户密码</p>
+	 * <p>MD5编码保存</p>
 	 */
-	@Size(min = 8, max = 20, message = "用户密码长度不能小于8或者超过20")
+	@Size(min = 8, max = 40, message = "用户密码长度不能小于8或者超过40")
 	@NotBlank(message = "用户密码不能为空")
 	@JsonIgnore
 	private String password;
@@ -134,7 +135,7 @@ public final class UserEntity extends BaseEntity {
 		this.mobile = mobile;
 	}
 
-	@Column(length = 20, nullable = false)
+	@Column(length = 40, nullable = false)
 	public String getPassword() {
 		return password;
 	}

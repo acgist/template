@@ -72,7 +72,7 @@ public class GatewayEntity extends BaseEntity {
 	/**
 	 * <p>用户名称</p>
 	 */
-	@Size(min = 8, max = 20, message = "用户名称长度不能小于8或者超过20")
+	@Size(min = 4, max = 20, message = "用户名称长度不能小于4或者超过20")
 	@NotBlank(message = "用户名称不能为空")
 	private String username;
 	/**

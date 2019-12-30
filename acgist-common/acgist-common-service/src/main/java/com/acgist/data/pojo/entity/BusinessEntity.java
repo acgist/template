@@ -34,9 +34,9 @@ public class BusinessEntity extends BaseEntity {
 	/**
 	 * <p>用户名称</p>
 	 */
-	@Size(max = 20, message = "用户名称长度不能超过20")
+	@Size(min = 4, max = 20, message = "用户名称长度不能小于4或者超过20")
 	@NotBlank(message = "用户名称不能为空")
-	private String userName;
+	private String username;
 	/**
 	 * <p>订单ID</p>
 	 */
@@ -83,12 +83,12 @@ public class BusinessEntity extends BaseEntity {
 	}
 
 	@Column(length = 20, nullable = false)
-	public String getUserName() {
-		return userName;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	@Column(length = 32, nullable = false)

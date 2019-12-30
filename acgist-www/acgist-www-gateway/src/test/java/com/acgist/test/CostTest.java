@@ -23,7 +23,7 @@ public class CostTest extends BaseTest {
 		AuthoMessage message = null;
 		long begin = System.currentTimeMillis();
 		for (int i = 0; i < 100000; i++) {
-			message = userService.getAuthoMessage("test");
+			message = this.userService.getAuthoMessage("test");
 		}
 		this.log(System.currentTimeMillis() - begin);
 		this.log(message);

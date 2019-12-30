@@ -81,7 +81,7 @@ public class GatewayUtils {
 	/**
 	 * <p>生成摘要</p>
 	 * 
-	 * @param password 密码
+	 * @param password MD5编码密码
 	 * @param gateway 网关信息
 	 * 
 	 * @return 摘要
@@ -107,7 +107,7 @@ public class GatewayUtils {
 	/**
 	 * <p>签名</p>
 	 * 
-	 * @param password 密码
+	 * @param password MD5编码密码
 	 * @param gateway 网关信息
 	 * 
 	 * @return 签名
@@ -125,7 +125,7 @@ public class GatewayUtils {
 	/**
 	 * <p>验签</p>
 	 * 
-	 * @param password 密码
+	 * @param password MD5编码密码
 	 * @param gateway 网关信息
 	 * 
 	 * @return 验证结果

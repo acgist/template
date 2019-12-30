@@ -2,6 +2,7 @@ package com.acgist.core.user.service.impl;
 
 import javax.transaction.Transactional;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -16,6 +17,7 @@ import com.acgist.data.pojo.message.AuthoMessage;
 import com.acgist.data.pojo.message.LoginMessage;
 import com.acgist.data.pojo.message.UserMessage;
 import com.acgist.data.user.repository.UserRepository;
+import com.acgist.utils.PasswordUtils;
 
 /**
  * <p>service - 用户</p>
@@ -64,7 +66,20 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public LoginMessage login(String name, String password) {
-		return null;
+		final LoginMessage message = new LoginMessage();
+		final var user = this.userRepository.findByName(name);
+		if(user == null) {
+			message.buildMessage(AcgistCode.CODE_2000, "用户没有注册");
+			return message;
+		}
+		if(!StringUtils.equals(PasswordUtils.encrypt(password), user.getPassword())) {
+			message.buildMessage(AcgistCode.CODE_2000, "密码错误");
+			return message;
+		}
+		message.setId(user.getId());
+		message.setName(user.getName());
+		message.buildSuccess();
+		return message;
 	}
 
 }

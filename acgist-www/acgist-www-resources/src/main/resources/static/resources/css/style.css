@@ -13,6 +13,13 @@ a:hover{color:#0078A0;text-decoration:none;}
 a:visited{text-decoration:none;}
 p{margin:0 0 0.4rem 0;}
 h1, h2, h3, h4, h5, h6{padding:1rem 0;}
+.button{font-weight:normal;background:#666;margin:2px 4px 2px 4px;padding:6px 10px;color:#fff;border-radius:2px;}
+.button:hover{color:#fff;background:#555;cursor:pointer;}
+input{box-shadow:0px 0px 3px 0px rgba(0,0,0,0.15) inset;border:1px solid rgba(0,0,0,0.15)!important;padding:0.2rem 0.6rem;font-size:1rem;}
+input:focus,input:hover{border:1px solid #1ABC9C!important;}
+input::-webkit-calendar-picker-indicator{color:#1ABC9C;background:none;}
+textarea{box-shadow:0px 0px 3px 0px rgba(0,0,0,0.15) inset;border:1px solid rgba(0,0,0,0.15)!important;}
+textarea:hover,textarea:focus{border:1px solid #1ABC9C!important;}
 /** 头部 */
 .header{position:fixed;box-shadow:0px 0px 1px rgba(0,0,0,0.2);background:rgba(255,255,255,0.8);width:100%;left:0;top:0;z-index:999;overflow:hidden;}
 .header nav{margin:auto;}
@@ -29,6 +36,6 @@ h1, h2, h3, h4, h5, h6{padding:1rem 0;}
 /** 首页 */
 .home{text-align:center;font-size:4rem;}
 /** 登录 */
-.login{width:60%;margin:auto;}
+.login{width:60%;margin:auto;text-align:center;}
 /** 订单 */
 .order{width:60%;margin:auto;}
