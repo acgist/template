@@ -19,6 +19,7 @@ import com.acgist.core.pojo.message.ResultMessage;
 import com.acgist.core.pojo.message.TokenResultMessage;
 import com.acgist.core.pojo.session.UserSession;
 import com.acgist.core.service.IUserService;
+import com.acgist.core.service.IVerifyCodeService;
 import com.acgist.data.pojo.entity.UserEntity;
 import com.acgist.data.pojo.message.LoginMessage;
 import com.acgist.utils.PasswordUtils;
@@ -42,6 +43,8 @@ public class UserContoller {
 	private PrivateKey privateKey;
 	@Reference(version = "${acgist.service.version}")
 	private IUserService userService;
+	@Reference(version = "${acgist.service.version}")
+	private IVerifyCodeService verifyCodeService;
 
 	@GetMapping("/logout")
 	public String logout(HttpServletRequest request) {
@@ -70,7 +73,7 @@ public class UserContoller {
 	 * @param password 用户密码
 	 * @param request 请求
 	 * 
-	 * @return 模板
+	 * @return 结果
 	 */
 	@PostMapping(LOGIN)
 	@ResponseBody
@@ -95,6 +98,8 @@ public class UserContoller {
 	/**
 	 * <p>注册页面</p>
 	 * 
+	 * @param request 请求
+	 * 
 	 * @return 模板
 	 */
 	@GetMapping("/register")
@@ -114,12 +119,21 @@ public class UserContoller {
 	 * @param mobile 用户手机
 	 * @param password 用户密码
 	 * @param code 邮箱验证码
+	 * @param request 请求
 	 * 
-	 * @return 模板
+	 * @return 结果
 	 */
 	@PostMapping("/register")
 	@ResponseBody
-	public ResultMessage register(String name, String nick, String mail, String mobile, String password, String code) {
+	public TokenResultMessage register(String name, String nick, String mail, String mobile, String password, String code, HttpServletRequest request) {
+		final TokenResultMessage message = new TokenResultMessage();
+//		TODO：没有实现发送邮件
+//		final ResultMessage resultMessage = this.verifyCodeService.verify(mail, code);
+//		if(resultMessage.fail()) {
+//			message.buildMessage(message);
+//			message.setToken((String) request.getSession().getAttribute(AcgistConstSession.SESSION_CSRF_TOKEN));
+//			return message;
+//		}
 		password = RsaUtils.decrypt(this.privateKey, password); // 解密
 		final UserEntity user = new UserEntity();
 		user.setName(name);
@@ -130,7 +144,8 @@ public class UserContoller {
 		user.setPassword(PasswordUtils.encrypt(password));
 		// TODO：默认角色
 		this.userService.save(user);
-		return ResultMessage.newInstance().buildSuccess();
+		message.buildSuccess();
+		return message;
 	}
 	
 	/**
@@ -138,7 +153,7 @@ public class UserContoller {
 	 * 
 	 * @param name 用户名称
 	 * 
-	 * @return 是否重复
+	 * @return 结果
 	 */
 	@GetMapping("/check/user/name")
 	@ResponseBody
@@ -159,7 +174,7 @@ public class UserContoller {
 	 * 
 	 * @param mail 用户邮箱
 	 * 
-	 * @return 是否重复
+	 * @return 结果
 	 */
 	@GetMapping("/check/user/mail")
 	@ResponseBody
@@ -180,13 +195,13 @@ public class UserContoller {
 	 * 
 	 * @param mail 邮箱
 	 * 
-	 * @return 发送结果
+	 * @return 结果
 	 */
 	@GetMapping("/send/mail/code")
 	@ResponseBody
 	public ResultMessage sendMailCode(String mail) {
-		// TODO：实现
-		return null;
+		this.verifyCodeService.buildMail(mail);
+		return ResultMessage.newInstance().buildSuccess();
 	}
 	
 }

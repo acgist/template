@@ -15,7 +15,7 @@
 		<#include "/include/header.ftl">
 		<div class="main">
 			<form id="register" action="javascript:void(0);">
-				<input type="hidden" name="token" value="${SESSION_CRSF_TOKEN}" />
+				<input value="${SESSION_CRSF_TOKEN}" id="token" name="token" type="hidden" />
 				<div class="user">
 					<p>
 						<label for="name">用户名称</label>
@@ -92,6 +92,7 @@
 						if("0000" === message.code) {
 							location.href = "/login";
 						} else {
+							$("#token").val(message.token);
 							alert(message.message);
 						}
 					});
