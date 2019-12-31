@@ -35,14 +35,9 @@ public class GatewaySignatureInteceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		final GatewaySession gatewaySession = GatewaySession.getInstance(this.context);
 		final GatewayRequest gatewayRequest = gatewaySession.getRequest();
-		final AuthoMessage authoMessage = this.userService.getAuthoMessage(gatewayRequest.getUsername());
-		if(authoMessage.fail()) {
-			RedirectUtils.error(authoMessage.getCode(), request, response);
-			return false;
-		}
+		final AuthoMessage authoMessage = gatewaySession.getAuthoMessage();
 		final boolean verify = GatewayUtils.verify(authoMessage.getPassword(), gatewayRequest);
 		if(verify) {
-			gatewaySession.setAuthoMessage(authoMessage);
 			return true;
 		}
 		RedirectUtils.error(AcgistCode.CODE_3001, request, response);

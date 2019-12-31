@@ -13,4 +13,9 @@ public interface AcgistServiceUserCache {
 	 */
 	String AUTHO_MESSAGE = "CACHE_AUTHO_MESSAGE";
 	
+	/**
+	 * <p>权限信息缓存</p>
+	 */
+	String ROLES_MESSAGE = "CACHE_ROLES_MESSAGE";
+	
 }

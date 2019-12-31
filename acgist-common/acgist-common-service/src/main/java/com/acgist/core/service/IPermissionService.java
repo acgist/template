@@ -18,4 +18,13 @@ public interface IPermissionService {
 	 */
 	PermissionMessage allPermission();
 	
+	/**
+	 * <p>获取角色所有权限</p>
+	 * 
+	 * @param roles 角色
+	 * 
+	 * @return 权限
+	 */
+	String[] allPermission(String[] roles);
+	
 }

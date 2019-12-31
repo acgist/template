@@ -42,6 +42,12 @@ public final class PermissionEntity extends BaseEntity {
 	@NotBlank(message = "权限名称不能为空")
 	private String name;
 	/**
+	 * <p>角色标识</p>
+	 */
+	@Size(max = 40, message = "权限标识长度不能超过40")
+	@NotBlank(message = "权限标识不能为空")
+	private String token;
+	/**
 	 * <p>请求地址</p>
 	 * <p>前台接口统一使用POST</p>
 	 * <p>后台接口支持使用RESTful</p>
@@ -107,6 +113,15 @@ public final class PermissionEntity extends BaseEntity {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Column(length = 40, nullable = false)
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 	@Column(length = 256, nullable = false)

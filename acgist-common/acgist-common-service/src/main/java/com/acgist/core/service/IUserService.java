@@ -59,6 +59,17 @@ public interface IUserService {
 	LoginMessage login(String name, String password);
 	
 	/**
+	 * <p>登陆</p>
+	 * 
+	 * @param name 用户名称
+	 * @param password 用户密码（已经加密）
+	 * @param type 用户类型
+	 * 
+	 * @return 登陆结果
+	 */
+	LoginMessage login(String name, String password, UserEntity.Type type);
+	
+	/**
 	 * <p>验证用户名称是否存在</p>
 	 * 
 	 * @param name 用户名称

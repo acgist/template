@@ -63,9 +63,9 @@ public final class Filter implements Serializable {
 	/**
 	 * <p>属性值</p>
 	 */
-	private final Comparable<?> value;
+	private final Object value;
 
-	private Filter(String property, Operator operator, Comparable<?> value) {
+	private Filter(String property, Operator operator, Object value) {
 		this.property = property;
 		this.operator = operator;
 		this.value = value;
@@ -151,7 +151,7 @@ public final class Filter implements Serializable {
 	 * 
 	 * @return 条件
 	 */
-	public static final Filter in(String property, Comparable<?> value) {
+	public static final Filter in(String property, Object value) {
 		return new Filter(property, Operator.IN, value);
 	}
 
@@ -163,7 +163,7 @@ public final class Filter implements Serializable {
 	 * 
 	 * @return 条件
 	 */
-	public static final Filter like(String property, Comparable<?> value) {
+	public static final Filter like(String property, Object value) {
 		return new Filter(property, Operator.LIKE, value);
 	}
 
@@ -228,7 +228,7 @@ public final class Filter implements Serializable {
 	 * 
 	 * @return 属性值
 	 */
-	public Comparable<?> getValue() {
+	public Object getValue() {
 		return this.value;
 	}
 

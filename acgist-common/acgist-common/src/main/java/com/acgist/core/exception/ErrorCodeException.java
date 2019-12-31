@@ -15,6 +15,10 @@ public final class ErrorCodeException extends RuntimeException {
 	public ErrorCodeException() {
 		this(AcgistCode.CODE_9999);
 	}
+	
+	public ErrorCodeException(String message) {
+		this(AcgistCode.CODE_9999, message);
+	}
 
 	public ErrorCodeException(AcgistCode code) {
 		this(code.getCode(), code.getMessage());

@@ -92,6 +92,9 @@ public class RsaUtils {
 	 * @return 原始数据
 	 */
 	public static final byte[] base64Decode(String value) {
+		if(value == null) {
+			throw new ErrorCodeException("数据错误");
+		}
 		return Base64.getDecoder().decode(value.getBytes());
 	}
 	
@@ -272,7 +275,7 @@ public class RsaUtils {
 			}
 			return out.toByteArray();
 		} catch (Exception e) {
-			throw new ErrorCodeException();
+			throw new ErrorCodeException(e);
 		}
 	}
 	

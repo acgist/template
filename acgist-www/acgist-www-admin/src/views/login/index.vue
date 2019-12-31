@@ -48,23 +48,25 @@
 </template>
 
 <script>
+import rsa from '@/utils/rsa';
+
 export default {
   name: 'Login',
   data() {
     const validateUsername = (rule, value, callback) => {
       if (!value || value.length < 4) {
-        callback(new Error('请输入用户名称'))
+        callback(new Error('请输入正确用户名称'));
       } else {
-        callback()
+        callback();
       }
-    }
+    };
     const validatePassword = (rule, value, callback) => {
       if (!value || value.length < 8) {
-        callback(new Error('请输入用户密码'))
+        callback(new Error('请输入正确用户密码'));
       } else {
-        callback()
+        callback();
       }
-    }
+    };
     return {
       loginForm: {
         username: '',
@@ -77,12 +79,12 @@ export default {
       loading: false,
       passwordType: 'password',
       redirect: undefined
-    }
+    };
   },
   watch: {
     $route: {
       handler: function(route) {
-        this.redirect = route.query && route.query.redirect
+        this.redirect = route.query && route.query.redirect;
       },
       immediate: true
     }
@@ -90,51 +92,51 @@ export default {
   methods: {
     showPwd() {
       if (this.passwordType === 'password') {
-        this.passwordType = ''
+        this.passwordType = '';
       } else {
-        this.passwordType = 'password'
+        this.passwordType = 'password';
       }
       this.$nextTick(() => {
-        this.$refs.password.focus()
-      })
+        this.$refs.password.focus();
+      });
     },
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
-          this.loading = true
-          this.$store.dispatch('user/login', this.loginForm).then(() => {
-            this.$router.push({ path: this.redirect || '/' })
-            this.loading = false
+          this.loading = true;
+          // 密码加密
+          var encryptForm = {};
+          encryptForm.username = this.loginForm.username;
+          encryptForm.password = rsa.encrypt(this.loginForm.password, 'base64');
+          this.$store.dispatch('user/login', encryptForm).then(() => {
+            this.$router.push({ path: this.redirect || '/' });
+            this.loading = false;
           }).catch(() => {
-            this.loading = false
-          })
+            this.loading = false;
+          });
         } else {
-          console.log('error submit!!')
-          return false
+          return false;
         }
-      })
+      });
     }
   }
-}
+};
 </script>
 
 <style lang="scss">
 $bg:#283443;
-$light_gray:#fff;
 $cursor: #fff;
-
+$light_gray:#fff;
 @supports (-webkit-mask: none) and (not (cater-color: $cursor)) {
   .login-container .el-input input {
     color: $cursor;
   }
 }
-
 .login-container {
   .el-input {
     display: inline-block;
     height: 47px;
     width: 85%;
-
     input {
       background: transparent;
       border: 0px;
@@ -151,7 +153,6 @@ $cursor: #fff;
       }
     }
   }
-
   .el-form-item {
     border: 1px solid rgba(255, 255, 255, 0.1);
     background: rgba(0, 0, 0, 0.1);
@@ -163,15 +164,13 @@ $cursor: #fff;
 
 <style lang="scss" scoped>
 $bg:#2d3a4b;
-$dark_gray:#889aa4;
 $light_gray:#eee;
-
+$dark_gray:#889aa4;
 .login-container {
   min-height: 100%;
   width: 100%;
   background-color: $bg;
   overflow: hidden;
-
   .login-form {
     position: relative;
     width: 520px;
@@ -180,19 +179,16 @@ $light_gray:#eee;
     margin: 0 auto;
     overflow: hidden;
   }
-
   .tips {
     font-size: 14px;
     color: #fff;
     margin-bottom: 10px;
-
     span {
       &:first-of-type {
         margin-right: 16px;
       }
     }
   }
-
   .svg-container {
     padding: 6px 5px 6px 15px;
     color: $dark_gray;
@@ -200,10 +196,8 @@ $light_gray:#eee;
     width: 30px;
     display: inline-block;
   }
-
   .title-container {
     position: relative;
-
     .title {
       font-size: 26px;
       color: $light_gray;
@@ -212,7 +206,6 @@ $light_gray:#eee;
       font-weight: bold;
     }
   }
-
   .show-pwd {
     position: absolute;
     right: 10px;

@@ -10,7 +10,7 @@ function resolve(dir) {
 const name = defaultSettings.title || 'ACGIST-ADMIN'
 
 // 端口
-const port = process.env.port || process.env.npm_config_port || 28802
+const port = process.env.port || process.env.npm_config_port || 28888
 
 // 配置查看： https://cli.vuejs.org/config/
 module.exports = {
@@ -28,7 +28,7 @@ module.exports = {
     },
     proxy: {
       [process.env.VUE_APP_BASE_API]: {
-        target: `http://127.0.0.1:${port}/`,
+        target: `http://127.0.0.1:28802/`,
         changeOrigin: true,
         pathRewrite: {
           ['^' + process.env.VUE_APP_BASE_API]: ''

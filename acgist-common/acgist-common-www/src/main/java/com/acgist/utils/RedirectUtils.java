@@ -74,7 +74,7 @@ public final class RedirectUtils {
 	public static final void error(AcgistCode code, String message, HttpServletRequest request, HttpServletResponse response) {
 		message = AcgistCode.message(code, message);
 		final String location = String.format(ERROR_LOCATION, code.getCode(), URLUtils.encode(message));
-		requestDispatcher(request, response, location);
+		forward(request, response, location);
 	}
 
 	/**
@@ -84,7 +84,7 @@ public final class RedirectUtils {
 	 * @param response 响应
 	 * @param location 转发地址
 	 */
-	public static final void requestDispatcher(HttpServletRequest request, HttpServletResponse response, String location) {
+	public static final void forward(HttpServletRequest request, HttpServletResponse response, String location) {
 		try {
 			request.getRequestDispatcher(location).forward(request, response);
 		} catch (ServletException e) {

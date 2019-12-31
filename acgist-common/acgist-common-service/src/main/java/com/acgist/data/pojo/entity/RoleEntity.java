@@ -43,6 +43,12 @@ public final class RoleEntity extends BaseEntity {
 	@NotBlank(message = "角色名称不能为空")
 	private String name;
 	/**
+	 * <p>角色标识</p>
+	 */
+	@Size(max = 40, message = "角色标识长度不能超过40")
+	@NotBlank(message = "角色标识不能为空")
+	private String token;
+	/**
 	 * <p>角色描述</p>
 	 */
 	@Size(max = 256, message = "角色描述长度不能超过256")
@@ -70,6 +76,15 @@ public final class RoleEntity extends BaseEntity {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Column(length = 40, nullable = false)
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 	@Column(length = 256)

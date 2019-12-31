@@ -50,7 +50,7 @@ public class UserServiceImpl implements IUserService {
 			authoMessage.setName(entity.getName());
 			authoMessage.setPassword(entity.getPassword());
 			final String[] roles = entity.getRoles().stream()
-				.map(RoleEntity::getId)
+				.map(RoleEntity::getToken)
 				.toArray(String[]::new);
 			authoMessage.setRoles(roles);
 		}
@@ -72,10 +72,19 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public LoginMessage login(String name, String password) {
+		return this.login(name, password, null);
+	}
+	
+	@Override
+	public LoginMessage login(String name, String password, UserEntity.Type type) {
 		final LoginMessage message = new LoginMessage();
 		final var user = this.userRepository.findByName(name);
 		if(user == null) {
 			message.buildMessage(AcgistCode.CODE_2000, "用户没有注册");
+			return message;
+		}
+		if(type != null && user.getType() != type) {
+			message.buildMessage(AcgistCode.CODE_2001, "用户没有权限");
 			return message;
 		}
 		if(!StringUtils.equals(PasswordUtils.encrypt(password), user.getPassword())) {
