@@ -1,4 +1,4 @@
-package com.acgist.core.gateway;
+package com.acgist.core.pojo.request;
 
 import java.io.Serializable;
 

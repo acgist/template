@@ -16,8 +16,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import com.acgist.core.config.AcgistCode;
-import com.acgist.core.gateway.GatewaySession;
 import com.acgist.core.gateway.request.GatewayRequest;
+import com.acgist.core.pojo.request.GatewaySession;
 import com.acgist.utils.DateUtils;
 import com.acgist.utils.RedirectUtils;
 
@@ -50,11 +50,11 @@ public class GatewayTimeInteceptor implements HandlerInterceptor {
 			return false;
 		}
 		final Duration duration = Duration.between(LocalDateTime.now(), requestDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime());
-		if(Math.abs(duration.toMinutes()) < this.duration) {
-			return true;
+		if(Math.abs(duration.toMinutes()) > this.duration) {
+			RedirectUtils.error(AcgistCode.CODE_3002, "请求超时", request, response);
+			return false;
 		}
-		RedirectUtils.error(AcgistCode.CODE_3002, "请求超时", request, response);
-		return false;
+		return true;
 	}
 	
 }

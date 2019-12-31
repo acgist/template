@@ -13,6 +13,7 @@ import com.acgist.data.service.SerializeService;
 
 /**
  * <p>config - Redis</p>
+ * <p>注意：不能使用数组对象</p>
  */
 @Configuration
 @ConditionalOnClass(RedisConfiguration.class)

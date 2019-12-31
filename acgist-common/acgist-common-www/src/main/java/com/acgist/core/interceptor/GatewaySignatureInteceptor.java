@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import com.acgist.core.config.AcgistCode;
-import com.acgist.core.gateway.GatewaySession;
 import com.acgist.core.gateway.request.GatewayRequest;
+import com.acgist.core.pojo.request.GatewaySession;
 import com.acgist.core.service.IUserService;
 import com.acgist.data.pojo.message.AuthoMessage;
 import com.acgist.utils.GatewayUtils;
@@ -37,11 +37,11 @@ public class GatewaySignatureInteceptor implements HandlerInterceptor {
 		final GatewayRequest gatewayRequest = gatewaySession.getRequest();
 		final AuthoMessage authoMessage = gatewaySession.getAuthoMessage();
 		final boolean verify = GatewayUtils.verify(authoMessage.getPassword(), gatewayRequest);
-		if(verify) {
-			return true;
+		if(!verify) {
+			RedirectUtils.error(AcgistCode.CODE_3001, request, response);
+			return false;
 		}
-		RedirectUtils.error(AcgistCode.CODE_3001, request, response);
-		return false;
+		return true;
 	}
 	
 }

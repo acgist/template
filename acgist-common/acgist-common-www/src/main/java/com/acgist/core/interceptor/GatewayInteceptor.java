@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import com.acgist.core.config.AcgistCode;
-import com.acgist.core.gateway.GatewaySession;
 import com.acgist.core.gateway.request.GatewayRequest;
+import com.acgist.core.pojo.request.GatewaySession;
 import com.acgist.core.service.PermissionService;
 import com.acgist.data.pojo.entity.PermissionEntity;
 import com.acgist.utils.RedirectUtils;
