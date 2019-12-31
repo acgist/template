@@ -103,6 +103,10 @@ export default {
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
+          if (!rsa.useable) {
+            // RSA
+            return false;
+          }
           this.loading = true;
           // 密码加密
           var encryptForm = {};
