@@ -5,5 +5,5 @@ export function getList(params) {
     url: '/table/list',
     method: 'get',
     params
-  })
+  });
 }
