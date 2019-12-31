@@ -24,6 +24,7 @@ import '@/permission' // permission control
  * please remove it before going online! ! !
  */
 import { mockXHR } from '../mock'
+// TODO：删除NODE_ENV和mock
 if (process.env.NODE_ENV === 'production') {
   mockXHR()
 }
