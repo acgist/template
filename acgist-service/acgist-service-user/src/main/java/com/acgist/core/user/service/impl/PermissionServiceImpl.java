@@ -1,6 +1,7 @@
 package com.acgist.core.user.service.impl;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -47,15 +48,15 @@ public class PermissionServiceImpl implements IPermissionService {
 	@Override
 	@Transactional
 	@Cacheable(AcgistServiceUserCache.ROLES_MESSAGE)
-	public String[] allPermission(String[] roles) {
+	public List<String> allPermission(String ... roles) {
 		if(roles == null) {
 			return null;
 		}
 		final var list = this.roleRepository.findAll(Filter.in("token", Arrays.asList(roles)));
 		return list.stream()
 			.flatMap(entity -> entity.getPermissions().stream())
-			.map(permission -> permission.getName())
-			.toArray(String[]::new);
+			.map(permission -> permission.getToken())
+			.collect(Collectors.toList());
 	}
 
 }

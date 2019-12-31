@@ -1,5 +1,7 @@
 package com.acgist.core.service;
 
+import java.util.List;
+
 import com.acgist.data.pojo.message.PermissionMessage;
 
 /**
@@ -25,6 +27,6 @@ public interface IPermissionService {
 	 * 
 	 * @return 权限
 	 */
-	String[] allPermission(String[] roles);
+	List<String> allPermission(String ... roles);
 	
 }
