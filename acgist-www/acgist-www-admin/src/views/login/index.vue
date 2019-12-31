@@ -104,7 +104,7 @@ export default {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           if (!rsa.useable) {
-            // RSA
+            // TODO：RSA没有加载成功
             return false;
           }
           this.loading = true;
