@@ -14,6 +14,7 @@ import com.acgist.core.service.IPermissionService;
 import com.acgist.core.user.config.AcgistServiceUserCache;
 import com.acgist.data.pojo.select.Filter;
 import com.acgist.data.pojo.session.PermissionSession;
+import com.acgist.data.user.repository.PermissionRepository;
 import com.acgist.data.user.repository.RoleRepository;
 
 /**
@@ -29,20 +30,22 @@ public class PermissionServiceImpl implements IPermissionService {
 
 	@Autowired
 	private RoleRepository roleRepository;
+	@Autowired
+	private PermissionRepository permissionRepository;
 	
 	@Override
 	@Transactional
 	public PermissionSession allPermission() {
-		final var allRoles = this.roleRepository.findAll();
 		final PermissionSession session = new PermissionSession();
-		// 手动创建瞬时对象
+		final var allRoles = this.roleRepository.findAll();
 		final var roles = allRoles.stream()
 			.map(role -> Map.entry(role.getToken(), role.getPermissions().stream().collect(Collectors.toList())))
 			.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-		final var permissions = allRoles.stream()
+		session.setRoles(roles);
+		final var allPermissions = this.permissionRepository.findAll();
+		final var permissions = allPermissions.stream()
 			.flatMap(role -> role.getPermissions().stream())
 			.collect(Collectors.toList());
-		session.setRoles(roles);
 		session.setPermissions(permissions);
 		return session;
 	}
