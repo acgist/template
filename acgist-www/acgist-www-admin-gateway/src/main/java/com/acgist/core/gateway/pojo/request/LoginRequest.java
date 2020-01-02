@@ -12,7 +12,13 @@ public class LoginRequest extends Pojo {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * <p>用户名称</p>
+	 */
 	private String username;
+	/**
+	 * <p>用户密码</p>
+	 */
 	private String password;
 
 	public String getUsername() {

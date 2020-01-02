@@ -1,4 +1,4 @@
-package com.acgist.core.pojo.request;
+package com.acgist.core.pojo.session;
 
 import java.io.Serializable;
 import java.security.PrivateKey;

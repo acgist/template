@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.acgist.core.config.RabbitConfig;
 import com.acgist.core.gateway.request.GatewayRequest;
 import com.acgist.core.gateway.response.GatewayResponse;
-import com.acgist.core.pojo.request.GatewaySession;
+import com.acgist.core.pojo.session.GatewaySession;
 import com.acgist.data.pojo.entity.GatewayEntity;
 import com.acgist.data.pojo.entity.GatewayEntity.Status;
 import com.acgist.data.pojo.entity.PermissionEntity;

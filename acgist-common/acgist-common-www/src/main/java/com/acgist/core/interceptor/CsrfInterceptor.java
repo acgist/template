@@ -27,9 +27,9 @@ import com.acgist.utils.RedirectUtils;
 public class CsrfInterceptor implements HandlerInterceptor {
 	
 	/**
-	 * <p>Token：{@value}</p>
+	 * <p>表单Token：{@value}</p>
 	 */
-	private static final String REQUEST_TOKEN = "token";
+	private static final String FORM_TOKEN = "token";
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -41,7 +41,7 @@ public class CsrfInterceptor implements HandlerInterceptor {
 			!AcgistErrorController.ERROR_PATH.equals(uri) && // 忽略错误页面
 			HttpMethod.POST.name().equalsIgnoreCase(method) // 拦截POST请求
 		) {
-			final String token = (String) request.getParameter(REQUEST_TOKEN);
+			final String token = (String) request.getParameter(FORM_TOKEN);
 			if(StringUtils.equals(token, trueToken)) {
 				buildCsrfToken(session);
 				return true;

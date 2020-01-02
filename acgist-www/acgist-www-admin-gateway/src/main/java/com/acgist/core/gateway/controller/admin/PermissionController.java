@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.acgist.core.pojo.message.DataResultMessage;
-import com.acgist.core.pojo.request.AdminSession;
+import com.acgist.core.pojo.session.AdminSession;
 import com.acgist.core.service.IPermissionService;
 
 /**

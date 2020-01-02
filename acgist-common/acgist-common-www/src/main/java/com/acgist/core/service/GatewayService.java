@@ -3,7 +3,7 @@ package com.acgist.core.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
-import com.acgist.core.pojo.request.GatewaySession;
+import com.acgist.core.pojo.session.GatewaySession;
 
 /**
  * <p>service - 网关</p>

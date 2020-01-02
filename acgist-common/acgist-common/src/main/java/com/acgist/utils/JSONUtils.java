@@ -193,7 +193,6 @@ public final class JSONUtils {
 		final ObjectMapper mapper = new ObjectMapper();
 		final PolymorphicTypeValidator validator = BasicPolymorphicTypeValidator.builder()
 			.allowIfBaseType(Object.class)
-			.allowIfSubTypeIsArray()
 			.build();
 		mapper
 			.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)

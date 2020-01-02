@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.acgist.core.config.AcgistCode;
 import com.acgist.core.pojo.Pojo;
 import com.acgist.core.pojo.message.ResultMessage;
-import com.acgist.core.pojo.request.GatewaySession;
+import com.acgist.core.pojo.session.GatewaySession;
 
 /**
  * <p>统一错误处理</p>

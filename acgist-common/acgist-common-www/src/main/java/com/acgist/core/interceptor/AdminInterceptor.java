@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import com.acgist.core.config.AcgistCode;
-import com.acgist.core.pojo.request.AdminSession;
+import com.acgist.core.pojo.session.AdminSession;
 import com.acgist.data.pojo.message.AuthoMessage;
 import com.acgist.data.service.RedisService;
 import com.acgist.utils.RedirectUtils;

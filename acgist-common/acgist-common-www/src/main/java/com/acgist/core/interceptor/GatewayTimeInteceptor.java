@@ -17,7 +17,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 import com.acgist.core.config.AcgistCode;
 import com.acgist.core.gateway.request.GatewayRequest;
-import com.acgist.core.pojo.request.GatewaySession;
+import com.acgist.core.pojo.session.GatewaySession;
 import com.acgist.utils.DateUtils;
 import com.acgist.utils.RedirectUtils;
 
