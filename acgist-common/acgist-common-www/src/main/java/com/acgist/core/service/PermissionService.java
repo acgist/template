@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.acgist.data.pojo.entity.PermissionEntity;
-import com.acgist.data.pojo.message.PermissionMessage;
+import com.acgist.data.pojo.session.PermissionSession;
 
 /**
  * <p>service - 权限</p>
@@ -36,7 +36,7 @@ public class PermissionService {
 	/**
 	 * <p>授权信息</p>
 	 */
-	private PermissionMessage permissionMessage;
+	private PermissionSession permissionSession;
 	
 	@Reference(version = "${acgist.service.version}")
 	private IPermissionService permissionService;
@@ -45,7 +45,7 @@ public class PermissionService {
 	public void init() {
 		if(this.permission) {
 			LOGGER.info("加载权限");
-			this.permissionMessage = this.permissionService.allPermission();
+			this.permissionSession = this.permissionService.allPermission();
 		}
 	}
 	
@@ -55,7 +55,7 @@ public class PermissionService {
 	 * @return 权限树
 	 */
 	public List<PermissionEntity> allPermission() {
-		return this.permissionMessage.getPermissions();
+		return this.permissionSession.getPermissions();
 	}
 	
 	/**
@@ -66,10 +66,10 @@ public class PermissionService {
 	 * @return 权限
 	 */
 	public PermissionEntity getPermission(String path) {
-		if(this.permissionMessage == null) {
+		if(this.permissionSession == null) {
 			return null;
 		}
-		return this.permissionMessage.getPermissions().stream()
+		return this.permissionSession.getPermissions().stream()
 			.filter(permission -> StringUtils.equals(permission.getPath(), path))
 			.findFirst()
 			.orElse(null);
@@ -84,10 +84,10 @@ public class PermissionService {
 	 * @return 是否拥有权限
 	 */
 	public boolean hasPermission(String[] roles, PermissionEntity permission) {
-		if(this.permissionMessage == null) {
+		if(this.permissionSession == null) {
 			return false;
 		}
-		return this.permissionMessage.getRoles().entrySet().stream()
+		return this.permissionSession.getRoles().entrySet().stream()
 			.filter(entry -> ArrayUtils.contains(roles, entry.getKey()))
 			.flatMap(entry -> entry.getValue().stream())
 			.anyMatch(value -> value.equals(permission));

@@ -1,4 +1,4 @@
-package com.acgist.data.pojo.message;
+package com.acgist.data.pojo.session;
 
 import java.util.List;
 import java.util.Map;
@@ -12,7 +12,7 @@ import com.acgist.data.pojo.entity.PermissionEntity;
  * @author acgist
  * @since 1.0.0
  */
-public class PermissionMessage extends Pojo {
+public class PermissionSession extends Pojo {
 
 	private static final long serialVersionUID = 1L;
 
