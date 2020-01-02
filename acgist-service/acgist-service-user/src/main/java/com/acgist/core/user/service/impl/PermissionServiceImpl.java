@@ -44,7 +44,6 @@ public class PermissionServiceImpl implements IPermissionService {
 		session.setRoles(roles);
 		final var allPermissions = this.permissionRepository.findAll();
 		final var permissions = allPermissions.stream()
-			.flatMap(role -> role.getPermissions().stream())
 			.collect(Collectors.toList());
 		session.setPermissions(permissions);
 		return session;
