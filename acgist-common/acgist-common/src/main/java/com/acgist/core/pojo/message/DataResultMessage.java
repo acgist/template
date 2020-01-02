@@ -1,8 +1,5 @@
 package com.acgist.core.pojo.message;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * <p>message - 数据</p>
  * 
@@ -16,24 +13,14 @@ public class DataResultMessage extends ResultMessage {
 	/**
 	 * <p>数据</p>
 	 */
-	private Map<String, Object> data = new HashMap<String, Object>();
+	private Object data;
 
-	public Map<String, Object> getData() {
+	public Object getData() {
 		return data;
 	}
 
-	public void setData(Map<String, Object> data) {
+	public void setData(Object data) {
 		this.data = data;
-	}
-	
-	/**
-	 * <p>设置数据</p>
-	 * 
-	 * @param key key
-	 * @param value value
-	 */
-	public void put(String key, Object value) {
-		this.data.put(key, value);
 	}
 	
 }

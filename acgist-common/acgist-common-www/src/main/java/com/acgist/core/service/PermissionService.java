@@ -1,5 +1,7 @@
 package com.acgist.core.service;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 
 import org.apache.commons.lang3.ArrayUtils;
@@ -15,6 +17,8 @@ import com.acgist.data.pojo.message.PermissionMessage;
 
 /**
  * <p>service - 权限</p>
+ * 
+ * TODO：删除缓存
  * 
  * @author acgist
  * @since 1.0.0
@@ -45,6 +49,14 @@ public class PermissionService {
 		}
 	}
 	
+	/**
+	 * <p>所有权限树</p>
+	 * 
+	 * @return 权限树
+	 */
+	public List<PermissionEntity> allPermission() {
+		return this.permissionMessage.getPermissions();
+	}
 	
 	/**
 	 * <p>获取权限</p>

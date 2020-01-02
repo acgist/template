@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.acgist.core.pojo.message.DataResultMessage;
+import com.acgist.core.pojo.message.DataMapResultMessage;
 import com.acgist.core.pojo.session.AdminSession;
 import com.acgist.core.service.IPermissionService;
 
@@ -26,9 +26,12 @@ public class PermissionController {
 	@Reference(version = "${acgist.service.version}")
 	private IPermissionService permissionService;
 	
+	/**
+	 * <p>获取用户权限</p>
+	 */
 	@GetMapping
-	public DataResultMessage index() {
-		final DataResultMessage message = new DataResultMessage();
+	public DataMapResultMessage index() {
+		final DataMapResultMessage message = new DataMapResultMessage();
 		final var authoMessage = AdminSession.getAuthoMessage(this.context);
 		final var permissions = this.permissionService.allPermission(authoMessage.getRoles());
 		message.put("name", authoMessage.getName());

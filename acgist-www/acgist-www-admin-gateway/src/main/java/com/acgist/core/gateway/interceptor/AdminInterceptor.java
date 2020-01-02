@@ -1,10 +1,13 @@
 package com.acgist.core.gateway.interceptor;
 
+import java.util.concurrent.TimeUnit;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -29,6 +32,9 @@ public class AdminInterceptor implements HandlerInterceptor {
 	 */
 	private static final String X_TOKEN = "X-Token";
 	
+	@Value("${acgist.permission.duration:30}")
+	private int duration;
+	
 	@Autowired
 	private RedisService redisService;
 	@Autowired
@@ -52,6 +58,8 @@ public class AdminInterceptor implements HandlerInterceptor {
 			return false;
 		}
 		session.setAuthoMessage(authoMessage);
+		// 重新设置定时
+		this.redisService.expire(token, this.duration, TimeUnit.MINUTES);
 		return true;
 	}
 	

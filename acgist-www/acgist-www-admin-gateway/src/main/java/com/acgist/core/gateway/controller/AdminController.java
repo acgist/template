@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.acgist.core.gateway.pojo.request.LoginRequest;
-import com.acgist.core.pojo.message.DataResultMessage;
+import com.acgist.core.pojo.message.DataMapResultMessage;
 import com.acgist.core.service.IUserService;
 import com.acgist.data.pojo.entity.UserEntity;
 import com.acgist.data.pojo.message.AuthoMessage;
@@ -40,11 +40,11 @@ public class AdminController {
 	private RedisService redisService;
 	
 	@PostMapping("/login")
-	public DataResultMessage login(@RequestBody LoginRequest login) {
+	public DataMapResultMessage login(@RequestBody LoginRequest login) {
 		String username = login.getUsername();
 		String password = login.getPassword();
 		password = RsaUtils.decrypt(this.privateKey, password);
-		final DataResultMessage message = new DataResultMessage();
+		final DataMapResultMessage message = new DataMapResultMessage();
 		final LoginMessage loginMessage = this.userService.login(username, password, UserEntity.Type.ADMIN);
 		if(loginMessage.fail()) {
 			message.buildMessage(loginMessage);

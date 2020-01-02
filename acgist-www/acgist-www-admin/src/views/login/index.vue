@@ -111,7 +111,7 @@ export default {
           // 密码加密
           var encryptForm = {};
           encryptForm.username = this.loginForm.username;
-          encryptForm.password = rsa.encrypt(this.loginForm.password, 'base64');
+          encryptForm.password = rsa.publicKey.encrypt(this.loginForm.password, 'base64');
           this.$store.dispatch('user/login', encryptForm).then(() => {
             this.$router.push({ path: this.redirect || '/' });
             this.loading = false;

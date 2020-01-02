@@ -1,13 +1,23 @@
 <template>
-  <div v-if="isExternal" :style="styleExternalIcon" class="svg-external-icon svg-icon" v-on="$listeners" />
+  <i
+    v-if="isAcgist"
+    :class="acgistClass"
+    class="svg-icon acgist-icon"
+    v-on="$listeners"
+  />
+  <div
+    v-else-if="isExternal"
+    :style="styleExternalIcon"
+    class="svg-external-icon svg-icon"
+    v-on="$listeners"
+  />
   <svg v-else :class="svgClass" aria-hidden="true" v-on="$listeners">
     <use :href="iconName" />
   </svg>
 </template>
 
 <script>
-// doc: https://panjiachen.github.io/vue-element-admin-site/feature/component/svg-icon.html#usage
-import { isExternal } from '@/utils/validate'
+import { isExternal } from '@/utils/validate';
 
 export default {
   name: 'SvgIcon',
@@ -22,30 +32,40 @@ export default {
     }
   },
   computed: {
+    isAcgist() {
+      return /\..*/.test(this.iconClass);
+    },
     isExternal() {
-      return isExternal(this.iconClass)
+      return isExternal(this.iconClass);
     },
     iconName() {
-      return `#icon-${this.iconClass}`
+      return `#icon-${this.iconClass}`;
     },
     svgClass() {
       if (this.className) {
-        return 'svg-icon ' + this.className
+        return 'svg-icon ' + this.className;
       } else {
-        return 'svg-icon'
+        return 'svg-icon';
       }
+    },
+    acgistClass() {
+      return 'acgist-' + this.iconClass.substring(1);
     },
     styleExternalIcon() {
       return {
         mask: `url(${this.iconClass}) no-repeat 50% 50%`,
         '-webkit-mask': `url(${this.iconClass}) no-repeat 50% 50%`
-      }
+      };
     }
   }
-}
+};
 </script>
 
 <style scoped>
+.acgist-icon {
+  color: currentColor;
+}
+
 .svg-icon {
   width: 1em;
   height: 1em;
@@ -56,7 +76,7 @@ export default {
 
 .svg-external-icon {
   background-color: currentColor;
-  mask-size: cover!important;
+  mask-size: cover !important;
   display: inline-block;
 }
 </style>

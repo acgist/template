@@ -19,6 +19,8 @@ import com.acgist.data.user.repository.RoleRepository;
 /**
  * <p>service - 权限</p>
  * 
+ * TODO：删除角色缓存
+ * 
  * @author acgist
  * @since 1.0.0
  */
@@ -58,5 +60,5 @@ public class PermissionServiceImpl implements IPermissionService {
 			.map(permission -> permission.getToken())
 			.collect(Collectors.toList());
 	}
-
+	
 }

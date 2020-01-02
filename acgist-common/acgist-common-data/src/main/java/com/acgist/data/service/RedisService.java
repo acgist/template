@@ -56,6 +56,17 @@ public class RedisService {
 	public void store(String key, Object value, long timeout, TimeUnit unit) {
 		this.redisTemplate.opsForValue().set(key, value, timeout, unit);
 	}
+
+	/**
+	 * <p>更新缓存时间</p>
+	 * 
+	 * @param key key
+	 * @param timeout 过期时间
+	 * @param unit 时间单位
+	 */
+	public void expire(String key, long timeout, TimeUnit unit) {
+		this.redisTemplate.expire(key, timeout, unit);
+	}
 	
 	/**
 	 * <p>删除对象</p>

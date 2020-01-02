@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.acgist.core.gateway.interceptor.AdminInterceptor;
 import com.acgist.core.gateway.interceptor.AdminPermissionInterceptor;
 import com.acgist.core.gateway.interceptor.AdminSaveInterceptor;
 
@@ -22,12 +23,16 @@ public class InterceptorConfig implements WebMvcConfigurer {
 	private static final Logger LOGGER = LoggerFactory.getLogger(InterceptorConfig.class);
 
 	@Autowired
+	private AdminInterceptor adminInterceptor;
+	@Autowired
 	private AdminPermissionInterceptor adminPermissionInterceptor;
 	@Autowired
 	private AdminSaveInterceptor adminSaveInterceptor;
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
+		LOGGER.info("配置拦截器：adminInterceptor");
+		registry.addInterceptor(this.adminInterceptor).addPathPatterns("/admin/**");
 		LOGGER.info("配置拦截器：adminPermissionInterceptor");
 		registry.addInterceptor(this.adminPermissionInterceptor).addPathPatterns("/admin/**");
 		LOGGER.info("配置拦截器：adminSaveInterceptor");
