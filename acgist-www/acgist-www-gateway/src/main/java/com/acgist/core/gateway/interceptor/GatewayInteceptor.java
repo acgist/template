@@ -1,4 +1,6 @@
-package com.acgist.core.interceptor;
+package com.acgist.core.gateway.interceptor;
+
+import java.security.PrivateKey;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,21 +11,25 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import com.acgist.core.config.AcgistCode;
-import com.acgist.core.pojo.session.AdminSession;
+import com.acgist.core.gateway.request.GatewayRequest;
+import com.acgist.core.pojo.session.GatewaySession;
 import com.acgist.core.service.PermissionService;
 import com.acgist.data.pojo.entity.PermissionEntity;
-import com.acgist.data.pojo.message.AuthoMessage;
 import com.acgist.utils.RedirectUtils;
+import com.acgist.utils.RequestUtils;
+import com.acgist.utils.UuidUtils;
 
 /**
- * <p>拦截器 - 权限</p>
+ * <p>拦截器 - 包装网关信息</p>
  * 
  * @author acgist
  * @since 1.0.0
  */
 @Component
-public class AdminPermissionInterceptor implements HandlerInterceptor {
+public class GatewayInteceptor implements HandlerInterceptor {
 	
+	@Autowired(required = false)
+	private PrivateKey privateKey;
 	@Autowired
 	private ApplicationContext context;
 	@Autowired
@@ -31,19 +37,22 @@ public class AdminPermissionInterceptor implements HandlerInterceptor {
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-		final AdminSession session = AdminSession.getInstance(this.context);
+		final GatewaySession gatewaySession = GatewaySession.getInstance(this.context);
+		gatewaySession.buildGateway(UuidUtils.buildUuid(), this.privateKey);
+		// 设置权限
 		final PermissionEntity permission = this.permissionService.getPermission(request.getRequestURI());
 		if(permission == null) {
 			RedirectUtils.error(AcgistCode.CODE_1000, request, response);
 			return false;
 		}
-		session.setPermission(permission);
-		final AuthoMessage authoMessage = session.getAuthoMessage();
-		final boolean verify = this.permissionService.hasPermission(authoMessage.getRoles(), permission);
-		if(!verify) {
-			RedirectUtils.error(AcgistCode.CODE_2001, request, response);
+		gatewaySession.setPermission(permission);
+		// 请求数据
+		final GatewayRequest gatewayRequest = RequestUtils.requestGateway(permission, request);
+		if(gatewayRequest == null) {
+			RedirectUtils.error(AcgistCode.CODE_4400, "请求数据不能为空", request, response);
 			return false;
 		}
+		gatewaySession.buildRequest(gatewayRequest);
 		return true;
 	}
 	

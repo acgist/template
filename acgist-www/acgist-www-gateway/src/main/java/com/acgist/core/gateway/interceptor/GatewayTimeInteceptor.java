@@ -1,4 +1,4 @@
-package com.acgist.core.interceptor;
+package com.acgist.core.gateway.interceptor;
 
 import java.time.Duration;
 import java.time.LocalDateTime;

@@ -1,4 +1,4 @@
-package com.acgist.core.interceptor;
+package com.acgist.core.gateway.interceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

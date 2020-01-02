@@ -7,13 +7,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.acgist.core.interceptor.GatewayAuthoInterceptor;
-import com.acgist.core.interceptor.GatewayInteceptor;
-import com.acgist.core.interceptor.GatewayPermissionInteceptor;
-import com.acgist.core.interceptor.GatewaySaveInteceptor;
-import com.acgist.core.interceptor.GatewaySignatureInteceptor;
-import com.acgist.core.interceptor.GatewayTimeInteceptor;
-import com.acgist.core.interceptor.GatewayVerifyInteceptor;
+import com.acgist.core.gateway.interceptor.GatewayAuthoInterceptor;
+import com.acgist.core.gateway.interceptor.GatewayInteceptor;
+import com.acgist.core.gateway.interceptor.GatewayPermissionInteceptor;
+import com.acgist.core.gateway.interceptor.GatewaySaveInteceptor;
+import com.acgist.core.gateway.interceptor.GatewaySignatureInteceptor;
+import com.acgist.core.gateway.interceptor.GatewayTimeInteceptor;
+import com.acgist.core.gateway.interceptor.GatewayVerifyInteceptor;
 
 /**
  * <p>config - 拦截器</p>

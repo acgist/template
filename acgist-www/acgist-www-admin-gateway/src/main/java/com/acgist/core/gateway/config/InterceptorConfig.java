@@ -7,8 +7,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.acgist.core.interceptor.AdminPermissionInterceptor;
-import com.acgist.core.interceptor.AdminSaveInterceptor;
+import com.acgist.core.gateway.interceptor.AdminPermissionInterceptor;
+import com.acgist.core.gateway.interceptor.AdminSaveInterceptor;
 
 /**
  * <p>config - 拦截器</p>
