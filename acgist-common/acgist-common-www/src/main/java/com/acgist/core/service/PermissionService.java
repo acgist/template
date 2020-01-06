@@ -1,6 +1,7 @@
 package com.acgist.core.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 
@@ -73,6 +74,23 @@ public class PermissionService {
 			.filter(permission -> StringUtils.equals(permission.getPath(), path))
 			.findFirst()
 			.orElse(null);
+	}
+	
+	/**
+	 * <p>获取角色所有权限</p>
+	 * 
+	 * @param roles 角色
+	 * 
+	 * @return 角色所有权限
+	 */
+	public List<PermissionEntity> getPermission(String[] roles) {
+		if(this.permissionSession == null) {
+			return List.of();
+		}
+		return this.permissionSession.getRoles().entrySet().stream()
+			.filter(entry -> ArrayUtils.contains(roles, entry.getKey()))
+			.flatMap(entry -> entry.getValue().stream())
+			.collect(Collectors.toList());
 	}
 	
 	/**

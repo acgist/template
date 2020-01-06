@@ -1,18 +1,13 @@
 package com.acgist.core.user.service.impl;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.acgist.core.service.IPermissionService;
-import com.acgist.core.user.config.AcgistServiceUserCache;
-import com.acgist.data.pojo.select.Filter;
 import com.acgist.data.pojo.session.PermissionSession;
 import com.acgist.data.user.repository.PermissionRepository;
 import com.acgist.data.user.repository.RoleRepository;
@@ -47,20 +42,6 @@ public class PermissionServiceImpl implements IPermissionService {
 			.collect(Collectors.toList());
 		session.setPermissions(permissions);
 		return session;
-	}
-	
-	@Override
-	@Transactional
-	@Cacheable(AcgistServiceUserCache.ROLES_MESSAGE)
-	public List<String> allPermission(String ... roles) {
-		if(roles == null) {
-			return null;
-		}
-		final var list = this.roleRepository.findAll(Filter.in("token", Arrays.asList(roles)));
-		return list.stream()
-			.flatMap(entity -> entity.getPermissions().stream())
-			.map(permission -> permission.getToken())
-			.collect(Collectors.toList());
 	}
 	
 }
