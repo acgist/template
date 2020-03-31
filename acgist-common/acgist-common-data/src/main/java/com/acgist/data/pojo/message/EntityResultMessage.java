@@ -27,6 +27,8 @@ public class EntityResultMessage<T extends BaseEntity> extends ResultMessage {
 		if(this.entity == null) {
 			this.code = AcgistCode.CODE_3003.getCode();
 			this.message = AcgistCode.CODE_3003.getMessage();
+		} else {
+			this.buildSuccess();
 		}
 	}
 	

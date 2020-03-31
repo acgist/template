@@ -14,8 +14,8 @@ import com.acgist.core.user.config.AcgistServiceUserCache;
 import com.acgist.data.pojo.entity.RoleEntity;
 import com.acgist.data.pojo.entity.UserEntity;
 import com.acgist.data.pojo.message.AuthoMessage;
+import com.acgist.data.pojo.message.EntityResultMessage;
 import com.acgist.data.pojo.message.LoginMessage;
-import com.acgist.data.pojo.message.UserMessage;
 import com.acgist.data.user.repository.UserRepository;
 import com.acgist.utils.PasswordUtils;
 
@@ -58,10 +58,8 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public UserMessage findByName(String name) {
-		final UserMessage message = new UserMessage(this.userRepository.findByName(name));
-		message.buildSuccess();
-		return message;
+	public EntityResultMessage<UserEntity> findByName(String name) {
+		return new EntityResultMessage<>(this.userRepository.findByName(name));
 	}
 	
 	@Override

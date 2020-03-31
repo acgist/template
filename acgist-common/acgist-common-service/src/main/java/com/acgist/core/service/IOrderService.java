@@ -1,7 +1,7 @@
 package com.acgist.core.service;
 
 import com.acgist.data.pojo.entity.OrderEntity;
-import com.acgist.data.pojo.message.OrderMessage;
+import com.acgist.data.pojo.message.EntityResultMessage;
 
 /**
  * <p>服务 - 订单</p>
@@ -18,6 +18,6 @@ public interface IOrderService {
 	 * 
 	 * @return 订单消息
 	 */
-	OrderMessage build(OrderEntity order);
+	EntityResultMessage<OrderEntity> build(OrderEntity order);
 
 }
