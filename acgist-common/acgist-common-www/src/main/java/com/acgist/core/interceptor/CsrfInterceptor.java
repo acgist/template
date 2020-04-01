@@ -1,7 +1,5 @@
 package com.acgist.core.interceptor;
 
-import java.util.UUID;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -15,6 +13,7 @@ import com.acgist.core.config.AcgistCode;
 import com.acgist.core.config.AcgistConstSession;
 import com.acgist.core.controller.AcgistErrorController;
 import com.acgist.utils.RedirectUtils;
+import com.acgist.utils.UuidUtils;
 
 /**
  * <p>拦截器 - CSRF</p>
@@ -62,7 +61,7 @@ public class CsrfInterceptor implements HandlerInterceptor {
 	 * @param session session
 	 */
 	private static final void buildCsrfToken(HttpSession session) {
-		final String token = UUID.randomUUID().toString();
+		final String token = UuidUtils.buildUuid();
 		session.setAttribute(AcgistConstSession.SESSION_CSRF_TOKEN, token);
 	}
 	

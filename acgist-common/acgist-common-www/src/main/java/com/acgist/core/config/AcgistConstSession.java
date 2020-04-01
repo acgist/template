@@ -11,6 +11,6 @@ public interface AcgistConstSession {
 	/**
 	 * <p>CSRF Token：{@value}</p>
 	 */
-	String SESSION_CSRF_TOKEN = "SESSION_CRSF_TOKEN";
+	String SESSION_CSRF_TOKEN = "SESSION_CSRF_TOKEN";
 	
 }

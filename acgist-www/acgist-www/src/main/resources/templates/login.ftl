@@ -33,7 +33,7 @@
 		</div>
 		<#include "/include/footer.ftl">
 	    <script type="text/javascript">
-	    	var token = "${SESSION_CRSF_TOKEN}";
+	    	var token = "${SESSION_CSRF_TOKEN}";
 			var encrypt = new JSEncrypt();
 			$.get("/rsa/public/key", function(key) {
 				encrypt.setPublicKey(key);

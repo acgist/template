@@ -14,7 +14,7 @@
 		<#include "/include/header.ftl">
 		<div class="main">
 			<form method="post" action="/user/update">
-				<input type="hidden" name="token" value="${SESSION_CRSF_TOKEN}" />
+				<input type="hidden" name="token" value="${SESSION_CSRF_TOKEN}" />
 				<div class="user">
 					<p>
 						<label>用户名称</label>

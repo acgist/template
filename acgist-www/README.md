@@ -25,6 +25,12 @@
 |acgist-www-gateway-admin|后台网关|
 |acgist-www-resources|静态资源|
 
+前台网站：`session` + `cookie`
+
+前台网关：接口服务
+
+后台网站+后台网关：前后端分离
+
 ## Session共享
 
 Redis实现Session共享

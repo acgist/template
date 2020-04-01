@@ -28,7 +28,7 @@
 |[Dubbo](https://github.com/apache/dubbo)|2.7.4.1|
 |[MySQL](https://dev.mysql.com/downloads/mysql/5.7.html)|5.7.28|
 |[Node.js](https://nodejs.org/en/)|12.14.0|
-|[RabbitMQ](https://www.rabbitmq.com/)|
+|[RabbitMQ](https://www.rabbitmq.com/)|3.7.10|
 |[ZooKeeper](https://zookeeper.apache.org/)|3.5.6|
 |[SprintBoot](https://start.spring.io/)|2.2.2.RELEASE|
 |[DubboAdmin](https://github.com/apache/dubbo-admin)|0.1|
