@@ -123,7 +123,7 @@ public final class HTTPClient {
 			.append("Acgist")
 			.append("/")
 			.append("; ")
-			.append("https://gitee.com/acgist/acgist")
+			.append("https://gitee.com/acgist/template")
 			.append(")");
 		USER_AGENT = userAgentBuilder.toString();
 		LOGGER.debug("HTTP客户端信息（User-Agent）：{}", USER_AGENT);
