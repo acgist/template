@@ -10,7 +10,7 @@
 	<br />
 	<img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/acgist/template/build?style=flat-square">
 	<img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/acgist/acgist?style=flat-square" />
-	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/acgist/acgist?color=crimson&style=flat-square" />
+	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/acgist/template?color=crimson&style=flat-square" />
 	<img alt="GitHub" src="https://img.shields.io/github/license/acgist/acgist?style=flat-square" />
 </p>
 
