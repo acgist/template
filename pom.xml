@@ -28,7 +28,7 @@
 		<project.reporting.outputEncoding>${acgist.encoding}</project.reporting.outputEncoding>
 		<!-- 依赖 -->
 		<dubbo.version>2.7.4.1</dubbo.version>
-		<jackson.version>2.10.1</jackson.version>
+		<jackson.version>2.12.1</jackson.version>
 		<activation.version>1.1.1</activation.version>
 		<jaxb-runtime.version>2.3.2</jaxb-runtime.version>
 		<commons-lang3.version>3.9</commons-lang3.version>
