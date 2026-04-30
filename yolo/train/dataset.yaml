@@ -1,0 +1,6 @@
+train: /data/yolo/ultralytics/insulators/dataset/train
+val  : /data/yolo/ultralytics/insulators/dataset/val
+
+nc: 1
+names:
+  0: insulator

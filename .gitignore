@@ -1,0 +1,10 @@
+.cxx
+.idea
+.gradle
+
+__pycache__
+.pytest_cache
+
+*.log
+*.dll
+*.exe

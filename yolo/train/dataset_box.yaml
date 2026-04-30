@@ -1,0 +1,7 @@
+train: /data/yolo/ultralytics/insulators/dataset/train_box
+val  : /data/yolo/ultralytics/insulators/dataset/val_box
+
+nc: 2
+names:
+  0: insulator_normal
+  1: insulator_damage

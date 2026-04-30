@@ -1,0 +1,6 @@
+*.pt
+*.pth
+*.onnx
+*.onnx.data
+
+__pycache__
